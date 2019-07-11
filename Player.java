@@ -1,4 +1,4 @@
-public class Player {
+public class Player extends Graphic {
   private String name;
   private int dollars;
   private int credits;
@@ -12,37 +12,45 @@ public class Player {
   }
 
   public Room move() {
-    
+	  return null;
   }
 
   public int countScore() {
-
+	  return -1;
   }
 
   public String getName() {
-
+	  return name;
   }
 
   public int getDollars() {
-
+	  return dollars;
   }
 
   public int getCredits() {
-
+	  return credits;
   }
 
   public int getRank() {
+	  return rank;
+  }
 
+  public int getRehearsalChips() {
+	  return rehearsalChips;
   }
 
   public Room getCurrentRoom() {
-
+	  return currentRoom;
   }
 
   public Role getCurrentRole() {
-
+	  return currentRole;
   }
 
+  public int incRehearsalChips() {
+	  return -1;
+  }
+  
   public void setDollars() {
 
   }
@@ -58,6 +66,7 @@ public class Player {
   public void setCurrentRole() {
 
   }
+  
 
 
 }

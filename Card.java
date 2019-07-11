@@ -1,16 +1,13 @@
+import java.util.List;
 import java.awt.*;
-import java.util.*;
-
-public class Card {
+public class Card extends Graphic{
 
   private List<Role> roles;
   private String sceneName;
   private String line;
-  private Image background;
   private int budget;
-  private Area local;
 
-  public Card() {
+  public Card(List<Role> roles, String sceneName, String line, int budget, Image background) {
 
   }
 
@@ -26,10 +23,6 @@ public class Card {
     return line;
   }
 
-  public Image getBackground() {
-    return background;
-  }
-
   public int getBudget() {
     return budget;
   }
@@ -38,9 +31,6 @@ public class Card {
     return roles;
   }
 
-  public Area getLocal() {
-    return local;
-  }
 
 
 }

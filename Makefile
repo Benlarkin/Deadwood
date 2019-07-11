@@ -4,19 +4,7 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = \
-	Banker.java \
-	Board.java \
-	Card.java \
-	CastingOffice.java \
-	Deadwood.java \
-	Dice.java \
-	MovieSet.java \
-	Player.java \
-	Role.java \
-	Room.java \
-	Timer.java \
-	Trailers.java
+CLASSES = *.java
 
 default: classes
 

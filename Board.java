@@ -1,10 +1,6 @@
-import java.awt.*;
+public class Board extends Graphic{
 
-public class Board {
-
-  private Space[] spaces;
-  private Image background;
-  private Timer timer;
+  private Space[][] spaces;
   private int cardsLeft;
 
 
@@ -24,15 +20,15 @@ public class Board {
 
   }
 
-  public Image getBackground() {
-    return background;
-  }
-
   public int getCardsLeft() {
     return cardsLeft;
   }
+  
+  public void removeCard() {
+	  
+  }
 
-  public Space[] getSpaces() {
+  public Space[][] getSpaces() {
     return spaces;
   }
 

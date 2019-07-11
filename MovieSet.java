@@ -1,12 +1,12 @@
-import java.util.*;
-
+import java.util.List;
+import java.awt.*;
 public class MovieSet extends Room {
 
   private Card scene;
   private List<Role> extras;
-  private int reqSucess;
+  private int reqSuccess;
 
-  public MovieSet() {
+  public MovieSet(Image background, List<Role> extras, int reqSuccess) {
 
   }
 

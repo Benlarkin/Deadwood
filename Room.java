@@ -1,11 +1,10 @@
-import java.awt.*;
 import java.util.*;
 
-public class Room {
+public class Room extends Graphic {
   protected String name;
-  protected Image background;
   protected List<Player> players;
-
+  protected List<Room> adjacent;
+  
   public Player addPlayer(Player newPlayer) {
     return newPlayer;
   }
@@ -14,12 +13,11 @@ public class Room {
     return name;
   }
 
-  public Image getBackground() {
-    return background;
-  }
-
   public List<Player> getPlayers() {
     return players;
   }
 
+  public List<Room> getAdjacent() {
+	  return adjacent;
+  }
 }
