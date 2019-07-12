@@ -12,7 +12,23 @@ public class CastingOffice extends Room {
 
   }
 
+  // Scanner must be system.in
+  // it is ok if player is max rank
   public int promote(Player player, Scanner input) {
+    if (player.getRank() == 6) {
+      System.out.println("You are already max rank!");
+      return 6;
+    }
+    if (player.getRank() == 5) {
+      System.out.println("What rank would you like to promote to? (6). You are currently rank: " + player.getRank());
+    }
+    System.out.println("What rank would you like to promote to? (" + (player.getRank() + 1)
+        + "-6). You are currently rank: " + player.getRank());
+    int response = Integer.parseInt(input.next());
+    System.out.println("What currency will you use to upgrade? (d/c)");
+    System.out.println("You currently have " + player.getDollars() + "dollars, and " + player.getCredits() + "credits");
+    // check if sufficient currency
+    // promote player via private function OR return "insufficient currency"
     return -1;
   }
 
