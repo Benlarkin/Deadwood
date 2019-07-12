@@ -31,5 +31,6 @@ public class Timer {
 	public int nextDay() {
 		day++;
 		nextTurn();
+		return day;
 	}
 }
