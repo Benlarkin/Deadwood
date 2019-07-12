@@ -1,14 +1,20 @@
 import java.util.List;
 import java.awt.*;
+
 public class Card extends Graphic{
 
   private List<Role> roles;
   private String sceneName;
   private String line;
   private int budget;
-
-  public Card(List<Role> roles, String sceneName, String line, int budget, Image background) {
-
+  private int sceneNumber;
+  
+  public Card(List<Role> roles, String sceneName, String line, int budget, int sceneNumber, Image background) {
+	  this.roles = roles;
+	  this.sceneName = sceneName;
+	  this.line = line;
+	  this.budget = budget;
+	  this.sceneNumber = sceneNumber;
   }
 
   public Area setLocal(Area newLocal) {
@@ -27,6 +33,10 @@ public class Card extends Graphic{
     return budget;
   }
 
+  public int getSceneNumber() {
+	    return sceneNumber;
+  }
+  
   public List<Role> getRoles() {
     return roles;
   }

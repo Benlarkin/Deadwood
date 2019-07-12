@@ -5,7 +5,10 @@ public class Area {
   private int w;
 
   public Area(int x, int y, int h, int w) {
-
+	this.x = x;
+	this.y = y;
+	this.h = h;
+	this.w = w;
   }
 
   public int getX() {
