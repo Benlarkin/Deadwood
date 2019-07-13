@@ -7,66 +7,72 @@ public class Player extends Graphic {
   private Room currentRoom;
   private Role currentRole;
 
-  public Player(String name) {
-
+  public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
+    name = playerName;
+    dollars = startingDollars;
+    credits = startingCredits;
+    rank = startingRank;
+    rehearsalChips = 0;
+    // new instance of trailers or wait to implement when baord has all locations
+    // saved and it'll be a board position
+    currentRoom = null;
+    currentRole = null;
   }
 
   public Room move() {
-	  return null;
+    return null;
   }
 
   public int countScore() {
-	  return -1;
+    return -1;
   }
 
   public String getName() {
-	  return name;
+    return name;
   }
 
   public int getDollars() {
-	  return dollars;
+    return dollars;
   }
 
   public int getCredits() {
-	  return credits;
+    return credits;
   }
 
   public int getRank() {
-	  return rank;
+    return rank;
   }
 
   public int getRehearsalChips() {
-	  return rehearsalChips;
+    return rehearsalChips;
   }
 
   public Room getCurrentRoom() {
-	  return currentRoom;
+    return currentRoom;
   }
 
   public Role getCurrentRole() {
-	  return currentRole;
+    return currentRole;
   }
 
   public int incRehearsalChips() {
-	  return -1;
-  }
-  
-  public void setDollars() {
-
+    rehearsalChips++;
+    return rehearsalChips;
   }
 
-  public void setCredits() {
-
+  public void setDollars(int newDollars) {
+    dollars = newDollars;
   }
 
-  public void setRank() {
-
+  public void setCredits(int newCredits) {
+    credits = newCredits;
   }
 
-  public void setCurrentRole() {
-
+  public void setRank(int newRank) {
+    rank = newRank;
   }
-  
 
-
+  public void setCurrentRole(Role newRole) {
+    currentRole = newRole;
+  }
 }
