@@ -12,45 +12,45 @@ public class Player extends Graphic {
   }
 
   public Room move() {
-	  return null;
+    return null;
   }
 
   public int countScore() {
-	  return -1;
+    return -1;
   }
 
   public String getName() {
-	  return name;
+    return name;
   }
 
   public int getDollars() {
-	  return dollars;
+    return dollars;
   }
 
   public int getCredits() {
-	  return credits;
+    return credits;
   }
 
   public int getRank() {
-	  return rank;
+    return rank;
   }
 
   public int getRehearsalChips() {
-	  return rehearsalChips;
+    return rehearsalChips;
   }
 
   public Room getCurrentRoom() {
-	  return currentRoom;
+    return currentRoom;
   }
 
   public Role getCurrentRole() {
-	  return currentRole;
+    return currentRole;
   }
 
   public int incRehearsalChips() {
-	  return -1;
+    return -1;
   }
-  
+
   public void setDollars() {
 
   }
@@ -59,14 +59,12 @@ public class Player extends Graphic {
 
   }
 
-  public void setRank() {
-
+  public void setRank(int newRank) {
+    rank = newRank;
   }
 
   public void setCurrentRole() {
 
   }
-  
-
 
 }
