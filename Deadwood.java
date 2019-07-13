@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Deadwood {
-private final String FILENAME = "cards.xml";
+
 
   public List<Player> players;
   public Board board;
@@ -12,11 +12,14 @@ private final String FILENAME = "cards.xml";
   public Deadwood() {
     try {
       XMLReader reader = new XMLReader();
-    deck = reader.makeDeck(FILENAME);
+    deck = reader.makeDeck();
     board = new Board(reader);
+    players = new ArrayList<Player>();
+    timer = new Timer(players);
+    banker = new Banker();
   }
   catch (Exception e) {
-	  System.out.println("1");
+	
   }
   }
 

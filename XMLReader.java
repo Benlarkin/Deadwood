@@ -1,3 +1,5 @@
+
+
 import java.util.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -6,8 +8,12 @@ import java.io.*;
 import org.w3c.dom.*;
 
 public class XMLReader {
-
-
+	/* Instructions on how to begin XML parsing were learned from 
+	 * https://stackoverflow.com/questions/428073/what-is-the-best-simplest-way-to-read-in-an-xml-file-in-java-application
+	 * 
+	 */
+private final String CARDFILE = "cards.xml";
+private final String BOARDFILE = "board.xml";
 private final String CARD = "card";
 private final String NAME = "name";
 private final String BUDGET = "budget";
@@ -21,9 +27,9 @@ private final String NEIGHBOR = "neighbor";
 private final String TAKE = "take";
 
 
-  public List<Room> arrangeBoard(String fileName) {
+  public List<Room> arrangeBoard() {
     try {
-      File file = new File(fileName);
+      File file = new File(BOARDFILE);
       DocumentBuilderFactory buildFact = DocumentBuilderFactory.newInstance();
       DocumentBuilder build = buildFact.newDocumentBuilder();
       Document doc = build.parse(file);
@@ -81,9 +87,9 @@ private final String TAKE = "take";
     }
   }
 
-  public List<Card> makeDeck(String fileName) {
+  public List<Card> makeDeck() {
     try {
-    File file = new File(fileName);
+    File file = new File(CARDFILE);
     DocumentBuilderFactory buildFact = DocumentBuilderFactory.newInstance();
     DocumentBuilder build = buildFact.newDocumentBuilder();
     Document doc = build.parse(file);

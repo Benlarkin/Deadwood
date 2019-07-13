@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Board extends Graphic {
 
-private final String FILENAME = "board.xml";
 
   private int cardsLeft;
   private List<Room> spaces;
@@ -11,10 +10,10 @@ public Board(XMLReader reader) {
 
 
     try {
-      spaces = reader.arrangeBoard(FILENAME);
+      spaces = reader.arrangeBoard();
     }
     catch (Exception e) {
-    	 System.out.println("2");
+    	 
     }
   }
 
