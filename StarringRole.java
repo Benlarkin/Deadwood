@@ -9,11 +9,11 @@ public class StarringRole extends Role {
 	}
 
 	protected int onSuccess() {
-		return -1;
+		return 2;
 	}
 
 	protected int onFail() {
-		return -1;
+		return 0;
 	}
 
 }

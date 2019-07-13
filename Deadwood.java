@@ -9,6 +9,8 @@ public class Deadwood {
   public Banker banker;
   private Timer timer;
 
+  
+  // Creates a new game of Deadwood.
   public Deadwood() {
     try {
       XMLReader reader = new XMLReader();
@@ -17,10 +19,10 @@ public class Deadwood {
     players = new ArrayList<Player>();
     timer = new Timer(players);
     banker = new Banker();
-  }
+    }
   catch (Exception e) {
 	
-  }
+  	}
   }
 
   public void addPlayer(Player newPlayer) {

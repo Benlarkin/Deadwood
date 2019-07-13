@@ -3,20 +3,38 @@ public class Banker {
   public Banker() {
   }
 
-  public int payMoney(Player player) {
-    return 0;
+  // Adds the given amount to the given player's total dollars.
+  public int payMoney(Player player, int amount) {
+	int newCurrent = player.getDollars() + amount;
+	player.setDollars(newCurrent);
+	return newCurrent;
   }
 
-  public int payCredits(Player player) {
-    return 0;
+  // Adds the given amount to the given player's total credits.
+  public int payCredits(Player player, int amount) {
+	int newCurrent = player.getCredits() + amount;
+	player.setCredits(newCurrent);
+	return newCurrent;
   }
 
-  public int takeMoney(Player player) {
-    return 0;
+  // Removes the given amount from the given player's total dollars. Returns -1 if insufficient funds.
+  public int takeMoney(Player player, int amount) {
+	int newCurrent = player.getDollars() - amount;
+	if(newCurrent < 0) {
+			return -1;
+		}
+	player.setDollars(newCurrent);
+	return newCurrent;
   }
 
-  public int takeCredits(Player player) {
-    return 0;
+  // Removes the given amount from the given player's total credits. Returns -1 if insufficient funds.
+  public int takeCredits(Player player, int amount) {
+	  int newCurrent = player.getCredits() - amount;
+		if(newCurrent < 0) {
+			return -1;
+		}
+	  player.setCredits(newCurrent);
+	  return newCurrent;
   }
 
 }

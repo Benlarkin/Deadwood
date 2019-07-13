@@ -27,6 +27,8 @@ private final String NEIGHBOR = "neighbor";
 private final String TAKE = "take";
 
 
+
+  // Creates a List of Rooms to make up the board from an XML file.
   public List<Room> arrangeBoard() {
     try {
       File file = new File(BOARDFILE);
@@ -37,11 +39,11 @@ private final String TAKE = "take";
       return boardBuilder(doc);
     }
     catch (Exception e) {
-    	 System.out.println("3");
       return null;
     }
   }
 
+  // Parses an XML file to create individual Rooms to add to the list for the Board.
   public List<Room> boardBuilder(Document doc) {
       List<Room> spaceList = new ArrayList<Room>();
       NodeList roomList = doc.getElementsByTagName(SET);
@@ -51,6 +53,7 @@ private final String TAKE = "take";
       return spaceList;
   }
 
+  // Makes individual Rooms from the XML file.
   public Room makeRoom(Node setNode) {
     Element setElement = (Element) setNode;
     String setName = setElement.getAttribute(NAME);
@@ -73,7 +76,7 @@ private final String TAKE = "take";
 
 
 
-
+  // Makes a new Role. If the Role is on the card, it is a StarringRole, else its an ExtraRole.
   public Role makeRole(Node roleNode, boolean star) {
     Element roleElement = (Element) roleNode;
     String roleName = roleElement.getAttribute(NAME);
@@ -87,6 +90,7 @@ private final String TAKE = "take";
     }
   }
 
+  // Makes a new deck of cards.
   public List<Card> makeDeck() {
     try {
     File file = new File(CARDFILE);
@@ -97,11 +101,12 @@ private final String TAKE = "take";
     return cardBuilder(doc);
     }
     catch(Exception e) {
-    	 System.out.println("4");
+    	 
       return null;
     }
   }
 
+  // Builds the deck of cards out of an XML file.
   public List<Card> cardBuilder(Document doc) {
     List<Card> deckList = new ArrayList<Card>();
     NodeList cardList = doc.getElementsByTagName(CARD);
@@ -111,6 +116,7 @@ private final String TAKE = "take";
     return deckList;
   }
 
+  // Makes individual cards to add to the list for the deck.
   public Card makeCard(Node cardNode) {
     Element cardElement = (Element) cardNode;
     Node sceneElement = cardElement.getElementsByTagName(SCENE).item(0);
@@ -125,6 +131,4 @@ private final String TAKE = "take";
     }
     return new Card(cardRoles, cardName, cardLine, cardBudget, sceneNumber, null);
   }
-
-
 }

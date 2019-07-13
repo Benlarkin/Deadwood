@@ -9,6 +9,7 @@ public class Card extends Graphic{
   private int budget;
   private int sceneNumber;
   
+  // Creates a Card object to be used in the game.
   public Card(List<Role> roles, String sceneName, String line, int budget, int sceneNumber, Image background) {
 	  this.roles = roles;
 	  this.sceneName = sceneName;

@@ -8,11 +8,11 @@ public class ExtraRole extends Role {
   }
 
   protected int onSuccess() {
-    return -1;
+    return 1;
   }
 
   protected int onFail() {
-    return -1;
+    return 1;
   }
 
 }
