@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Timer {
-	
+
 	private int day;
 	private int turn;
 	private List<Player> players;

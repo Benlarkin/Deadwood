@@ -7,6 +7,7 @@ public class ExtraRole extends Role {
     super.requirement = req;
   }
 
+ 
   protected int onSuccess() {
     return 1;
   }
