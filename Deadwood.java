@@ -5,7 +5,6 @@ public class Deadwood {
 
   public List<Player> players;
   public Board board;
-  public List<Card> deck;
   public Banker banker;
   private Timer timer;
 
@@ -13,9 +12,7 @@ public class Deadwood {
   // Creates a new game of Deadwood.
   public Deadwood() {
     try {
-      XMLReader reader = new XMLReader();
-    deck = reader.makeDeck();
-    board = new Board(reader);
+    board = new Board();
     players = new ArrayList<Player>();
     timer = new Timer(players);
     banker = new Banker();
