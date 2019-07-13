@@ -1,7 +1,6 @@
 public class Banker {
 
   public Banker() {
-
   }
 
   public int payMoney(Player player) {
