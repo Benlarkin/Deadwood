@@ -1,16 +1,25 @@
-public class Board extends Graphic{
+import java.util.*;
 
-  private Space[][] spaces;
+public class Board extends Graphic {
+
+private final String FILENAME = "board.xml";
+
   private int cardsLeft;
+  private List<Room> spaces;
+
+public Board(XMLReader reader) {
 
 
-  public Board() {
-
+    try {
+      spaces = reader.arrangeBoard(FILENAME);
+    }
+    catch (Exception e) {
+    	 System.out.println("2");
+    }
   }
 
-  private Space[] arrangeBoard() {
-    return null;
-  }
+
+
 
   public void placeCards() {
 
@@ -23,12 +32,12 @@ public class Board extends Graphic{
   public int getCardsLeft() {
     return cardsLeft;
   }
-  
+
   public void removeCard() {
-	  
+
   }
 
-  public Space[][] getSpaces() {
+  public List<Room> getSpaces() {
     return spaces;
   }
 

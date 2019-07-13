@@ -1,7 +1,10 @@
 public class ExtraRole extends Role {
 
-  public ExtraRole(Player actor, String name, String line, int requirement) {
-
+  public ExtraRole(String name, String line, int req) {
+    super.actor = null;
+    super.name = name;
+    super.line = line;
+    super.requirement = req;
   }
 
   protected int onSuccess() {

@@ -13,11 +13,6 @@ public abstract class Role {
     return name;
   }
 
-  public Player setActor(Player actor) {
-    this.actor = actor;
-    return actor;
-  }
-
   public String getLine() {
     return line;
   }

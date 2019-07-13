@@ -3,8 +3,8 @@ import java.util.*;
 public class Room extends Graphic {
   protected String name;
   protected List<Player> players;
-  protected List<Room> adjacent;
-  
+  protected List<String> adjacent;
+
   public Player addPlayer(Player newPlayer) {
     return newPlayer;
   }
@@ -17,7 +17,7 @@ public class Room extends Graphic {
     return players;
   }
 
-  public List<Room> getAdjacent() {
+  public List<String> getAdjacent() {
 	  return adjacent;
   }
 }
