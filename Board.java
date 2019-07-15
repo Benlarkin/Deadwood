@@ -9,6 +9,7 @@ private final String COMMA = ", ";
 private final String EMPTY = "";
 private final String TRAILERS = "Trailers";
 private final String CASTING = "Casting Office";
+private final String IN = "is in ";
 
   public List<Card> deck;
   private int cardsLeft;
@@ -33,27 +34,19 @@ public Board(List<Player> players) {
 
 
 public void findPlayers() {
-  for(Room current : spaces) {
-    List<Player> players = current.getPlayers();
-    int size = players.size();
-    if(!players.isEmpty()) {
-      System.out.print(current.getName() + COLON);
-      Player currPlayer;
-      for(int i = 0; i < size - 2; i++) {
-        currPlayer = players.get(i);
-        System.out.print(currPlayer.getName());
-        if(currPlayer == timer.getActive()) {
-          System.out.print(ACTIVE + COMMA);
-        }
-      }
-      String active = EMPTY;
-      currPlayer = players.get(size - 1);
-        if(currPlayer == timer.getActive()) {
-          active = ACTIVE;
-        }
-      System.out.println(currPlayer.getName() + active);
-    }
+  List<Player> players = timer.getPlayers();
+  for(Player current : players) {
+    printLocation(current);
   }
+}
+
+private void printLocation(Player player) {
+  System.out.print(player.getName() + SPACE);
+  System.out.print(IN);
+  if(player == timer.getActive()) {
+    System.out.print(ACTIVE);
+  }
+  System.out.println(EMPTY);
 }
 
   public void placeCards() {
