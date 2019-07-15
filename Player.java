@@ -6,7 +6,7 @@ public class Player extends Graphic {
   private int rehearsalChips;
   private Room currentRoom;
   private Role currentRole;
-
+  
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     name = playerName;
     dollars = startingDollars;

@@ -2,10 +2,11 @@ import java.util.*;
 
 public class Room extends Graphic {
   protected String name;
-  protected List<Player> players;
   protected List<String> adjacent;
+  protected List<Player> players = new ArrayList<Player>();
 
   public Player addPlayer(Player newPlayer) {
+    players.add(newPlayer);
     return newPlayer;
   }
 
