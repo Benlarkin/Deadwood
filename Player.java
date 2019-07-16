@@ -38,14 +38,17 @@ public class Player extends Graphic {
   public Room move(Player player) {
     Scanner sc = new Scanner(System.in);
     System.out.println(MOEVEMSG);
-    for (String s : player.getCurrentRoom().getAdjacent()) {
+    Room currRoom = player.getCurrentRoom();
+    for (String s : currRoom.getAdjacent()) {
       System.out.println(s);
     }
     String desiredRoom = sc.nextLine();
     sc.close();
-    for (Room r : player.getCurrentRoom().getNeighbors()) {
+    for (Room r : currRoom.getNeighbors()) {
       if (r.getName().equals(desiredRoom)) {
         player.setCurrentRoom(r);
+        currRoom.getPlayers().remove(player);
+        r.getPlayers().add(player);
         return player.getCurrentRoom();
       }
     }
