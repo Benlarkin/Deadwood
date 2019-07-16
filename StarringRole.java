@@ -8,11 +8,11 @@ public class StarringRole extends Role {
 		super.requirement = req;
 	}
 
-	protected int onSuccess() {
+	protected int onSuccess(Player play) {
 		return 2;
 	}
 
-	protected int onFail() {
+	protected int onFail(Player player) {
 		return 0;
 	}
 

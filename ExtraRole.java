@@ -8,11 +8,11 @@ public class ExtraRole extends Role {
   }
 
  
-  protected int onSuccess() {
+  protected int onSuccess(Player player) {
     return 1;
   }
 
-  protected int onFail() {
+  protected int onFail(Player player) {
     return 1;
   }
 
