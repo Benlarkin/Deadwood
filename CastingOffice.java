@@ -30,8 +30,8 @@ public class CastingOffice extends Room {
     }
     System.out
         .println("You currently have " + player.getDollars() + " dollars, and " + player.getCredits() + " credits");
-    // representCost();
-    // prent a pretty array with leveling costs here... do later
+    representCost();
+    // print a pretty array with leveling costs here... do later
     int desiredRank = Integer.parseInt(input.next());
     System.out.println("What currency will you use to upgrade? (d/c)");
     // check if sufficient currency
