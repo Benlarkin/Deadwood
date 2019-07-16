@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Player extends Graphic {
   private String name;
   private int dollars;
@@ -6,7 +8,9 @@ public class Player extends Graphic {
   private int rehearsalChips;
   private Room currentRoom;
   private Role currentRole;
-  
+  private final String MOEVEMSG = "Where would you like to move?";
+  private final String INVALIDMSG = "Invalid room. Choose again.";
+
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     this.name = playerName;
     this.dollars = startingDollars;
@@ -19,14 +23,43 @@ public class Player extends Graphic {
     this.currentRole = null;
   }
 
-  public Room move() {
-    return null;
+  public void playerTurn(Player player) {
+
+  }
+
+  private void actScene(Player player) {
+
+  }
+
+  private void rehearseScene(Player player) {
+
+  }
+
+  public Room move(Player player) {
+    Scanner sc = new Scanner(System.in);
+    boolean flag = true;
+    System.out.println(MOEVEMSG);
+    for (String s : player.getCurrentRoom().getAdjacent()) {
+      System.out.println(s);
+    }
+    String desiredRoom = sc.nextLine();
+    for (Room r : player.getCurrentRoom().getNeighbors()) {
+      if (r.getName().equals(desiredRoom)) {
+        player.setCurrentRoom(r);
+        flag = false;
+      }
+    }
+    if (flag) {
+      System.out.println(INVALIDMSG);
+      move(player);
+    }
+    return player.getCurrentRoom();
   }
 
   public int countScore() {
     return -1;
   }
-  
+
   public String getName() {
     return name;
   }
@@ -60,7 +93,7 @@ public class Player extends Graphic {
     return rehearsalChips;
   }
 
-  public Room setCurrentRoom(Room r){
+  public Room setCurrentRoom(Room r) {
     this.currentRoom = r;
     return currentRoom;
   }
