@@ -37,7 +37,6 @@ public class Player extends Graphic {
 
   public Room move(Player player) {
     Scanner sc = new Scanner(System.in);
-    boolean flag = true;
     System.out.println(MOEVEMSG);
     for (String s : player.getCurrentRoom().getAdjacent()) {
       System.out.println(s);
@@ -50,10 +49,8 @@ public class Player extends Graphic {
         return player.getCurrentRoom();
       }
     }
-    if (flag) {
-      System.out.println(INVALIDMSG);
-      move(player);
-    }
+    System.out.println(INVALIDMSG);
+    move(player);
     return null;
   }
 
