@@ -53,11 +53,12 @@ public class Player extends Graphic {
       System.out.println(INVALIDMSG);
       move(player);
     }
+    sc.close();
     return player.getCurrentRoom();
   }
 
   public int countScore() {
-    return -1;
+    return dollars + credits + (5 * rank);
   }
 
   public String getName() {
