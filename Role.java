@@ -22,15 +22,17 @@ public abstract class Role {
   }
 
   public int act(Player player) {
+    //return die roll
     return -1;
   }
 
   public int rehearse(Player player) {
+    //return rehearsal chips
     return -1;
   }
 
-  protected abstract int onSuccess();
+  protected abstract int onSuccess(Player player);
 
-  protected abstract int onFail();
+  protected abstract int onFail(Player player);
 
 }
