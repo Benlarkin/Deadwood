@@ -10,6 +10,7 @@ private final String EMPTY = "";
 private final String TRAILERS = "Trailers";
 private final String CASTING = "Casting Office";
 private final String IN = "is in ";
+private final String SPACE = " ";
 
   public List<Card> deck;
   private int cardsLeft;
@@ -64,6 +65,9 @@ private void printLocation(Player player) {
 
   }
 
+  public Timer getTimer() {
+    return timer;
+  }
 
   public int getCardsLeft() {
     return cardsLeft;
