@@ -8,15 +8,15 @@ public class Player extends Graphic {
   private Role currentRole;
   
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
-    name = playerName;
-    dollars = startingDollars;
-    credits = startingCredits;
-    rank = startingRank;
-    rehearsalChips = 0;
+    this.name = playerName;
+    this.dollars = startingDollars;
+    this.credits = startingCredits;
+    this.rank = startingRank;
+    this.rehearsalChips = 0;
     // new instance of trailers or wait to implement when baord has all locations
     // saved and it'll be a board position
-    currentRoom = null;
-    currentRole = null;
+    this.currentRoom = null;
+    this.currentRole = null;
   }
 
   public Room move() {
@@ -60,19 +60,24 @@ public class Player extends Graphic {
     return rehearsalChips;
   }
 
+  public Room setCurrentRoom(Room r){
+    this.currentRoom = r;
+    return currentRoom;
+  }
+
   public void setDollars(int newDollars) {
-    dollars = newDollars;
+    this.dollars = newDollars;
   }
 
   public void setCredits(int newCredits) {
-    credits = newCredits;
+    this.credits = newCredits;
   }
 
   public void setRank(int newRank) {
-    rank = newRank;
+    this.rank = newRank;
   }
 
   public void setCurrentRole(Role newRole) {
-    currentRole = newRole;
+    this.currentRole = newRole;
   }
 }
