@@ -46,14 +46,12 @@ public class Player extends Graphic {
     for (Room r : player.getCurrentRoom().getNeighbors()) {
       if (r.getName().equals(desiredRoom)) {
         player.setCurrentRoom(r);
-        flag = false;
+        return player.getCurrentRoom();
       }
     }
-    if (flag) {
-      System.out.println(INVALIDMSG);
-      move(player);
-    }
-    return player.getCurrentRoom();
+    System.out.println(INVALIDMSG);
+    move(player);
+    return null;
   }
 
   public int countScore() {
