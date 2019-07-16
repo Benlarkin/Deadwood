@@ -15,7 +15,6 @@ public class MovieSet extends Room {
     scene = null;
   }
 
-
   public List<Role> getExtras() {
     return extras;
   }

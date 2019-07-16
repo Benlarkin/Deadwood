@@ -24,6 +24,13 @@ public class Timer {
 
 	// next players turn
 	public void nextTurn() {
+		if(turn >= players.size()) {
+			turn = 0;
+		}
+		Player activePlayer = players.get(turn);
+		//activePlayer.makeActive();
+		//activePlayer.action();
+		//activePlayer.inactive();
 		turn++;
 	}
 

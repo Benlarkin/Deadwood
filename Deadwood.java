@@ -60,7 +60,11 @@ public class Deadwood {
       addPlayer(new Player(input.nextLine(), startDollars, startCredits, startRank));
     }
     input.close();
-    timer.nextDay();
+    while(timer.getDay() < 5) {
+      board.placeCards();
+      board.sendToTrailers(players);
+      timer.nextDay();
+    }
   }
 }
 

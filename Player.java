@@ -26,7 +26,7 @@ public class Player extends Graphic {
   public int countScore() {
     return -1;
   }
-
+  
   public String getName() {
     return name;
   }

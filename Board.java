@@ -24,6 +24,7 @@ public Board(List<Player> players) {
       XMLReader reader = new XMLReader();
       deck = reader.makeDeck();
       spaces = reader.arrangeBoard();
+      assignNeighbors();
       placeCards();
       active = null;
       timer = new Timer(players);
@@ -61,6 +62,22 @@ private void printLocation(Player player) {
 	  }
   }
 
+  public void sendToTrailers(List<Player> players) {
+    Room trailers = null;
+    for(int i = 0; i < spaces.size(); i++) {
+      Room current = spaces.get(i);
+      if(current.getName() == TRAILERS) {
+        trailers = current;
+      }
+      current.getPlayers().clear();
+    }
+      List<Player> trailerPlayers = trailers.getPlayers();
+      for(Player currPlayer : players) {
+        currPlayer.setCurrentRoom(trailers);
+        trailerPlayers.add(currPlayer);
+      }
+  }
+
   public void FinishDay() {
 
   }
@@ -81,4 +98,18 @@ private void printLocation(Player player) {
     return spaces;
   }
 
+  private void assignNeighbors() {
+      for(Room currRoom : spaces) {
+        List<Room> neighbors = new ArrayList<Room>();
+        for(String currAdj : currRoom.getAdjacent()) {
+          for(Room innerCurrRoom : spaces) {
+            if(innerCurrRoom.getName().equals(currAdj)) {
+              neighbors.add(innerCurrRoom);
+              break;
+            }
+          }
+        }
+        currRoom.setNeighbors(neighbors);
+      }
+  }
 }

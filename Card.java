@@ -1,7 +1,7 @@
 import java.util.List;
 import java.awt.*;
 
-public class Card extends Graphic{
+public class Card extends Graphic {
 
   private List<Role> roles;
   private String sceneName;
