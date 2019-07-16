@@ -43,18 +43,18 @@ public class Player extends Graphic {
       System.out.println(s);
     }
     String desiredRoom = sc.nextLine();
+    sc.close();
     for (Room r : player.getCurrentRoom().getNeighbors()) {
       if (r.getName().equals(desiredRoom)) {
         player.setCurrentRoom(r);
-        flag = false;
+        return player.getCurrentRoom();
       }
     }
     if (flag) {
       System.out.println(INVALIDMSG);
       move(player);
     }
-    sc.close();
-    return player.getCurrentRoom();
+    return null;
   }
 
   public int countScore() {
