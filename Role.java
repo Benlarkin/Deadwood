@@ -3,7 +3,7 @@ public abstract class Role {
   protected String name;
   protected String line;
   protected int requirement;
-
+  protected Banker banker = new Banker();
 
   public Player getActor() {
     return actor;
@@ -21,8 +21,9 @@ public abstract class Role {
     return requirement;
   }
 
-  public int act(Player player) {
+  public int act() {
     //return die roll
+	
     return -1;
   }
 

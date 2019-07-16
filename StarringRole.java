@@ -9,6 +9,8 @@ public class StarringRole extends Role {
 	}
 
 	protected int onSuccess(Player play) {
+		Banker banker = new Banker();
+		banker.payCredits(play, 2);
 		return 2;
 	}
 

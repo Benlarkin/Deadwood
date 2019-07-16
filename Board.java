@@ -3,9 +3,7 @@ import java.util.*;
 public class Board extends Graphic {
 
 private final String ERROR = " error in Board.";
-private final String COLON = ": ";
 private final String ACTIVE = " (ACTIVE) ";
-private final String COMMA = ", ";
 private final String EMPTY = "";
 private final String TRAILERS = "Trailers";
 private final String CASTING = "Casting Office";
@@ -15,7 +13,6 @@ private final String SPACE = " ";
   public List<Card> deck;
   private int cardsLeft;
   private List<Room> spaces;
-  private Player active;
   private Timer timer;
 
 // Creates a new Board from an XML file.
@@ -26,7 +23,6 @@ public Board(List<Player> players) {
       spaces = reader.arrangeBoard();
       assignNeighbors();
       placeCards();
-      active = null;
       timer = new Timer(players);
     }
     catch (Exception e) {

@@ -9,7 +9,6 @@ public class Deadwood {
 
   public List<Player> players;
   public Board board;
-  public Banker banker;
 
 
 
@@ -18,7 +17,6 @@ public class Deadwood {
     try {
     players = new ArrayList<Player>();
     board = new Board(players);
-    banker = new Banker();
     }
   catch (Exception e) {
 
