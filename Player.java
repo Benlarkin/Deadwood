@@ -27,8 +27,16 @@ public class Player extends Graphic {
 
   }
 
-  private void actScene(Player player) {
-
+  private void actScene() {
+    Player player = this;
+    Dice d = new Dice();
+    Role cRole = player.getCurrentRole();
+    if (d.roll(player.getRehearsalChips()) >= cRole.getRequirement()) {
+      // success case 1: starring
+      cRole.onSuccess(player);
+    } else {
+      cRole.onFail(player);
+    }
   }
 
   private void rehearseScene(Player player) {
