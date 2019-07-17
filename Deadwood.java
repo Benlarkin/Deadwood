@@ -32,18 +32,17 @@ public class Deadwood {
       players.add(newPlayer);
   }
 
-  public void startGame() {
+  public void startGame(int playerNum) {
     Timer timer = board.getTimer();
     int startDollars = 0;
     int startCredits = 0;
     int startRank = 1;
     System.out.print(PLAYERMSG);
     Scanner input = new Scanner(System.in);
-    int playerNum = input.nextInt();
-    input.nextLine();
     if(playerNum < 2 || playerNum > 8) {
       System.out.println(PLAYERERR);
-      startGame();
+      input.close();
+      throw new IndexOutOfBoundsException();
     }
     else {
       if(playerNum < 4) {
