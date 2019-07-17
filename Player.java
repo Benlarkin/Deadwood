@@ -39,8 +39,9 @@ public class Player extends Graphic {
     }
   }
 
-  private void rehearseScene(Player player) {
-
+  private void rehearseScene() {
+    Player player = this;
+    player.incRehearsalChips();
   }
 
   public Room move(Player player) {
