@@ -7,13 +7,14 @@ public class Deadwood {
   private final String INPUT = "Input Player ";
   private final String PLAYERERR = "Must have 2-8 players.";
 
+  private static Deadwood game = new Deadwood();
   public List<Player> players;
   public Board board;
 
 
 
   // Creates a new game of Deadwood.
-  public Deadwood() {
+  private Deadwood() {
     try {
     players = new ArrayList<Player>();
     board = new Board(players);
@@ -21,6 +22,10 @@ public class Deadwood {
   catch (Exception e) {
 
   	}
+  }
+  
+  public static Deadwood newGame() {
+	  return game;
   }
 
   private void addPlayer(Player newPlayer) {

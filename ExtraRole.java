@@ -9,10 +9,12 @@ public class ExtraRole extends Role {
 
  
   protected int onSuccess(Player player) {
-    return 1;
+	banker.payCredits(player, 1);
+	return onFail(player);
   }
 
   protected int onFail(Player player) {
+	banker.payMoney(player, 1);
     return 1;
   }
 

@@ -1,10 +1,13 @@
 import java.util.*;
 
 public class Timer {
-
+	private final String ACTIVE = "Active player %s is in %s (Rank %x, %x dollars and %x credits)\n";
+	
+	
 	private int day;
 	private int turn;
 	private List<Player> players;
+	
 
 	public Timer(List<Player> players) {
 		this.day = 0;
@@ -28,12 +31,19 @@ public class Timer {
 			turn = 0;
 		}
 		Player activePlayer = players.get(turn);
+		printActive(activePlayer);
 		//activePlayer.makeActive();
 		//activePlayer.action();
 		//activePlayer.inactive();
 		turn++;
 	}
 
+	private void printActive(Player player) {
+		System.out.printf(ACTIVE, player.getName(), player.getCurrentRoom().getName(), 
+								player.getRank(), player.getDollars(), player.getCredits());
+	}
+	
+	
 	// advance day and player turn
 	public int nextDay() {
 		day++;
