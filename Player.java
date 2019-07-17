@@ -11,6 +11,11 @@ public class Player extends Graphic {
   private Role currentRole;
   private final String MOEVEMSG = "Where would you like to move?";
   private final String INVALIDMSG = "Invalid room. Choose again.";
+  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r)";
+  private final String TURNMSG = "Would you like to move or take a role? (Type: m/t)";
+  private final String ACTMSG = "You successfully acted your scene!";
+  private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
+  private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
 
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     this.name = playerName;
@@ -25,8 +30,29 @@ public class Player extends Graphic {
     activePlayer = false;
   }
 
-  public void playerTurn(Player player) {
-
+  public void playerTurn() {
+    Scanner sc = new Scanner(System.in);
+    String desiredAction = "";
+    Player player = this;
+    if (!(player.getCurrentRole() == null)) {
+      System.out.println(SCENEMSG);
+      desiredAction = sc.nextLine();
+      if (desiredAction.equals("a")) {
+        player.actScene();
+      } else {
+        player.rehearseScene();
+      }
+    }
+    System.out.println(TURNMSG);
+    desiredAction = sc.nextLine();
+    if (desiredAction.equals("t")) {
+      // display roles
+      // check input for roles
+      // assign role to player
+      // end turn
+    } else {
+      // call move function
+    }
   }
 
   private void actScene() {
@@ -36,21 +62,25 @@ public class Player extends Graphic {
     if (d.roll(player.getRehearsalChips()) >= cRole.getRequirement()) {
       // success case 1: starring
       cRole.onSuccess(player);
+      System.out.println(ACTMSG);
     } else {
       cRole.onFail(player);
+      System.out.println(FAILACTMSG);
     }
   }
 
   public void makeActive() {
-	  activePlayer = true;
+    activePlayer = true;
   }
+
   public void makeInactive() {
-	  activePlayer = false;
+    activePlayer = false;
   }
-  
+
   private void rehearseScene() {
     Player player = this;
     player.incRehearsalChips();
+    System.out.println(REHEARSEMSG);
   }
 
   public Room move(Player player) {
