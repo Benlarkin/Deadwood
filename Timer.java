@@ -32,9 +32,9 @@ public class Timer {
 		}
 		Player activePlayer = players.get(turn);
 		printActive(activePlayer);
-		//activePlayer.makeActive();
-		//activePlayer.action();
-		//activePlayer.inactive();
+		activePlayer.makeActive();
+//		activePlayer.action();
+		activePlayer.makeInactive();
 		turn++;
 	}
 

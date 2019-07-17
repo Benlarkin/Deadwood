@@ -6,6 +6,7 @@ public class Player extends Graphic {
   private int credits;
   private int rank;
   private int rehearsalChips;
+  private boolean activePlayer;
   private Room currentRoom;
   private Role currentRole;
   private final String MOEVEMSG = "Where would you like to move?";
@@ -17,10 +18,11 @@ public class Player extends Graphic {
     this.credits = startingCredits;
     this.rank = startingRank;
     this.rehearsalChips = 0;
-    // new instance of trailers or wait to implement when baord has all locations
+    // new instance of trailers or wait to implement when board has all locations
     // saved and it'll be a board position
     this.currentRoom = null;
     this.currentRole = null;
+    activePlayer = false;
   }
 
   public void playerTurn(Player player) {
@@ -39,6 +41,13 @@ public class Player extends Graphic {
     }
   }
 
+  public void makeActive() {
+	  activePlayer = true;
+  }
+  public void makeInactive() {
+	  activePlayer = false;
+  }
+  
   private void rehearseScene() {
     Player player = this;
     player.incRehearsalChips();
