@@ -36,4 +36,9 @@ public abstract class Role {
 
   protected abstract int onFail(Player player);
 
+  protected void decrementShotCounter(Player player){
+    MovieSet m = (MovieSet)player.getCurrentRoom();
+    m.decrementShotCounter();
+  }
+
 }
