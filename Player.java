@@ -11,8 +11,8 @@ public class Player extends Graphic {
   private Role currentRole;
   private final String MOEVEMSG = "Where would you like to move?";
   private final String INVALIDMSG = "Invalid room. Choose again.";
-  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r)";
-  private final String TURNMSG = "Would you like to move or take a role? (Type: m/t)";
+  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r): ";
+  private final String TURNMSG = "Would you like to move or take a role? (Type: m/t): ";
   private final String ACTMSG = "You successfully acted your scene!";
   private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
   private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
@@ -31,20 +31,19 @@ public class Player extends Graphic {
   }
 
   public void playerTurn() {
-    Scanner sc = new Scanner(System.in);
     String desiredAction = "";
     Player player = this;
     if (!(player.getCurrentRole() == null)) {
-      System.out.println(SCENEMSG);
-      desiredAction = sc.nextLine();
+      System.out.print(SCENEMSG);
+      desiredAction = Input.playerInput();
       if (desiredAction.equals("a")) {
         player.actScene();
       } else {
         player.rehearseScene();
       }
     }
-    System.out.println(TURNMSG);
-    desiredAction = sc.nextLine();
+    System.out.print(TURNMSG);
+    desiredAction = Input.playerInput();
     if (desiredAction.equals("t")) {
       // display roles
       MovieSet m = (MovieSet)player.getCurrentRoom();
@@ -62,7 +61,6 @@ public class Player extends Graphic {
       // call move function
       move();
     }
-    sc.close();
   }
 
   private void actScene() {

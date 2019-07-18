@@ -36,10 +36,9 @@ public class Deadwood {
     int startDollars = 0;
     int startCredits = 0;
     int startRank = 1;
-    Scanner input = new Scanner(System.in);
     if(playerNum < 2 || playerNum > 8) {
       System.out.println(PLAYERERR);
-      input.close();
+      Input.close();
       throw new IndexOutOfBoundsException();
     }
     else {
@@ -57,9 +56,8 @@ public class Deadwood {
       }
     for(int i = 0; i < playerNum; i++) {
       System.out.print(INPUT+ (i+1) + NAME);
-      addPlayer(new Player(input.nextLine(), startDollars, startCredits, startRank));
+      addPlayer(new Player(Input.playerInput(), startDollars, startCredits, startRank));
     }
-    input.close();
     while(timer.getDay() < 5) {
       board.placeCards();
       board.sendToTrailers(players);
@@ -68,6 +66,7 @@ public class Deadwood {
       }
       timer.nextDay();
     }
+    Input.close();
   }
 }
 
