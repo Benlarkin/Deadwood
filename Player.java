@@ -16,7 +16,8 @@ public class Player extends Graphic {
   private final String ACTMSG = "You successfully acted your scene!";
   private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
   private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
-
+  private final String MOVESUCC = "%s moved from %s to %s.\n";
+  
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     this.name = playerName;
     this.dollars = startingDollars;
@@ -104,6 +105,7 @@ public class Player extends Graphic {
         player.setCurrentRoom(r);
         currRoom.getPlayers().remove(player);
         r.getPlayers().add(player);
+        System.out.printf(MOVESUCC, name, currRoom.getName(), desiredRoom);
         return player.getCurrentRoom();
       }
     }
