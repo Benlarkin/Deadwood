@@ -9,7 +9,7 @@ public class Player extends Graphic {
   private boolean activePlayer;
   private Room currentRoom;
   private Role currentRole;
-  private final String MOEVEMSG = "Where would you like to move?";
+  private final String MOEVEMSG = "Where would you like to move? ";
   private final String INVALIDMSG = "Invalid room. Choose again.";
   private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r): ";
   private final String TURNMSG = "Would you like to move or take a role? (Type: m/t): ";
@@ -93,14 +93,12 @@ public class Player extends Graphic {
 
   public Room move() {
     Player player = this;
-    Scanner sc = new Scanner(System.in);
     System.out.println(MOEVEMSG);
     Room currRoom = player.getCurrentRoom();
     for (String s : currRoom.getAdjacent()) {
       System.out.println(s);
     }
-    String desiredRoom = sc.nextLine();
-    sc.close();
+    String desiredRoom = Input.playerInput();
     for (Room r : currRoom.getNeighbors()) {
       if (r.getName().equals(desiredRoom)) {
         player.setCurrentRoom(r);
