@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
 public class Player extends Graphic {
   private String name;
@@ -63,6 +62,7 @@ public class Player extends Graphic {
       // call move function
       move();
     }
+    sc.close();
   }
 
   private void actScene() {

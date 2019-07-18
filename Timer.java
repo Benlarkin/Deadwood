@@ -33,7 +33,7 @@ public class Timer {
 		Player activePlayer = players.get(turn);
 		printActive(activePlayer);
 		activePlayer.makeActive();
-		activePlayer.playerTurn(activePlayer);
+		activePlayer.playerTurn();
 		activePlayer.makeInactive();
 		turn++;
 	}
