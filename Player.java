@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Player extends Graphic {
   private String name;
@@ -47,11 +48,20 @@ public class Player extends Graphic {
     desiredAction = sc.nextLine();
     if (desiredAction.equals("t")) {
       // display roles
+      MovieSet m = (MovieSet)player.getCurrentRoom();
+      for (Role r : m.getExtras()) {
+        System.out.println("Extra Role: " + r.getName() + "Requirement: " + r.getRequirement());
+      }
+      for (Role r : m.getScene().getRoles()) {
+        System.out.println("Starring Role: " + r.getName() + "Requirement: " + r.getRequirement());
+      }
+      // for (Role r : m)
       // check input for roles
       // assign role to player
       // end turn
     } else {
       // call move function
+      move();
     }
   }
 
@@ -83,7 +93,8 @@ public class Player extends Graphic {
     System.out.println(REHEARSEMSG);
   }
 
-  public Room move(Player player) {
+  public Room move() {
+    Player player = this;
     Scanner sc = new Scanner(System.in);
     System.out.println(MOEVEMSG);
     Room currRoom = player.getCurrentRoom();
@@ -101,7 +112,7 @@ public class Player extends Graphic {
       }
     }
     System.out.println(INVALIDMSG);
-    move(player);
+    move();
     return null;
   }
 
