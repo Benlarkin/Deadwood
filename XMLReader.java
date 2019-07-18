@@ -25,8 +25,8 @@ private final String LINE = "line";
 private final String SET = "set";
 private final String NEIGHBOR = "neighbor";
 private final String TAKE = "take";
-
-
+private final String TRAILER = "trailer";
+private final String OFFICE = "office";
 
   // Creates a List of Rooms to make up the board from an XML file.
   public List<Room> arrangeBoard() {
@@ -44,17 +44,41 @@ private final String TAKE = "take";
   }
 
   // Parses an XML file to create individual Rooms to add to the list for the Board.
-  public List<Room> boardBuilder(Document doc) {
+  private List<Room> boardBuilder(Document doc) {
       List<Room> spaceList = new ArrayList<Room>();
       NodeList roomList = doc.getElementsByTagName(SET);
       for(int i = 0; i < roomList.getLength(); i++) {
           spaceList.add(makeRoom(roomList.item(i)));
       }
+      spaceList.add(makeTrailer(doc.getElementsByTagName(TRAILER).item(0)));
+      spaceList.add(makeOffice(doc.getElementsByTagName(OFFICE).item(0)));
       return spaceList;
+  }
+  
+  private Room makeTrailer(Node trailNode) {
+	  List<String> adjacent = new ArrayList<String>();
+	  Element trailElement = (Element) trailNode;
+	  NodeList neighborList = trailElement.getElementsByTagName(NEIGHBOR);
+	  for(int i = 0; i < neighborList.getLength(); i++) {
+		Element neighborElement = (Element) neighborList.item(i);
+	    adjacent.add(neighborElement.getAttribute(NAME));
+	  }
+	  return new Trailers(adjacent);
+  }
+  
+  private Room makeOffice(Node offNode) {
+	  List<String> adjacent = new ArrayList<String>();
+	  Element offElement = (Element) offNode;
+	  NodeList neighborList = offElement.getElementsByTagName(NEIGHBOR);
+	  for(int i = 0; i < neighborList.getLength(); i++) {
+		Element neighborElement = (Element) neighborList.item(i);
+	    adjacent.add(neighborElement.getAttribute(NAME));
+	  }
+	  return new CastingOffice(adjacent);
   }
 
   // Makes individual Rooms from the XML file.
-  public Room makeRoom(Node setNode) {
+  private Room makeRoom(Node setNode) {
     Element setElement = (Element) setNode;
     String setName = setElement.getAttribute(NAME);
     List<String> setNeighbors = new ArrayList<String>();
@@ -77,7 +101,7 @@ private final String TAKE = "take";
 
 
   // Makes a new Role. If the Role is on the card, it is a StarringRole, else its an ExtraRole.
-  public Role makeRole(Node roleNode, boolean star) {
+  private Role makeRole(Node roleNode, boolean star) {
     Element roleElement = (Element) roleNode;
     String roleName = roleElement.getAttribute(NAME);
     int roleReq = Integer.parseInt(roleElement.getAttribute(LEVEL));
@@ -107,7 +131,7 @@ private final String TAKE = "take";
   }
 
   // Builds the deck of cards out of an XML file.
-  public List<Card> cardBuilder(Document doc) {
+  private List<Card> cardBuilder(Document doc) {
     List<Card> deckList = new ArrayList<Card>();
     NodeList cardList = doc.getElementsByTagName(CARD);
     for(int i = 0; i < cardList.getLength(); i++) {
@@ -117,7 +141,7 @@ private final String TAKE = "take";
   }
 
   // Makes individual cards to add to the list for the deck.
-  public Card makeCard(Node cardNode) {
+  private Card makeCard(Node cardNode) {
     Element cardElement = (Element) cardNode;
     Node sceneElement = cardElement.getElementsByTagName(SCENE).item(0);
     String cardName = cardElement.getAttribute(NAME);

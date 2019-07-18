@@ -9,7 +9,7 @@ public class Main {
 			  deadwood.startGame(Integer.parseInt(args[0]));
 		  }
 		  catch(Exception e) {
-			  System.out.println("Invalid parameters.");
+			  System.out.println(e);
 		  }
 	  }
   }

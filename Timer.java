@@ -27,13 +27,13 @@ public class Timer {
 
 	// next players turn
 	public void nextTurn() {
-		if(turn >= players.size()) {
+		if(turn == players.size()) {
 			turn = 0;
 		}
 		Player activePlayer = players.get(turn);
 		printActive(activePlayer);
 		activePlayer.makeActive();
-//		activePlayer.action();
+		activePlayer.playerTurn(activePlayer);
 		activePlayer.makeInactive();
 		turn++;
 	}
@@ -47,7 +47,6 @@ public class Timer {
 	// advance day and player turn
 	public int nextDay() {
 		day++;
-		nextTurn();
 		return day;
 	}
 

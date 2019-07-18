@@ -5,8 +5,8 @@ public class Board extends Graphic {
 private final String ERROR = " error in Board.";
 private final String ACTIVE = " (ACTIVE) ";
 private final String EMPTY = "";
-private final String TRAILERS = "Trailers";
-private final String CASTING = "Casting Office";
+private final String TRAILERS = "trailer";
+private final String CASTING = "office";
 private final String IN = "is in ";
 private final String SPACE = " ";
 

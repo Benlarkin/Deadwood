@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Deadwood {
 
-  private final String PLAYERMSG = "Please Input Number of players: ";
   private final String NAME = " Name: ";
   private final String INPUT = "Input Player ";
   private final String PLAYERERR = "Must have 2-8 players.";
@@ -37,7 +36,6 @@ public class Deadwood {
     int startDollars = 0;
     int startCredits = 0;
     int startRank = 1;
-    System.out.print(PLAYERMSG);
     Scanner input = new Scanner(System.in);
     if(playerNum < 2 || playerNum > 8) {
       System.out.println(PLAYERERR);
@@ -65,6 +63,9 @@ public class Deadwood {
     while(timer.getDay() < 5) {
       board.placeCards();
       board.sendToTrailers(players);
+      while(board.getCardsLeft() > 1) {
+    	  timer.nextTurn();
+      }
       timer.nextDay();
     }
   }

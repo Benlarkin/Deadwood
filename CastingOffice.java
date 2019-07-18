@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class CastingOffice extends Room {
-
+	private final String OFFICE = "office";
   // cost of upgrades, cost[0][x] = dollars, cost[1][x] = credits
   // cost[x][0] = rank 2, cost[x][4] = rank 6;
   // cost[1][0] is price to upgrade to rank 2 in credits
@@ -9,8 +9,9 @@ public class CastingOffice extends Room {
   private int[][] cost = setUpgradeCost();
   private Banker banker = new Banker();
 
-  public CastingOffice() {
-
+  public CastingOffice(List<String> adjacent) {
+	  super.name = OFFICE;
+	  super.adjacent = adjacent;
   }
 
   // Scanner must be system.in
