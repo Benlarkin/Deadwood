@@ -7,26 +7,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import org.w3c.dom.*;
 
-public class XMLReader {
+public class XMLReader extends Globals {
 	/* Instructions on how to begin XML parsing were learned from 
 	 * https://stackoverflow.com/questions/428073/what-is-the-best-simplest-way-to-read-in-an-xml-file-in-java-application
 	 * 
 	 */
-private final String CARDFILE = "cards.xml";
-private final String BOARDFILE = "board.xml";
-private final String CARD = "card";
-private final String NAME = "name";
-private final String BUDGET = "budget";
-private final String SCENE = "scene";
-private final String NUMBER = "number";
-private final String PART = "part";
-private final String LEVEL = "level";
-private final String LINE = "line";
-private final String SET = "set";
-private final String NEIGHBOR = "neighbor";
-private final String TAKE = "take";
-private final String TRAILER = "trailer";
-private final String OFFICE = "office";
+
 
   // Creates a List of Rooms to make up the board from an XML file.
   public List<Room> arrangeBoard() {

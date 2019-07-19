@@ -2,13 +2,7 @@ import java.util.*;
 
 public class Board extends Graphic {
 
-private final String ERROR = " error in Board.";
-private final String ACTIVE = " (ACTIVE) ";
-private final String EMPTY = "";
-private final String TRAILERS = "trailer";
-private final String CASTING = "office";
-private final String IN = "is in ";
-private final String SPACE = " ";
+
 
   public List<Card> deck;
   private int cardsLeft;
@@ -50,7 +44,7 @@ private void printLocation(Player player) {
   public void placeCards() {
 	  for(int i = 0; i < spaces.size(); i++) {
 		  Room current = spaces.get(i);
-		  if(!current.getName().equals(TRAILERS) && !current.getName().equals(CASTING)) {
+		  if(!current.getName().equals(TRAILER) && !current.getName().equals(CASTING)) {
 			  MovieSet currentSet = (MovieSet) current;
 		  	  currentSet.setScene(deck.remove(i));
 		  	  cardsLeft++;
@@ -62,7 +56,7 @@ private void printLocation(Player player) {
     Room trailers = null;
     for(int i = 0; i < spaces.size(); i++) {
       Room current = spaces.get(i);
-      if(current.getName() == TRAILERS) {
+      if(current.getName() == TRAILER) {
         trailers = current;
       }
       current.getPlayers().clear();

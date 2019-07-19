@@ -1,26 +1,7 @@
 import java.util.*;
 
 public class Player extends Graphic {
-	  private final String MOEVEMSG = "Where would you like to move? ";
-	  private final String INVALIDMSG = "Invalid room. Choose again.";
-	  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r): ";
-	  private final String TURNMSG = "It is your turn (Type: %s%sactive/board/end): ";
-	  private final String ACTMSG = "You successfully acted your scene!";
-	  private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
-	  private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
-	  private final String MOVESUCC = "%s moved from %s to %s.\n";
-	  private final String WORK = "work/";
-	  private final String PROMOTE = "promote/";
-	  private final String TRAILER = "trailer";
-	  private final String OFFICE = "office";
-	  private final String END = "end";
-	  private final String MOVEPLAYER = "move/";
-	  private final String ACTIVE = "active";
-	  private final String BOARD = "board";
-	  private final String ACTIVEMSG = "The active player is %s. They have $%x, %x credits, and %x fame.\n"; 
-	  private final String BLANK = "";
-	  private final String MOVE = "move";
-	  private final String ROLEMSG = "They are working %s, \"%s\"";
+
   private String name;
   private int dollars;
   private int credits;
@@ -93,10 +74,10 @@ public class Player extends Graphic {
     	// promote here
     }
     else if(desiredAction.equalsIgnoreCase(ACTIVE)) {
-	
+    	printActive();
     }
-    else if(desiredAction.equalsIgnoreCase(BOARD)) {
-    	
+    else if(desiredAction.equalsIgnoreCase(WHERE)) {
+    	printLocation();
     }
     }
     }
@@ -108,6 +89,10 @@ public class Player extends Graphic {
 	if(currentRole != null) {
 		System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
 	}
+  }
+  
+  private void printLocation() {
+	  
   }
   
   private void actScene() {

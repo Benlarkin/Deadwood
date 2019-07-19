@@ -1,21 +1,7 @@
 import java.util.*;
 
 public class CastingOffice extends Room {
-  private final String MAXRANK = "You are already max rank!";
-  private final String OFFICE = "office";
-  private final String RANKREQUEST5 = "What rank would you like to promote to? (6). You are currently rank: ";
-  private final String RANKREQUEST = "What rank would you like to promote to? (";
-  private final String RANKREQUEST_PT2 = "-6). You are currently rank: ";
-  private final String CURRENCYMSG1 = "You currently have ";
-  private final String CURRENCYMSG2 = " dollars, and ";
-  private final String CURRENCYMSG3 = " credits";
-  private final String DESIREDCURRENCYMSG = "What currency will you use to upgrade? (d/c)";
-  private final String INSUFFICIENTCURRENCY = "Insufficient Currency";
-  private final String CREDITS_AS_STRING = "c";
-  private final String DOLLAR_STRING = "dollars";
-  private final String CREDITS_STRING = "credits";
-  private final String RANK_STRING = "Rank ";
-  private final String COST_EQUALS_STRING = " cost = ";
+
   // cost of upgrades, cost[0][x] = dollars, cost[1][x] = credits
   // cost[x][0] = rank 2, cost[x][4] = rank 6;
   // cost[1][0] is price to upgrade to rank 2 in credits

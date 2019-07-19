@@ -1,5 +1,4 @@
-public class Main {
-	private final static String PLAYMSG = "Please enter number of players.";
+public class Main extends Globals{
   public static void main(String[] args) {
 	  if(args.length != 1) {
 		  System.out.println(PLAYMSG);

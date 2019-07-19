@@ -1,10 +1,6 @@
 import java.util.*;
 
-public class Deadwood {
-
-  private final String NAME = " Name: ";
-  private final String INPUT = "Input Player ";
-  private final String PLAYERERR = "Must have 2-8 players.";
+public class Deadwood extends Globals {
 
   private static Deadwood game = new Deadwood();
   public List<Player> players;
@@ -55,7 +51,7 @@ public class Deadwood {
         startRank = 2;
       }
     for(int i = 0; i < playerNum; i++) {
-      System.out.print(INPUT+ (i+1) + NAME);
+      System.out.print(INPUT + (i+1) + NAMEREQ);
       addPlayer(new Player(Input.playerInput(), startDollars, startCredits, startRank));
     }
     while(timer.getDay() < 5) {

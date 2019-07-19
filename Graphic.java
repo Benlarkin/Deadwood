@@ -1,5 +1,5 @@
 import java.awt.*;
-public class Graphic {
+public class Graphic extends Globals {
 
 protected Image background;
 protected Area location;
