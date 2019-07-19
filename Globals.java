@@ -27,7 +27,7 @@ public class Globals {
    protected final String MOEVEMSG = "Where would you like to move? ";
    protected final String INVALIDMSG = "Invalid room. Choose again.";
    protected final String SCENEMSG = "Would you like to act or rehearse? (Type: act/rehearse/active/where/end): ";
-   protected final String TURNMSG = "It is your turn (Type: %s%sactive/where/end): ";
+   protected final String TURNMSG = "It is %s's turn (Type: %s%sactive/where/end): ";
    protected final String ACTMSG = "You successfully acted your scene!";
    protected final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
    protected final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";

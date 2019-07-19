@@ -64,11 +64,11 @@ public class Player extends Graphic {
     boolean inTrailer = currentRoomName.equalsIgnoreCase(TRAILER);
     // check this boolean while testing
     if (inTrailer) {
-      System.out.printf(TURNMSG, moved, BLANK, BLANK);
+      System.out.printf(TURNMSG, name, moved, BLANK, BLANK);
     } else if (currentRoomName.equalsIgnoreCase(OFFICE)) {
-      System.out.printf(TURNMSG, moved, BLANK, PROMOTE);
+      System.out.printf(TURNMSG, name, moved, BLANK, PROMOTE);
     } else {
-      System.out.printf(TURNMSG, moved, worked, WORK);
+      System.out.printf(TURNMSG, name, moved, worked, WORK);
     }
     desiredAction = Input.playerInput();
     if (desiredAction.equalsIgnoreCase(WORKACTION) && worked.equals(WORK)) {
