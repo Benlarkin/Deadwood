@@ -1,0 +1,24 @@
+Trailers
+XML Reader
+StarringRole, ExtraRole
+Room
+
+
+LOOP on role selection
+    if they type the wrong role name loop again
+    give player option to change mind (break loop)
+
+ACT/REHEARSE
+    rehearasl chips not updating
+    rigged dice?
+    unify wording on "act" "rehearse"
+    don't end turn after act/reharse selection
+    acting never ends in success, act infinitely
+        shotcounter not updating correctly?
+    
+MOVE
+    not allowed to move after taking role
+        maybe currentRole isnt updating correctly?
+
+Display playerName at start of turn
+
