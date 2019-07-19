@@ -7,7 +7,6 @@ public class Player extends Graphic {
   private int credits;
   private int rank;
   private int rehearsalChips;
-  private boolean activePlayer;
   private Room currentRoom;
   private Role currentRole;
 
@@ -21,7 +20,6 @@ public class Player extends Graphic {
     // saved and it'll be a board position
     this.currentRoom = null;
     this.currentRole = null;
-    activePlayer = false;
   }
 
   public void playerTurn() {
@@ -46,11 +44,11 @@ public class Player extends Graphic {
     while (takingAction == true) {
       int actionHandled = handleAction(moved);
       if (actionHandled == PLAYEREND) {
-        takingAction = false;
+    	  takingAction = false;
       } else if (actionHandled == PLAYERMOVE) {
-        moved = BLANK;
+       		moved = BLANK;
       } else if (actionHandled == INVALIDACTION) {
-
+    	  System.out.println(INVALIDACTIONMSG);
       }
     }
   }
@@ -70,7 +68,7 @@ public class Player extends Graphic {
       System.out.printf(TURNMSG, moved, WORK);
     }
     desiredAction = Input.playerInput();
-    if (desiredAction.equalsIgnoreCase(WORK)) {
+    if (desiredAction.equalsIgnoreCase(WORKACTION)) {
       // display roles
       MovieSet m = (MovieSet) getCurrentRoom();
       for (Role r : m.getExtras()) {
@@ -102,19 +100,22 @@ public class Player extends Graphic {
       }
       // check input for roles
       // assign role to player
-      // end turn
+      return SUCCESSACTION;
     } else if (desiredAction.equalsIgnoreCase(MOVE) && moved.equals(MOVEPLAYER)) {
       // call move function
       move();
-      moved = BLANK;
+      return PLAYERMOVE;
     } else if (desiredAction.equalsIgnoreCase(PROMOTE) && inOffice) {
       // promote here
       CastingOffice co = (CastingOffice) player.getCurrentRoom();
       co.promote(player);
+      return SUCCESSACTION;
     } else if (desiredAction.equalsIgnoreCase(ACTIVE)) {
       printActive();
+      return SUCCESSACTION;
     } else if (desiredAction.equalsIgnoreCase(WHERE)) {
       printLocation();
+      return SUCCESSACTION;
     } else if (desiredAction.equalsIgnoreCase(END)) {
       return PLAYEREND;
     }
@@ -144,14 +145,6 @@ public class Player extends Graphic {
       cRole.onFail(player);
       System.out.println(FAILACTMSG);
     }
-  }
-
-  public void makeActive() {
-    activePlayer = true;
-  }
-
-  public void makeInactive() {
-    activePlayer = false;
   }
 
   private void rehearseScene() {

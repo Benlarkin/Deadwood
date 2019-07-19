@@ -33,6 +33,7 @@ public class Globals {
 	  protected final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
 	  protected final String MOVESUCC = "%s moved from %s to %s.\n";
 	  protected final String WORK = "work/";
+	  protected final String WORKACTION = "work";
 	  protected final String PROMOTE = "promote/";
 	  protected final String TRAILER = "trailer";
 	  protected final String END = "end";
@@ -56,8 +57,10 @@ public class Globals {
 	  protected final String SET = "set";
 	  protected final String NEIGHBOR = "neighbor";
 	  protected final String TAKE = "take";
+	  protected final String INVALIDACTIONMSG = "Invalid command, please try again.";
 	  protected final int PLAYEREND = 0;
 	  protected final int PLAYERMOVE = 1;
 	  protected final int INVALIDACTION = -1;
+	  protected final int SUCCESSACTION = 2;
 
 }

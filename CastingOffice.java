@@ -18,7 +18,6 @@ public class CastingOffice extends Room {
   // promote player via private function OR return "insufficient currency"
   // (put this function inside of loop during player turn?)
   public void promote(Player player) {
-    Input input = new Input();
     if (player.getRank() == 6) {
       System.out.println(MAXRANK);
       return;
@@ -31,10 +30,10 @@ public class CastingOffice extends Room {
     System.out.println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
     representCost();
     // print a pretty array with leveling costs here... do later
-    int desiredRank = Integer.parseInt(input.playerInput());
+    int desiredRank = Integer.parseInt(Input.playerInput());
     System.out.println(DESIREDCURRENCYMSG);
     // check if sufficient currency
-    String desiredCurrency = input.playerInput();
+    String desiredCurrency = Input.playerInput();
     if (currencyCheck(player, desiredRank, desiredCurrency)) {
       promote(player, desiredRank, desiredCurrency);
     } else {
