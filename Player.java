@@ -44,11 +44,11 @@ public class Player extends Graphic {
     while (takingAction == true) {
       int actionHandled = handleAction(moved);
       if (actionHandled == PLAYEREND) {
-    	  takingAction = false;
+        takingAction = false;
       } else if (actionHandled == PLAYERMOVE) {
-       		moved = BLANK;
+        moved = BLANK;
       } else if (actionHandled == INVALIDACTION) {
-    	  System.out.println(INVALIDACTIONMSG);
+        System.out.println(INVALIDACTIONMSG);
       }
     }
   }
@@ -80,24 +80,43 @@ public class Player extends Graphic {
       System.out.println("Enter the name of your desired role.");
       String desiredRole = Input.playerInput();
       // maybe in loop in case they mess up typing/aren't qualified
-      // Iterator i1 = m.getExtras().iterator();
-      // Iterator i2 = m.getScene().getRoles().iterator();
-      for (Role r : m.getExtras()) {
-        if (desiredRole.equalsIgnoreCase(r.getName())) {
+      Iterator extraIter = m.getExtras().iterator();
+      Iterator starringIter = m.getScene().getRoles().iterator();
+      while (extraIter.hasNext() && starringIter.hasNext()) {
+        Role assignToPlayer = ((Role) extraIter.next());
+        String currentRoleCheckingName = assignToPlayer.getName();
+        if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
           // set current role
-          this.setCurrentRole(r);
+          this.setCurrentRole(assignToPlayer);
           // remove from list of roles on that room
-          m.getExtras().remove(r);
+          m.getExtras().remove(assignToPlayer);
+        } else {
+          assignToPlayer = (Role) starringIter.next();
+          currentRoleCheckingName = assignToPlayer.getName();
+          if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
+            // set current role
+            this.setCurrentRole(assignToPlayer);
+            // remove from list of roles on that room
+            m.getScene().getRoles().remove(assignToPlayer);
+          }
         }
       }
-      for (Role r : m.getScene().getRoles()) {
-        if (desiredRole.equalsIgnoreCase(r.getName())) {
-          // set current role
-          this.setCurrentRole(r);
-          // remove from list of roles on that room
-          m.getScene().getRoles().remove(r);
-        }
-      }
+      // for (Role r : m.getExtras()) {
+      // if (desiredRole.equalsIgnoreCase(r.getName())) {
+      // // set current role
+      // this.setCurrentRole(r);
+      // // remove from list of roles on that room
+      // m.getExtras().remove(r);
+      // }
+      // }
+      // for (Role r : m.getScene().getRoles()) {
+      // if (desiredRole.equalsIgnoreCase(r.getName())) {
+      // // set current role
+      // this.setCurrentRole(r);
+      // // remove from list of roles on that room
+      // m.getScene().getRoles().remove(r);
+      // }
+      // }
       // check input for roles
       // assign role to player
       return SUCCESSACTION;
