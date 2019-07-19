@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Timer {
-	private final String ACTIVE = "Active player %s is in %s (Rank %x, %x dollars and %x credits)\n";
+
 	
 	
 	private int day;
@@ -31,17 +31,12 @@ public class Timer {
 			turn = 0;
 		}
 		Player activePlayer = players.get(turn);
-		printActive(activePlayer);
 		activePlayer.makeActive();
 		activePlayer.playerTurn();
 		activePlayer.makeInactive();
 		turn++;
 	}
 
-	private void printActive(Player player) {
-		System.out.printf(ACTIVE, player.getName(), player.getCurrentRoom().getName(), 
-								player.getRank(), player.getDollars(), player.getCredits());
-	}
 	
 	
 	// advance day and player turn

@@ -1,6 +1,26 @@
 import java.util.*;
 
 public class Player extends Graphic {
+	  private final String MOEVEMSG = "Where would you like to move? ";
+	  private final String INVALIDMSG = "Invalid room. Choose again.";
+	  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r): ";
+	  private final String TURNMSG = "It is your turn (Type: %s%sactive/board/end): ";
+	  private final String ACTMSG = "You successfully acted your scene!";
+	  private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
+	  private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
+	  private final String MOVESUCC = "%s moved from %s to %s.\n";
+	  private final String WORK = "work/";
+	  private final String PROMOTE = "promote/";
+	  private final String TRAILER = "trailer";
+	  private final String OFFICE = "office";
+	  private final String END = "end";
+	  private final String MOVEPLAYER = "move/";
+	  private final String ACTIVE = "active";
+	  private final String BOARD = "board";
+	  private final String ACTIVEMSG = "Active player %s is in %s (Rank %x, %x dollars and %x credits)\n";
+	  private final String BLANK = "";
+	  private final String MOVE = "move";
+	  
   private String name;
   private int dollars;
   private int credits;
@@ -9,14 +29,7 @@ public class Player extends Graphic {
   private boolean activePlayer;
   private Room currentRoom;
   private Role currentRole;
-  private final String MOEVEMSG = "Where would you like to move? ";
-  private final String INVALIDMSG = "Invalid room. Choose again.";
-  private final String SCENEMSG = "Would you like to act or rehearse? (Type: a/r): ";
-  private final String TURNMSG = "Would you like to move or take a role? (Type: m/t): ";
-  private final String ACTMSG = "You successfully acted your scene!";
-  private final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
-  private final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
-  private final String MOVESUCC = "%s moved from %s to %s.\n";
+
   
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     this.name = playerName;
@@ -32,22 +45,35 @@ public class Player extends Graphic {
   }
 
   public void playerTurn() {
-    String desiredAction = "";
-    Player player = this;
-    if (!(player.getCurrentRole() == null)) {
+    String desiredAction = BLANK;
+    
+    if (!(getCurrentRole() == null)) {
       System.out.print(SCENEMSG);
       desiredAction = Input.playerInput();
       if (desiredAction.equals("a")) {
-        player.actScene();
+        actScene();
       } else {
-        player.rehearseScene();
+        rehearseScene();
       }
     }
-    System.out.print(TURNMSG);
+    else {
+    String moved = MOVEPLAYER;
+    while(!desiredAction.equalsIgnoreCase(END)) {	
+    String currentRoomName = currentRoom.getName();
+    boolean inOffice = currentRoomName.equalsIgnoreCase(OFFICE);
+    if(inOffice) {
+    	System.out.printf(TURNMSG, moved, BLANK);
+    }
+    else if(currentRoomName.equalsIgnoreCase(OFFICE)) {
+    	System.out.printf(TURNMSG, moved, PROMOTE);
+    }
+    else {
+    	System.out.printf(TURNMSG, moved, WORK);
+    }
     desiredAction = Input.playerInput();
-    if (desiredAction.equals("t")) {
+    if (desiredAction.equalsIgnoreCase(WORK)) {
       // display roles
-      MovieSet m = (MovieSet)player.getCurrentRoom();
+      MovieSet m = (MovieSet) getCurrentRoom();
       for (Role r : m.getExtras()) {
         System.out.println("Extra Role: " + r.getName() + "Requirement: " + r.getRequirement());
       }
@@ -58,9 +84,22 @@ public class Player extends Graphic {
       // check input for roles
       // assign role to player
       // end turn
-    } else {
+    } else if(desiredAction.equalsIgnoreCase(MOVE) && moved.equals(MOVEPLAYER)){
       // call move function
       move();
+      moved = BLANK;
+    }
+    else if(desiredAction.equalsIgnoreCase(PROMOTE) && inOffice) {
+    	// promote here
+    }
+    else if(desiredAction.equalsIgnoreCase(ACTIVE)) {
+		System.out.printf(ACTIVEMSG, name, currentRoom.getName(), 
+				rank, dollars, credits);
+    }
+    else if(desiredAction.equalsIgnoreCase(BOARD)) {
+    	// print board here
+    }
+    }
     }
   }
 
