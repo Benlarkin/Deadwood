@@ -1,6 +1,5 @@
 import java.util.List;
 
-
 public class MovieSet extends Room {
 
   private List<Role> extras;
@@ -9,10 +8,10 @@ public class MovieSet extends Room {
 
   public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras) {
     super.name = name;
-    reqSuccess = takes;
+    this.reqSuccess = takes;
     super.adjacent = adjacent;
     this.extras = extras;
-    scene = null;
+    this.scene = null;
   }
 
   public List<Role> getExtras() {
@@ -32,6 +31,6 @@ public class MovieSet extends Room {
   }
 
   public void decrementShotCounter() {
-    reqSuccess--;
+    this.reqSuccess--;
   }
 }
