@@ -56,6 +56,8 @@ public class Globals {
 	  protected final String SET = "set";
 	  protected final String NEIGHBOR = "neighbor";
 	  protected final String TAKE = "take";
-
+	  protected final int PLAYEREND = 0;
+	  protected final int PLAYERMOVE = 1;
+	  protected final int INVALIDACTION = -1;
 
 }

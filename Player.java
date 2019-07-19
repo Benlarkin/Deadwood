@@ -38,9 +38,32 @@ public class Player extends Graphic {
       }
     }
     else {
+    	handleTurnNoRole();
+    }
+  }
+  
+
+
+private void handleTurnNoRole() {
     String moved = MOVEPLAYER;
-    while(!desiredAction.equalsIgnoreCase(END)) {	
-    String currentRoomName = currentRoom.getName();
+    boolean takingAction = true;
+    while(takingAction == true) {	
+    	int actionHandled = handleAction(moved);
+    	if(actionHandled == PLAYEREND) {
+    		takingAction = false;
+    	}
+    	else if(actionHandled == PLAYERMOVE) {
+    		moved = BLANK;
+    	}
+    	else if(actionHandled == INVALIDACTION) {
+    		
+    	}
+    }
+}
+
+private int handleAction(String moved) {
+	String desiredAction;
+	String currentRoomName = currentRoom.getName();
     boolean inOffice = currentRoomName.equalsIgnoreCase(OFFICE);
     if(inOffice) {
     	System.out.printf(TURNMSG, moved, BLANK);
@@ -79,9 +102,12 @@ public class Player extends Graphic {
     else if(desiredAction.equalsIgnoreCase(WHERE)) {
     	printLocation();
     }
+    else if(desiredAction.equalsIgnoreCase(END)) {
+    	return PLAYEREND;
     }
-    }
-  }
+    return INVALIDACTION;
+}
+	
 
   
   private void printActive() {
