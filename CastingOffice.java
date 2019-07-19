@@ -12,6 +12,10 @@ public class CastingOffice extends Room {
   private final String DESIREDCURRENCYMSG = "What currency will you use to upgrade? (d/c)";
   private final String INSUFFICIENTCURRENCY = "Insufficient Currency";
   private final String CREDITS_AS_STRING = "c";
+  private final String DOLLAR_STRING = "dollars";
+  private final String CREDITS_STRING = "credits";
+  private final String RANK_STRING = "Rank ";
+  private final String COST_EQUALS_STRING = " cost = ";
   // cost of upgrades, cost[0][x] = dollars, cost[1][x] = credits
   // cost[x][0] = rank 2, cost[x][4] = rank 6;
   // cost[1][0] is price to upgrade to rank 2 in credits
@@ -20,8 +24,8 @@ public class CastingOffice extends Room {
   private Banker banker = new Banker();
 
   public CastingOffice(List<String> adjacent) {
-	  super.name = OFFICE;
-	  super.adjacent = adjacent;
+    super.name = OFFICE;
+    super.adjacent = adjacent;
   }
 
   // Scanner must be system.in
@@ -36,11 +40,9 @@ public class CastingOffice extends Room {
     if (player.getRank() == 5) {
       System.out.println(RANKREQUEST5 + player.getRank());
     } else {
-      System.out.println(RANKREQUEST + (player.getRank() + 1)
-          + RANKREQUEST_PT2 + player.getRank());
+      System.out.println(RANKREQUEST + (player.getRank() + 1) + RANKREQUEST_PT2 + player.getRank());
     }
-    System.out
-        .println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
+    System.out.println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
     representCost();
     // print a pretty array with leveling costs here... do later
     int desiredRank = Integer.parseInt(input.next());
@@ -123,9 +125,13 @@ public class CastingOffice extends Room {
   }
 
   private void representCost() {
+    String currency = DOLLAR_STRING;
     for (int i = 0; i < cost.length; i++) {
       for (int j = 0; j < cost[i].length; j++) {
-        System.out.print(cost[i][j] + " ");
+        if (j > 1) {
+          currency = CREDITS_STRING;
+        }
+        System.out.println(RANK_STRING + (j + 2) + COST_EQUALS_STRING + cost[i][j] + currency);
       }
       System.out.println();
     }
