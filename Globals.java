@@ -32,6 +32,8 @@ public class Globals {
    protected final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
    protected final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
    protected final String MOVESUCC = "%s moved from %s to %s.\n";
+   protected final String WHEREMSG = "in %s\n";
+   protected final String WHEREMSGWITHROLE = "in %s shooting %s scene %x\n";
    protected final String WORK = "work/";
    protected final String WORKACTION = "work";
    protected final String PROMOTE = "promote/";
@@ -40,10 +42,10 @@ public class Globals {
    protected final String MOVEPLAYER = "move/";
    protected final String ACTIVE = "active";
    protected final String WHERE = "where";
-   protected final String ACTIVEMSG = "The active player is %s. They have $%x, %x credits, and %x fame.\n";
+   protected final String ACTIVEMSG = "\nThe active player is %s. They have $%x, %x credits, and %x fame.\n";
    protected final String BLANK = "";
    protected final String MOVE = "move";
-   protected final String ROLEMSG = "They are working %s, \"%s\"";
+   protected final String ROLEMSG = "They are working %s, \"%s\"\n\n";
    protected final String CARDFILE = "cards.xml";
    protected final String BOARDFILE = "board.xml";
    protected final String CARD = "card";
@@ -61,6 +63,7 @@ public class Globals {
    protected final int PLAYEREND = 0;
    protected final int PLAYERMOVE = 1;
    protected final int INVALIDACTION = -1;
-   protected final int SUCCESSACTION = 2;
+   protected final int SUCCESSACTION = 3;
+   protected final int PLAYERWORK = 2;
    
 }

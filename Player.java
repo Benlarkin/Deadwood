@@ -40,20 +40,23 @@ public class Player extends Graphic {
 
   private void handleTurnNoRole() {
     String moved = MOVEPLAYER;
+    String worked = WORK;
     boolean takingAction = true;
     while (takingAction == true) {
-      int actionHandled = handleAction(moved);
+      int actionHandled = handleAction(moved, worked);
       if (actionHandled == PLAYEREND) {
         takingAction = false;
       } else if (actionHandled == PLAYERMOVE) {
         moved = BLANK;
+      } else if (actionHandled == PLAYERWORK) {
+    	  worked = BLANK;
       } else if (actionHandled == INVALIDACTION) {
         System.out.println(INVALIDACTIONMSG);
       }
     }
   }
 
-  private int handleAction(String moved) {
+  private int handleAction(String moved, String worked) {
     Player player = this;
     String desiredAction;
     String currentRoomName = currentRoom.getName();
@@ -61,14 +64,14 @@ public class Player extends Graphic {
     boolean inTrailer = currentRoomName.equalsIgnoreCase(TRAILER);
     // check this boolean while testing
     if (inTrailer) {
-      System.out.printf(TURNMSG, moved, BLANK);
+      System.out.printf(TURNMSG, moved, BLANK, BLANK);
     } else if (currentRoomName.equalsIgnoreCase(OFFICE)) {
-      System.out.printf(TURNMSG, moved, PROMOTE);
+      System.out.printf(TURNMSG, moved, BLANK, PROMOTE);
     } else {
-      System.out.printf(TURNMSG, moved, WORK);
+      System.out.printf(TURNMSG, moved, worked, WORK);
     }
     desiredAction = Input.playerInput();
-    if (desiredAction.equalsIgnoreCase(WORKACTION)) {
+    if (desiredAction.equalsIgnoreCase(WORKACTION) && worked.equals(WORK)) {
       // display roles
       MovieSet m = (MovieSet) getCurrentRoom();
       for (Role r : m.getExtras()) {
@@ -80,34 +83,39 @@ public class Player extends Graphic {
       System.out.println("Enter the name of your desired role.");
       String desiredRole = Input.playerInput();
       // maybe in loop in case they mess up typing/aren't qualified
-      Iterator extraIter = m.getExtras().iterator();
-      Iterator starringIter = m.getScene().getRoles().iterator();
-      while (extraIter.hasNext() && starringIter.hasNext()) {
-        Role assignToPlayer = ((Role) extraIter.next());
-        String currentRoleCheckingName = assignToPlayer.getName();
-        if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
-          // set current role
-          this.setCurrentRole(assignToPlayer);
-          // remove from list of roles on that room
-          m.getExtras().remove(assignToPlayer);
-        } else {
-          assignToPlayer = (Role) starringIter.next();
-          currentRoleCheckingName = assignToPlayer.getName();
-          if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
-            // set current role
-            this.setCurrentRole(assignToPlayer);
-            // remove from list of roles on that room
-            m.getScene().getRoles().remove(assignToPlayer);
-          }
-        }
-      }
-      // for (Role r : m.getExtras()) {
-      // if (desiredRole.equalsIgnoreCase(r.getName())) {
-      // // set current role
-      // this.setCurrentRole(r);
-      // // remove from list of roles on that room
-      // m.getExtras().remove(r);
-      // }
+//      Iterator extraIter = m.getExtras().iterator();
+//      Iterator starringIter = m.getScene().getRoles().iterator();
+//      while (extraIter.hasNext() && starringIter.hasNext()) {
+//        Role assignToPlayer = ((Role) extraIter.next());
+//        String currentRoleCheckingName = assignToPlayer.getName();
+//        if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
+//          // set current role
+//          this.setCurrentRole(assignToPlayer);
+//          // remove from list of roles on that room
+//          m.getExtras().remove(assignToPlayer);
+//        } else {
+//          assignToPlayer = (Role) starringIter.next();
+//          currentRoleCheckingName = assignToPlayer.getName();
+//          if (currentRoleCheckingName.equalsIgnoreCase(desiredRole)) {
+//            // set current role
+//            this.setCurrentRole(assignToPlayer);
+//            // remove from list of roles on that room
+//            m.getScene().getRoles().remove(assignToPlayer);
+//          }
+//        }
+      Role selected = null;
+       for (Role r : m.getExtras()) {
+       if (desiredRole.equalsIgnoreCase(r.getName())) {
+       // set current role
+       this.setCurrentRole(r);
+       selected = r;
+       // remove from list of roles on that room
+
+       }
+       }
+       if(selected != null) {
+       m.getExtras().remove(selected);
+       }
       // }
       // for (Role r : m.getScene().getRoles()) {
       // if (desiredRole.equalsIgnoreCase(r.getName())) {
@@ -119,7 +127,7 @@ public class Player extends Graphic {
       // }
       // check input for roles
       // assign role to player
-      return SUCCESSACTION;
+      return PLAYERWORK;
     } else if (desiredAction.equalsIgnoreCase(MOVE) && moved.equals(MOVEPLAYER)) {
       // call move function
       move();
@@ -149,14 +157,20 @@ public class Player extends Graphic {
   }
 
   private void printLocation() {
-
+	  String location = currentRoom.getName();
+	  if(currentRole == null) {
+		  System.out.printf(WHEREMSG, location);
+	  }
+	  else {
+		  Card currentCard = ((MovieSet) currentRoom).getScene();
+		  System.out.printf(WHEREMSGWITHROLE, location, currentCard.getSceneName(), currentCard.getSceneNumber());
+	  }
   }
 
   private void actScene() {
     Player player = this;
-    Dice d = new Dice();
     Role cRole = player.getCurrentRole();
-    if (d.roll(player.getRehearsalChips()) >= cRole.getRequirement()) {
+    if (Dice.roll(player.getRehearsalChips()) >= cRole.getRequirement()) {
       // success case 1: starring
       cRole.onSuccess(player);
       System.out.println(ACTMSG);
