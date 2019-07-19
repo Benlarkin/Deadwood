@@ -31,9 +31,7 @@ public class Timer {
 			turn = 0;
 		}
 		Player activePlayer = players.get(turn);
-		activePlayer.makeActive();
 		activePlayer.playerTurn();
-		activePlayer.makeInactive();
 		turn++;
 	}
 
