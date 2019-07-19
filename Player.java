@@ -17,10 +17,10 @@ public class Player extends Graphic {
 	  private final String MOVEPLAYER = "move/";
 	  private final String ACTIVE = "active";
 	  private final String BOARD = "board";
-	  private final String ACTIVEMSG = "Active player %s is in %s (Rank %x, %x dollars and %x credits)\n";
+	  private final String ACTIVEMSG = "The active player is %s. They have $%x, %x credits, and %x fame.\n"; 
 	  private final String BLANK = "";
 	  private final String MOVE = "move";
-	  
+	  private final String ROLEMSG = "They are working %s, \"%s\"";
   private String name;
   private int dollars;
   private int credits;
@@ -93,16 +93,23 @@ public class Player extends Graphic {
     	// promote here
     }
     else if(desiredAction.equalsIgnoreCase(ACTIVE)) {
-		System.out.printf(ACTIVEMSG, name, currentRoom.getName(), 
-				rank, dollars, credits);
+	
     }
     else if(desiredAction.equalsIgnoreCase(BOARD)) {
-    	// print board here
+    	
     }
     }
     }
   }
 
+  
+  private void printActive() {
+	System.out.printf(ACTIVEMSG, name, credits, dollars, rank);
+	if(currentRole != null) {
+		System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
+	}
+  }
+  
   private void actScene() {
     Player player = this;
     Dice d = new Dice();
