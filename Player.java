@@ -79,7 +79,27 @@ public class Player extends Graphic {
       for (Role r : m.getScene().getRoles()) {
         System.out.println("Starring Role: " + r.getName() + "Requirement: " + r.getRequirement());
       }
-      // for (Role r : m)
+      System.out.println("Enter the name of your desired role.");
+      String desiredRole = Input.playerInput();
+      // maybe in loop in case they mess up typing/aren't qualified
+      // Iterator i1 = m.getExtras().iterator();
+      // Iterator i2 = m.getScene().getRoles().iterator();
+      for (Role r : m.getExtras()) {
+        if (desiredRole.equalsIgnoreCase(r.getName())) {
+          // set current role
+          this.setCurrentRole(r);
+          // remove from list of roles on that room
+          m.getExtras().remove(r);
+        }
+      }
+      for (Role r : m.getScene().getRoles()) {
+        if (desiredRole.equalsIgnoreCase(r.getName())) {
+          // set current role
+          this.setCurrentRole(r);
+          // remove from list of roles on that room
+          m.getScene().getRoles().remove(r);
+        }
+      }
       // check input for roles
       // assign role to player
       // end turn
