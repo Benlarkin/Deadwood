@@ -3,7 +3,6 @@ public abstract class Role {
   protected String name;
   protected String line;
   protected int requirement;
-  protected Banker banker = new Banker();
 
   public Player getActor() {
     return actor;

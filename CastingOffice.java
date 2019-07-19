@@ -7,7 +7,6 @@ public class CastingOffice extends Room {
   // cost[1][0] is price to upgrade to rank 2 in credits
   // cost[0][3] is price to upgrade to rank 5 in dollars
   private int[][] cost = setUpgradeCost();
-  private Banker banker = new Banker();
 
   public CastingOffice(List<String> adjacent) {
     super.name = OFFICE;
@@ -49,11 +48,11 @@ public class CastingOffice extends Room {
     // deduct credits
     if (desiredCurrency.equals(CREDITS_AS_STRING)) {
       int requiredCredits = cost[1][desiredRank];
-      banker.takeCredits(player, requiredCredits);
+      Banker.takeCredits(player, requiredCredits);
     } else {
       // deduct dollars
       int requiredDollars = cost[0][desiredRank];
-      banker.takeMoney(player, requiredDollars);
+      Banker.takeMoney(player, requiredDollars);
     }
     // return players current rank for GUI
     return player.getRank();
