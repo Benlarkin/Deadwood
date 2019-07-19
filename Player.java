@@ -11,7 +11,6 @@ public class Player extends Graphic {
   private Room currentRoom;
   private Role currentRole;
 
-  
   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
     this.name = playerName;
     this.dollars = startingDollars;
@@ -27,7 +26,7 @@ public class Player extends Graphic {
 
   public void playerTurn() {
     String desiredAction = BLANK;
-    
+
     if (!(getCurrentRole() == null)) {
       System.out.print(SCENEMSG);
       desiredAction = Input.playerInput();
@@ -36,43 +35,39 @@ public class Player extends Graphic {
       } else {
         rehearseScene();
       }
-    }
-    else {
-    	handleTurnNoRole();
+    } else {
+      handleTurnNoRole();
     }
   }
-  
 
-
-private void handleTurnNoRole() {
+  private void handleTurnNoRole() {
     String moved = MOVEPLAYER;
     boolean takingAction = true;
-    while(takingAction == true) {	
-    	int actionHandled = handleAction(moved);
-    	if(actionHandled == PLAYEREND) {
-    		takingAction = false;
-    	}
-    	else if(actionHandled == PLAYERMOVE) {
-    		moved = BLANK;
-    	}
-    	else if(actionHandled == INVALIDACTION) {
-    		
-    	}
-    }
-}
+    while (takingAction == true) {
+      int actionHandled = handleAction(moved);
+      if (actionHandled == PLAYEREND) {
+        takingAction = false;
+      } else if (actionHandled == PLAYERMOVE) {
+        moved = BLANK;
+      } else if (actionHandled == INVALIDACTION) {
 
-private int handleAction(String moved) {
-	String desiredAction;
-	String currentRoomName = currentRoom.getName();
+      }
+    }
+  }
+
+  private int handleAction(String moved) {
+    Player player = this;
+    String desiredAction;
+    String currentRoomName = currentRoom.getName();
     boolean inOffice = currentRoomName.equalsIgnoreCase(OFFICE);
-    if(inOffice) {
-    	System.out.printf(TURNMSG, moved, BLANK);
-    }
-    else if(currentRoomName.equalsIgnoreCase(OFFICE)) {
-    	System.out.printf(TURNMSG, moved, PROMOTE);
-    }
-    else {
-    	System.out.printf(TURNMSG, moved, WORK);
+    boolean inTrailer = currentRoomName.equalsIgnoreCase(TRAILER);
+    // check this boolean while testing
+    if (inTrailer) {
+      System.out.printf(TURNMSG, moved, BLANK);
+    } else if (currentRoomName.equalsIgnoreCase(OFFICE)) {
+      System.out.printf(TURNMSG, moved, PROMOTE);
+    } else {
+      System.out.printf(TURNMSG, moved, WORK);
     }
     desiredAction = Input.playerInput();
     if (desiredAction.equalsIgnoreCase(WORK)) {
@@ -88,39 +83,35 @@ private int handleAction(String moved) {
       // check input for roles
       // assign role to player
       // end turn
-    } else if(desiredAction.equalsIgnoreCase(MOVE) && moved.equals(MOVEPLAYER)){
+    } else if (desiredAction.equalsIgnoreCase(MOVE) && moved.equals(MOVEPLAYER)) {
       // call move function
       move();
       moved = BLANK;
-    }
-    else if(desiredAction.equalsIgnoreCase(PROMOTE) && inOffice) {
-    	// promote here
-    }
-    else if(desiredAction.equalsIgnoreCase(ACTIVE)) {
-    	printActive();
-    }
-    else if(desiredAction.equalsIgnoreCase(WHERE)) {
-    	printLocation();
-    }
-    else if(desiredAction.equalsIgnoreCase(END)) {
-    	return PLAYEREND;
+    } else if (desiredAction.equalsIgnoreCase(PROMOTE) && inOffice) {
+      // promote here
+      CastingOffice co = (CastingOffice) player.getCurrentRoom();
+      co.promote(player);
+    } else if (desiredAction.equalsIgnoreCase(ACTIVE)) {
+      printActive();
+    } else if (desiredAction.equalsIgnoreCase(WHERE)) {
+      printLocation();
+    } else if (desiredAction.equalsIgnoreCase(END)) {
+      return PLAYEREND;
     }
     return INVALIDACTION;
-}
-	
+  }
 
-  
   private void printActive() {
-	System.out.printf(ACTIVEMSG, name, credits, dollars, rank);
-	if(currentRole != null) {
-		System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
-	}
+    System.out.printf(ACTIVEMSG, name, credits, dollars, rank);
+    if (currentRole != null) {
+      System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
+    }
   }
-  
+
   private void printLocation() {
-	  
+
   }
-  
+
   private void actScene() {
     Player player = this;
     Dice d = new Dice();
