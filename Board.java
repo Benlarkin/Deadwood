@@ -12,6 +12,7 @@ public class Board extends Graphic {
       try {
          XMLReader reader = new XMLReader();
          deck = reader.makeDeck();
+         Collections.shuffle(deck);
          spaces = reader.arrangeBoard();
          assignNeighbors();
          placeCards();
