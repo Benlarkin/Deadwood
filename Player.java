@@ -207,62 +207,65 @@ public class Player extends Graphic {
       System.out.println(INVALIDMSG);
       return NOTFOUND;
    }
-   
-   public int countScore() {
-      return dollars + credits + (5 * rank);
-   }
-   
-   public String getName() {
-      return name;
-   }
-   
-   public int getDollars() {
-      return dollars;
-   }
-   
-   public int getCredits() {
-      return credits;
-   }
-   
-   public int getRank() {
-      return rank;
-   }
-   
-   public int getRehearsalChips() {
-      return rehearsalChips;
-   }
-   
-   public Room getCurrentRoom() {
-      return currentRoom;
-   }
-   
-   public Role getCurrentRole() {
-      return currentRole;
-   }
-   
-   public int incRehearsalChips() {
-      rehearsalChips++;
-      return rehearsalChips;
-   }
-   
-   public Room setCurrentRoom(Room r) {
-      this.currentRoom = r;
-      return currentRoom;
-   }
-   
-   public void setDollars(int newDollars) {
-      this.dollars = newDollars;
-   }
-   
-   public void setCredits(int newCredits) {
-      this.credits = newCredits;
-   }
-   
-   public void setRank(int newRank) {
-      this.rank = newRank;
-   }
-   
-   public void setCurrentRole(Role newRole) {
-      this.currentRole = newRole;
-   }
+
+    
+
+  public int countScore() {
+    return dollars + credits + (5 * rank);
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getDollars() {
+    return dollars;
+  }
+
+  public int getCredits() {
+    return credits;
+  }
+
+  public int getRank() {
+    return rank;
+  }
+
+  public int getRehearsalChips() {
+    return rehearsalChips;
+  }
+
+  public Room getCurrentRoom() {
+    return currentRoom;
+  }
+
+  public Role getCurrentRole() {
+    return currentRole;
+  }
+
+  public int incRehearsalChips() {
+    this.rehearsalChips++;
+    return rehearsalChips;
+  }
+
+  public Room setCurrentRoom(Room r) {
+    this.currentRoom = r;
+    return currentRoom;
+  }
+
+  public void setDollars(int newDollars) {
+    this.dollars = newDollars;
+  }
+
+  public void setCredits(int newCredits) {
+    this.credits = newCredits;
+  }
+
+  public void setRank(int newRank) {
+    this.rank = newRank;
+  }
+
+  public void setCurrentRole(Role newRole) {
+    this.currentRole = newRole;
+  }
+
 }
