@@ -38,6 +38,8 @@ public class Globals {
    protected final String WHEREMSG = "in %s\n";
    protected final String WHEREMSGWITHROLE = "in %s shooting %s scene %x\n";
    protected final String WORK = "work/";
+   protected final String ACT = "act/";
+   protected final String REHEARSE = "rehearse/";
    protected final String WORKACTION = "work";
    protected final String PROMOTE = "promote/";
    protected final String TRAILER = "trailer";

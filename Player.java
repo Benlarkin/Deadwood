@@ -53,22 +53,19 @@ public class Player extends Graphic {
    }
    
    private int handleAction(String moved, String worked) {
-      String currentRoomName = currentRoom.getName();
-      boolean inOffice = currentRoomName.equalsIgnoreCase(OFFICE);
-      boolean inTrailer = currentRoomName.equalsIgnoreCase(TRAILER);
-      // check this boolean while testing
-      if (inTrailer) {
+      if (currentRoom instanceof Trailers) {
          System.out.printf(TURNMSG, name, moved, BLANK, BLANK);
-      } else if (currentRoomName.equalsIgnoreCase(OFFICE)) {
+      } else if (currentRoom instanceof CastingOffice) {
          System.out.printf(TURNMSG, name, moved, BLANK, PROMOTE);
-      } else {
+      } else if (currentRole != null && moved != BLANK && worked != BLANK){
+    	 System.out.printf(TURNMSG, name, ACT, REHEARSE, BLANK);
+   	  }else {
          System.out.printf(TURNMSG, name, moved, worked, WORK);
       }
-      return processAction(Input.playerInput(), moved, worked, inOffice);
-      
+      return processAction(Input.playerInput(), moved, worked);
    }
    
-   private int processAction(String desiredAction, String moved, String worked, boolean inOffice) {
+   private int processAction(String desiredAction, String moved, String worked) {
 	   if (desiredAction.contains(WORKACTION) && worked.equals(WORK)) {
 		   if(currentRoom instanceof MovieSet && ((MovieSet) currentRoom).getScene() != null) {
 	         if (handleWork(extract(desiredAction, WORKACTION)) == FOUND) {
@@ -80,7 +77,7 @@ public class Player extends Graphic {
 	         if(move(extract(desiredAction, MOVE)) == FOUND){
 	            return PLAYERMOVE;
 	         }
-	      } else if (desiredAction.equalsIgnoreCase(PROMOTE) && inOffice) {
+	      } else if (desiredAction.equalsIgnoreCase(PROMOTE) && currentRoom instanceof CastingOffice) {
 	         // promote here
 	         handlePromotion();
 	         return SUCCESSACTION;
