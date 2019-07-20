@@ -241,7 +241,7 @@ public class Player extends Graphic {
   }
 
   public int incRehearsalChips() {
-    rehearsalChips++;
+    this.rehearsalChips++;
     return rehearsalChips;
   }
 
