@@ -166,7 +166,9 @@ public class Player extends Graphic {
    private void actScene() {
       Player player = this;
       Role cRole = player.getCurrentRole();
-      if (Dice.roll(player.getRehearsalChips()) >= cRole.getRequirement()) {
+      MovieSet playerRoom = (MovieSet)player.getCurrentRoom();
+      int budget = playerRoom.getScene().getBudget();
+      if (Dice.roll(player.getRehearsalChips()) >= budget) {
          // success case 1: starring
          cRole.onSuccess(player);
          System.out.println(ACTMSG);
