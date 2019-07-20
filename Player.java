@@ -146,7 +146,7 @@ public class Player extends Graphic {
    }
    
    private void printActive() {
-      System.out.printf(ACTIVEMSG, name, credits, dollars, rank);
+      System.out.printf(ACTIVEMSG, name, dollars, credits, rank);
       if (currentRole != null) {
          System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
       }
