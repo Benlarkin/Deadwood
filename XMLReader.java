@@ -105,7 +105,9 @@ public class XMLReader extends Globals {
          DocumentBuilder build = buildFact.newDocumentBuilder();
          Document doc = build.parse(file);
          doc.getDocumentElement().normalize();
-         return cardBuilder(doc);
+         List<Card> resultDeck = cardBuilder(doc);
+         Collections.shuffle(resultDeck);
+         return resultDeck;
       }
       catch(Exception e) {
          
