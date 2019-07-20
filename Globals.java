@@ -39,7 +39,7 @@ public class Globals {
    protected final String WHEREMSGWITHROLE = "in %s shooting %s scene %x\n";
    protected final String WORK = "work/";
    protected final String WORKACTION = "work";
-   protected final String PROMOTE = "promote/";
+   protected final String PROMOTE = "promote";
    protected final String TRAILER = "trailer";
    protected final String END = "end";
    protected final String MOVEPLAYER = "move/";
