@@ -10,6 +10,7 @@ public class ExtraRole extends Role {
    // On success, Player is paid one credit and one dollar.
    protected int onSuccess(Player player) {
       Banker.payCredits(player, 1);
+      decrementShotCounter(player);
       return onFail(player);
    }
    

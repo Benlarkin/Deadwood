@@ -9,8 +9,9 @@ public class StarringRole extends Role {
    }
    
    // The player earns two credits for a successful acting attempt.
-   protected int onSuccess(Player play) {
-      Banker.payCredits(play, 2);
+   protected int onSuccess(Player player) {
+      Banker.payCredits(player, 2);
+      decrementShotCounter(player);
       return 2;
    }
    

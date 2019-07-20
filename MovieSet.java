@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.Arrays;;
 
 public class MovieSet extends Room {
 
@@ -40,11 +39,12 @@ public class MovieSet extends Room {
       // payout extras
       // remove roles from players
       for (Player p : super.getPlayers()) {
-        if (getExtras().contains(p.getCurrentRole())) {
+        if (extras.contains(p.getCurrentRole())) {
           Banker.payMoney(p, p.getCurrentRole().getRequirement());
         }
         p.setCurrentRole(null);
       }
+      scene = null;
     }
   }
 

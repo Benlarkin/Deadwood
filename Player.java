@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Player extends Graphic {
    
    private String name;
@@ -16,8 +14,6 @@ public class Player extends Graphic {
       this.credits = startingCredits;
       this.rank = startingRank;
       this.rehearsalChips = 0;
-      // new instance of trailers or wait to implement when board has all locations
-      // saved and it'll be a board position
       this.currentRoom = null;
       this.currentRole = null;
    }
@@ -57,8 +53,6 @@ public class Player extends Graphic {
    }
    
    private int handleAction(String moved, String worked) {
-      Player player = this;
-      String desiredAction;
       String currentRoomName = currentRoom.getName();
       boolean inOffice = currentRoomName.equalsIgnoreCase(OFFICE);
       boolean inTrailer = currentRoomName.equalsIgnoreCase(TRAILER);
