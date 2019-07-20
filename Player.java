@@ -70,9 +70,11 @@ public class Player extends Graphic {
    
    private int processAction(String desiredAction, String moved, String worked, boolean inOffice) {
 	   if (desiredAction.contains(WORKACTION) && worked.equals(WORK)) {
+		   if(currentRoom instanceof MovieSet && ((MovieSet) currentRoom).getScene() != null) {
 	         if (handleWork(extract(desiredAction, WORKACTION)) == FOUND) {
 	            return PLAYERWORK;
 	         }
+		   }
 	      } else if (desiredAction.contains(MOVE) && moved.equals(MOVEPLAYER)) {
 	         // call move function
 	         if(move(extract(desiredAction, MOVE)) == FOUND){
@@ -128,7 +130,6 @@ public class Player extends Graphic {
 	      }
 	   return selected;
    }
-   
    
    private String extract(String base, String remove) {
       if(base.trim().equalsIgnoreCase(remove)) {
@@ -195,6 +196,7 @@ public class Player extends Graphic {
             currentRoom = r;
             currentRoom.getPlayers().remove(this);
             r.getPlayers().add(this);
+            checkCard(r);
             return FOUND;
          }
       }
@@ -202,7 +204,14 @@ public class Player extends Graphic {
       return NOTFOUND;
    }
 
-    
+   private void checkCard(Room r) {
+	   if(r instanceof MovieSet) {
+		   Card scene = ((MovieSet) r).getScene();
+       		if(!scene.isRevealed()) {
+       			scene.reveal();
+       		}
+       }
+   }
 
   public int countScore() {
     return dollars + credits + (5 * rank);

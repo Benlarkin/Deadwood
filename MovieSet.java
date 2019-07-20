@@ -39,7 +39,7 @@ public class MovieSet extends Room {
       // payout extras
       // remove roles from players
       for (Player p : super.getPlayers()) {
-        if (extras.contains(p.getCurrentRole())) {
+        if (p.getCurrentRole() instanceof ExtraRole) {
           Banker.payMoney(p, p.getCurrentRole().getRequirement());
         }
         p.setCurrentRole(null);
@@ -48,7 +48,7 @@ public class MovieSet extends Room {
     }
   }
 
-  Player[] findStarringPlayers() {
+ private Player[] findStarringPlayers() {
     Player[] pArr = new Player[8];
     int i = 0;
     for (Player p : super.getPlayers()) {
