@@ -28,6 +28,9 @@ public class Globals {
    protected final String INVALIDMSG = "Invalid room. Choose again.";
    protected final String SCENEMSG = "Would you like to act or rehearse? (Type: act/rehearse/active/where/end): ";
    protected final String TURNMSG = "It is %s's turn (Type: %s%sactive/where/end): ";
+   protected final String EXTRAROLEMSG = "Extra Role: %s (Requirement: %x) \n";
+   protected final String STARRINGROLEMSG = "Starring Role: %s (Requirement: %x) \n";
+   protected final String PICKROLE = "Enter the name of your desired role.";
    protected final String ACTMSG = "You successfully acted your scene!";
    protected final String FAILACTMSG = "You failed to act your scene. Better luck next time!";
    protected final String REHEARSEMSG = "You rehearsed your scene and earned 1 rehearsal chip.";
@@ -65,5 +68,7 @@ public class Globals {
    protected final int INVALIDACTION = -1;
    protected final int SUCCESSACTION = 3;
    protected final int PLAYERWORK = 2;
+   protected final int FOUND = 4;
+   protected final int NOTFOUND = 5;
    
 }
