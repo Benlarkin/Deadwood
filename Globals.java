@@ -23,6 +23,7 @@ public class Globals {
    protected final String COST_EQUALS_STRING = " cost = ";
    protected final String NAMEREQ = " Name: ";
    protected final String INPUT = "Input Player ";
+   protected final String SCOREMSG =  "%d: %s with a score of %d\n";
    protected final String PLAYERERR = "Must have 2-8 players.";
    protected final String MOEVEMSG = "Where would you like to move? ";
    protected final String INVALIDMSG = "Invalid room. Choose again.";
