@@ -12,18 +12,22 @@ public class Area {
       this.w = w;
    }
    
+   // Returns the x coordinate.
    public int getX() {
       return x;
    }
    
+   // Returns the y coordinate.
    public int getY() {
       return y;
    }
    
+   // Returns the height.
    public int getH() {
       return h;
    }
    
+   // Returns the width.
    public int getW() {
       return w;
    } 

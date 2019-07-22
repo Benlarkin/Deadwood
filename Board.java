@@ -73,19 +73,22 @@ public class Board extends Graphic {
       
    }
    
-   
+   // Returns the Timer.
    public Timer getTimer() {
       return timer;
    }
    
+   // Returns the number of Cards left on the Board.
    public int getCardsLeft() {
       return cardsLeft;
    }
    
+   // Removes a Card from the Board.
    public void removeCard() {
       cardsLeft--;
    }
    
+   // Returns the Rooms on the Board.
    public List<Room> getSpaces() {
       return spaces;
    }

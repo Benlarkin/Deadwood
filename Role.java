@@ -4,40 +4,35 @@ public abstract class Role {
   protected String line;
   protected int requirement;
 
+  // Returns the Player that has taken this role.
   public Player getActor() {
     return actor;
   }
 
+  // Returns the name of the Role.
   public String getName() {
     return name;
   }
 
+  // Returns the flavor text line of the Role.
   public String getLine() {
     return line;
   }
-
+ 
+  // Returns the fame required to take this Role.
   public int getRequirement() {
     return requirement;
   }
-
-  public int act() {
-    //return die roll
-	
-    return -1;
-  }
-
-  public int rehearse(Player player) {
-    //return rehearsal chips
-    return -1;
-  }
-
+  
+  // Handles when a Player successfully acts this Role.
   protected abstract int onSuccess(Player player);
 
+  // Handles when a Player fails to act this Role.
   protected abstract int onFail(Player player);
 
+  // Decrements the shot counter for the Room with this Role.
   protected void decrementShotCounter(Player player){
     MovieSet m = (MovieSet)player.getCurrentRoom();
     m.decrementShotCounter();
   }
-
 }

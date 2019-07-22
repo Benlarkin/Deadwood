@@ -6,7 +6,7 @@ public class Deadwood extends Globals {
   public List<Player> players;
   public Board board;
 
-  
+  // Creates a new game of Deadwood, then starts it.
   public static void main(String[] args) {
 	  if(args.length != 1) {
 		  System.out.println(PLAYMSG);
@@ -34,14 +34,18 @@ public class Deadwood extends Globals {
   	}
   }
   
+  // Returns the game of Deadwood (Singleton design).
   public static Deadwood newGame() {
 	  return game;
   }
 
+  // Adds a Player to the game of Deadwood
   private void addPlayer(Player newPlayer) {
       players.add(newPlayer);
   }
 
+  // Starts the game of Deadwood. Variables are edited
+  // based on the number of players.
   public void startGame(int playerNum) {
     Timer timer = board.getTimer();
     int startDollars = 0;
@@ -80,5 +84,4 @@ public class Deadwood extends Globals {
     Input.close();
   }
 }
-
 }

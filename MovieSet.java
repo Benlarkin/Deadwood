@@ -14,22 +14,29 @@ public class MovieSet extends Room {
     this.scene = null;
   }
 
+  // Returns the list of Roles on thne Space.
   public List<Role> getExtras() {
     return extras;
   }
-
+ 
+  // Returns the shot counter's status.
   public int getReqSuccess() {
     return reqSuccess;
   }
-
+ 
+  // Returns the scene currently on this Room.
   public Card getScene() {
     return scene;
   }
 
+  // Sets the scene on this Room to the given scene.
   public void setScene(Card scene) {
     this.scene = scene;
   }
-
+ 
+  // Decrements the shot counter. If it hits 0, the scene
+  // is removed and any actors on or off the Card are given their 
+  // respective payout.
   public void decrementShotCounter() {
     this.reqSuccess--;
     // if scene is wrapped
@@ -48,6 +55,7 @@ public class MovieSet extends Room {
     }
   }
 
+ // Finds the starring actors on the scene on this Room.
  private Player[] findStarringPlayers() {
     Player[] pArr = new Player[8];
     int i = 0;

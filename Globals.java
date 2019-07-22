@@ -1,4 +1,4 @@
-
+// Global constants and literals used across Classes.
 public class Globals {
    protected final static String PLAYMSG = "Please enter number of players.";
    protected final String ERROR = " error in Board.";
@@ -76,5 +76,4 @@ public class Globals {
    protected final int FOUND = 4;
    protected final int NOTFOUND = 5;
    protected final int SUCCESSACTACTION = 6;
-   
 }

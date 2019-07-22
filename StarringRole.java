@@ -19,5 +19,4 @@ public class StarringRole extends Role {
    protected int onFail(Player player) {
       return 0;
    }
-   
 }

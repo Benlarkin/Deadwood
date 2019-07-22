@@ -2,12 +2,10 @@ import java.util.*;
 
 public class Timer {
 
-	
-	
 	private int day;
 	private int turn;
 	private List<Player> players;
-	
+
 
 	public Timer(List<Player> players) {
 		this.day = 0;
@@ -35,19 +33,19 @@ public class Timer {
 		turn++;
 	}
 
-	
-	
 	// advance day and player turn
 	public int nextDay() {
 		day++;
 		return day;
 	}
 
+	// Sets the day to the given integer. For use with variant player sizes.
 	public int setDay(int day) {
 		this.day = day;
 		return day;
 	}
 
+	// Returns the list of players in the game.
 	public List<Player> getPlayers() {
 		return players;
 	}

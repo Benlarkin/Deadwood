@@ -43,30 +43,37 @@ public class Card extends Graphic {
       }
    }
    
+   // Reveals the Card.
    public void reveal() {
       revealed = true;
    }
    
+   // Returns true if the Card is revealed.
    public boolean isRevealed() {
       return revealed;
    }
    
+   // Returns the name of the scene.
    public String getSceneName() {
       return sceneName;
    }
    
+   // Returns the flavor text line of the scene.
    public String getLine() {
       return line;
    }
    
+   // Returns the budget of the scene.
    public int getBudget() {
       return budget;
    }
    
+   // Returns the scene number.
    public int getSceneNumber() {
       return sceneNumber;
    }
    
+   // Returns the Roles on this scene.
    public List<Role> getRoles() {
       return roles;
    }
