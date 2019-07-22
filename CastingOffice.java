@@ -21,14 +21,16 @@ public class CastingOffice extends Room {
       System.out.println(MAXRANK);
       return;
     }
+    // only displays 1 rankup option
     if (player.getRank() == 5) {
       System.out.println(RANKREQUEST5 + player.getRank());
     } else {
+      // basic flow case
       System.out.println(RANKREQUEST + (player.getRank() + 1) + RANKREQUEST_PT2 + player.getRank());
     }
     System.out.println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
+    // print a pretty array with leveling costs here
     representCost();
-    // print a pretty array with leveling costs here... do later
     int desiredRank = Integer.parseInt(Input.playerInput());
     System.out.println(DESIREDCURRENCYMSG);
     // check if sufficient currency
@@ -94,6 +96,7 @@ public class CastingOffice extends Room {
     return false;
   }
 
+  // checks if players have enough credits
   private boolean checkCredits(Player player, int requiredCredits) {
     if (player.getCredits() < requiredCredits) {
       return false;
@@ -101,6 +104,7 @@ public class CastingOffice extends Room {
     return true;
   }
 
+  // checks if players have enough dollars
   private boolean checkDollars(Player player, int requiredDollars) {
     if (player.getDollars() < requiredDollars) {
       return false;
@@ -108,6 +112,7 @@ public class CastingOffice extends Room {
     return true;
   }
 
+  // pretty prints array with dollar/currency cost for upgrading rank
   private void representCost() {
     String currency = DOLLAR_STRING;
     for (int i = 0; i < cost.length; i++) {
