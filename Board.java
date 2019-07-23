@@ -68,20 +68,6 @@ public class Board extends Graphic {
       }
    }
 
-   public void FinishDay() {
-      // send players to trailers
-      // show current score/leaderboard?
-      // check if it's last day, if so call finishGame.
-
-   }
-
-   // private void FinishGame(){
-   // // put player names and scores into array
-   // // print array and announce winner
-   // // move players back to trailer?
-   // // close any loose ends
-   // }
-
    // Returns the Timer.
    public Timer getTimer() {
       return timer;
