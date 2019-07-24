@@ -40,6 +40,11 @@ public class Globals {
    protected final String WHEREMSGWITHROLE = "in %s shooting %s scene %d\n";
    protected final String WORK = "work/";
    protected final String ACT = "act/";
+   protected final String W = "w";
+   protected final String H = "h";
+   protected final String X = "x";
+   protected final String Y = "y";
+   protected final String AREA = "area";
    protected final String ACTACTION = "act";
    protected final String REHEARSEACTION = "rehearse";
    protected final String REHEARSE = "rehearse/";

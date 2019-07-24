@@ -6,15 +6,16 @@ public class MovieSet extends Room {
   private int reqSuccess;
   private Card scene;
 
-  public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras) {
+  public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras, Area location) {
     super.name = name;
     this.reqSuccess = takes;
     super.adjacent = adjacent;
     this.extras = extras;
     this.scene = null;
+    super.location = location;
   }
 
-  // Returns the list of Roles on thne Space.
+  // Returns the list of Roles on the Space.
   public List<Role> getExtras() {
     return extras;
   }

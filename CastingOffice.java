@@ -8,9 +8,10 @@ public class CastingOffice extends Room {
   // cost[0][3] is price to upgrade to rank 5 in dollars
   private int[][] cost = setUpgradeCost();
 
-  public CastingOffice(List<String> adjacent) {
+  public CastingOffice(List<String> adjacent, Area location) {
     super.name = OFFICE;
     super.adjacent = adjacent;
+    super.location = location;
   }
 
   // it is ok if player is max rank

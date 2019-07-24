@@ -1,8 +1,12 @@
 import java.util.*;
+import java.util.List;
+import javax.swing.*;
 
 public class Deadwood extends Globals {
 
+
   private static Deadwood game = new Deadwood();
+  public static DeadwoodFrame frame = new DeadwoodFrame(game);
   public List<Player> players;
   public Board board;
 
@@ -54,6 +58,7 @@ public class Deadwood extends Globals {
       throw new IndexOutOfBoundsException();
     }
     else {
+      frame.setVisible(true);
       updatePlayerBasedRules(playerNum, timer);
       runTurns(timer);
       Input.close();
@@ -82,10 +87,12 @@ public class Deadwood extends Globals {
 
   // Adds players to the game of Deadwood.
   private void getPlayerNames(int playerNum, int startDollars, int startCredits, int startRank) {
-    for(int i = 0; i < playerNum; i++) {
-      System.out.print(INPUT + (i+1) + NAMEREQ);
-      addPlayer(new Player(Input.playerInput(), startDollars, startCredits, startRank));
-    }
+      List<JTextField> list = frame.makeTextPanel(playerNum);
+      for(int i = 0; i < list.size(); i++) {
+    	addPlayer(new Player(list.get(i).getText(), startDollars, startCredits, startRank));
+      }
+	  //panel.get
+      
   }
 
   // Runs each turn of Deadwood. Ends the game when the timer hits 5 days.

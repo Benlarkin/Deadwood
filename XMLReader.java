@@ -42,12 +42,13 @@ public class XMLReader extends Globals {
    private Room makeTrailer(Node trailNode) {
       List<String> adjacent = new ArrayList<String>();
       Element trailElement = (Element) trailNode;
+      Area location = makeArea(trailElement.getElementsByTagName(AREA).item(0));
       NodeList neighborList = trailElement.getElementsByTagName(NEIGHBOR);
       for(int i = 0; i < neighborList.getLength(); i++) {
          Element neighborElement = (Element) neighborList.item(i);
          adjacent.add(neighborElement.getAttribute(NAME));
       }
-      return new Trailers(adjacent);
+      return new Trailers(adjacent, location);
    }
    
    // Makes and returns a single CastingOffice Room from the given XML Node
@@ -55,11 +56,12 @@ public class XMLReader extends Globals {
       List<String> adjacent = new ArrayList<String>();
       Element offElement = (Element) offNode;
       NodeList neighborList = offElement.getElementsByTagName(NEIGHBOR);
+      Area location = makeArea(offElement.getElementsByTagName(AREA).item(0));
       for(int i = 0; i < neighborList.getLength(); i++) {
          Element neighborElement = (Element) neighborList.item(i);
          adjacent.add(neighborElement.getAttribute(NAME));
       }
-      return new CastingOffice(adjacent);
+      return new CastingOffice(adjacent, location);
    }
    
    // Makes individual Rooms from the XML file.
@@ -74,13 +76,14 @@ public class XMLReader extends Globals {
       }
       Element takesElement = (Element) setElement.getElementsByTagName(TAKE).item(0);
       int setTakes = Integer.parseInt(takesElement.getAttribute(NUMBER));
+      Area location = makeArea(setElement.getElementsByTagName(AREA).item(0));
       NodeList roleList =  setElement.getElementsByTagName(PART);
       List<Role> setRoles = new ArrayList<Role>();
       for(int j = 0; j < roleList.getLength(); j++) {
          Element roleElement = (Element) roleList.item(j);
          setRoles.add(makeRole(roleElement, false));
       }
-      return new MovieSet(setName, setTakes, setNeighbors, setRoles);
+      return new MovieSet(setName, setTakes, setNeighbors, setRoles, location);
    }
    
    // Makes a new Role. If the Role is on the card, it is a StarringRole, else its an ExtraRole.
@@ -89,11 +92,12 @@ public class XMLReader extends Globals {
       String roleName = roleElement.getAttribute(NAME);
       int roleReq = Integer.parseInt(roleElement.getAttribute(LEVEL));
       String roleLine = roleElement.getElementsByTagName(LINE).item(0).getTextContent();
+      Area location = makeArea(roleElement.getElementsByTagName(AREA).item(0));
       if(star) {
-         return new StarringRole(roleName, roleLine, roleReq);
+         return new StarringRole(roleName, roleLine, roleReq, location);
       }
       else {
-         return new ExtraRole(roleName, roleLine, roleReq);
+         return new ExtraRole(roleName, roleLine, roleReq, location);
       }
    }
    
@@ -139,5 +143,15 @@ public class XMLReader extends Globals {
          cardRoles.add(makeRole(roleList.item(i), true));
       }
       return new Card(cardRoles, cardName, cardLine, cardBudget, sceneNumber, null);
+   }
+   
+   // Stores the area from the XML as an Area
+   private Area makeArea(Node areaNode) {
+	   Element areaElement = (Element) areaNode;
+	   int xArea = Integer.parseInt(areaElement.getAttribute(X));
+	   int yArea = Integer.parseInt(areaElement.getAttribute(Y));
+	   int hArea = Integer.parseInt(areaElement.getAttribute(H));
+	   int wArea = Integer.parseInt(areaElement.getAttribute(W));
+	   return new Area(xArea, yArea, hArea, wArea);
    }
 }

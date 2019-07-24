@@ -1,4 +1,4 @@
-public abstract class Role {
+public abstract class Role extends Graphic {
   protected Player actor;
   protected String name;
   protected String line;
