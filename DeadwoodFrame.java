@@ -29,7 +29,7 @@ public class DeadwoodFrame extends JFrame {
     protected static final String PLAYERMSG = "Player %d name: ";
 
     public Deadwood game;
-    
+
     public DeadwoodFrame(Deadwood game) {
         super(DEADWOOD_TITLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -114,11 +114,12 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonRehearse, new Integer(2));
         paneDeadwood.add(buttonMove, new Integer(2));
     }
-    
+
     public List<JTextField> makeTextPanel(int playerNum) {
     	JPanel panel = new JPanel();
     	List<JTextField> list = new ArrayList<JTextField>();
     	panel.setLayout(new SpringLayout());
+    	panel.setPreferredSize(new Dimension(300, 300));
     	for(int i = 0; i < playerNum; i++) {
     		// JLabel label = new JLabel(PLAYERMSG, i+1);
     		JTextField textBox = new JTextField(20);
@@ -130,5 +131,15 @@ public class DeadwoodFrame extends JFrame {
     	this.getContentPane().add(panel);
     	this.setVisible(true);
     	return list;
+    }
+
+    public JButton getActButton() {
+      return buttonAct;
+    }
+    public JButton getRehearseButton() {
+      return buttonRehearse;
+    }
+    public JButton getMoveButton() {
+      return moveButton;
     }
 }

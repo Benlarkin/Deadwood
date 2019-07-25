@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
+import java.awt.*;
 
 public class Deadwood extends Globals {
 
@@ -82,17 +83,42 @@ public class Deadwood extends Globals {
     if(playerNum == 7 || playerNum == 8) {
       startRank = 2;
     }
-    getPlayerNames(playerNum, startDollars, startCredits, startRank);
+  for(int i = 0; i < playerNum; i++) {
+    String name = getPlayerName(i+1);
+    addPlayer(new Player(name, startDollars, startCredits, startRank));
   }
+}
 
   // Adds players to the game of Deadwood.
-  private void getPlayerNames(int playerNum, int startDollars, int startCredits, int startRank) {
-      List<JTextField> list = frame.makeTextPanel(playerNum);
-      for(int i = 0; i < list.size(); i++) {
-    	addPlayer(new Player(list.get(i).getText(), startDollars, startCredits, startRank));
+  private String getPlayerName(int playerNum) {
+      String name = (String)JOptionPane.showInputDialog(
+                          frame,
+                          "Enter Name for Player " + playerNum + ":\n",
+                          "Player " + playerNum + " Name",
+                          JOptionPane.PLAIN_MESSAGE,
+                          null,
+                          null,
+                          null);
+      if(name != null && name.length() > 0) {
+        return name;
       }
-	  //panel.get
-      
+      return retryGetPlayerName(playerNum);
+  }
+
+  private String retryGetPlayerName(int playerNum) {
+    String name = (String)JOptionPane.showInputDialog(
+                        frame,
+                        "Enter Name for Player " + playerNum + ":\n" +
+                        "Error: Please Enter Name!\n",
+                        "Player " + playerNum + " Name",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        null);
+    if(name != null && name.length() > 0) {
+      return name;
+    }
+    return retryGetPlayerName(playerNum);
   }
 
   // Runs each turn of Deadwood. Ends the game when the timer hits 5 days.

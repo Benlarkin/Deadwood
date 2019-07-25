@@ -1,5 +1,5 @@
 public class Player extends Graphic {
-   
+
    private String name;
    private int dollars;
    private int credits;
@@ -7,7 +7,7 @@ public class Player extends Graphic {
    private int rehearsalChips;
    private Room currentRoom;
    private Role currentRole;
-   
+
    public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
       this.name = playerName;
       this.dollars = startingDollars;
@@ -17,14 +17,14 @@ public class Player extends Graphic {
       this.currentRoom = null;
       this.currentRole = null;
    }
-   
+
    // Begins the Player's turn.
    public void playerTurn() {
       handleTurn();
    }
-   
+
    // Processes the actions that a Player can take on their turn.
-   // A Player can check information about the active player, 
+   // A Player can check information about the active player,
    //   see where they are on the board, and end their turn
    //   at any time. In addition:
    // If they are in the Trailers, they can move once per turn.
@@ -54,17 +54,36 @@ public class Player extends Graphic {
          }
       }
    }
-   
+
    // Prints the message to the Player, showing what actions they
    //   are allowed to take based on their location and Role status.
    private int handleAction(String moved, String worked) {
+      JButton move = frame.getMoveButton();
+      JButton act = frame.getActButton();
+      JButton rehearse = frame.getRehearseButton();
+      move.setEnabled(false);
+      act.setEnabled(false);
+      rehearse.setEnabled(false);
       if (currentRoom instanceof Trailers) {
-         System.out.printf(TURNMSG, name, moved, BLANK, BLANK);
+        // Show Move
+        move.setEnabled(true);
+        // enable work button in move()
+         // System.out.printf(TURNMSG, name, moved, BLANK, BLANK);
       } else if (currentRoom instanceof CastingOffice) {
-         System.out.printf(TURNMSG, name, moved, PROMOTE, BLANK);
+        // Show Promote, Move
+        move.setEnabled(true);
+        // Make button for Promote
+         //System.out.printf(TURNMSG, name, moved, PROMOTE, BLANK);
       } else if (currentRole != null && (moved != BLANK && worked != BLANK)){
+        // Show Act, Rehearse
+        act.setEnabled(true);
+        rehearse.setEnabled(true);
+        // set buttons to false in these functions.
          System.out.printf(TURNMSG, name, ACT, REHEARSE, BLANK);
       } else {
+        // Show Work, Move
+        move.setEnabled(true);
+        //make button for work.
          System.out.printf(TURNMSG, name, moved, worked, WORK);
       }
       return processAction(Input.playerInput(), moved, worked);
@@ -110,7 +129,7 @@ public class Player extends Graphic {
       }
       return INVALIDACTION;
    }
-   
+
    // Allows a Player to pick a Role. Displays the Roles if no Role is given with the action.
    private int handleWork(String desiredRole) {
       // display roles
@@ -132,7 +151,7 @@ public class Player extends Graphic {
       }
       return NOTFOUND;
    }
-   
+
    // Allows the Player to select their Role, removing it from the list of possible Roles.
    private Role selectRole(MovieSet m, String desiredRole) {
       Role selected = null;
@@ -156,7 +175,7 @@ public class Player extends Graphic {
       }
       return selected;
    }
-   
+
    // Extracts the second String from the first, returning the new String.
    private String extract(String base, String remove) {
       if(base.trim().equalsIgnoreCase(remove)) {
@@ -165,13 +184,13 @@ public class Player extends Graphic {
       String result = base.substring(remove.length() + 1);
       return result.trim();
    }
-   
+
    // Allows the Player to access the Casting Office for fame promotion/
    private void handlePromotion() {
       CastingOffice co = (CastingOffice) currentRoom;
       co.promote(this);
    }
-   
+
    // Prints the status of the Active Player.
    private void printActive() {
       System.out.printf(ACTIVEMSG, name, dollars, credits, rank);
@@ -179,7 +198,7 @@ public class Player extends Graphic {
          System.out.printf(ROLEMSG, currentRole.getName(), currentRole.getLine());
       }
    }
-   
+
    // Prints the Location of the Active Player, and says what Role they are working on (if any).
    private void printLocation() {
       String location = currentRoom.getName();
@@ -191,7 +210,7 @@ public class Player extends Graphic {
          System.out.printf(WHEREMSGWITHROLE, location, currentCard.getSceneName(), currentCard.getSceneNumber());
       }
    }
-   
+
    // Allows a Player to act on their Role, regardless of being an ExtraRole or StarringRole.
    private void actScene() {
       Role cRole = currentRole;
@@ -206,14 +225,14 @@ public class Player extends Graphic {
          System.out.println(FAILACTMSG);
       }
    }
-   
+
    // Allows a Player to rehearse their scene, getting +1 to their attempts to Act.
    private void rehearseScene() {
       Player player = this;
       player.incRehearsalChips();
       System.out.println(REHEARSEMSG);
    }
-   
+
    // Allows a Player to move to a new, adjacent Room.
    public int move(String desiredRoom) {
       if(desiredRoom.equalsIgnoreCase(MOVE)) {
@@ -236,7 +255,7 @@ public class Player extends Graphic {
       System.out.println(INVALIDMSG);
       return NOTFOUND;
    }
-   
+
    // Checks to see if the given Room is a MovieSet, and if its Card has not been flipped.
    // If not, then the Card is revealed.
    private void checkCard(Room r) {
@@ -247,74 +266,74 @@ public class Player extends Graphic {
          }
       }
    }
-   
+
    // Returns the score of the Player ($ + credits + 5 x Rank).
    public int countScore() {
       return dollars + credits + (5 * rank);
    }
-   
+
    // Returns the name of the Player.
    public String getName() {
       return name;
    }
-   
+
    // Returns how many dollars the Player has.
    public int getDollars() {
       return dollars;
    }
-   
+
    // Returns how many credits the Player has.
    public int getCredits() {
       return credits;
    }
-   
+
    // Returns the rank of the Player.
    public int getRank() {
       return rank;
    }
-   
+
    // Returns how many Rehearsal Chips the Player has.
    public int getRehearsalChips() {
       return rehearsalChips;
    }
-   
+
    // Returns where the Player currently is.
    public Room getCurrentRoom() {
       return currentRoom;
    }
-   
+
    // Returns the Player's current role.
    public Role getCurrentRole() {
       return currentRole;
    }
-   
+
    // Increases the number of Rehearsal Chips the Player has by one.
    public int incRehearsalChips() {
       this.rehearsalChips++;
       return rehearsalChips;
    }
-   
+
    // Moves the Player to the given Room.
    public Room setCurrentRoom(Room r) {
       this.currentRoom = r;
       return currentRoom;
    }
-   
+
    // Gives the Player the given number of dollars.
    public void setDollars(int newDollars) {
       this.dollars = newDollars;
    }
-   
+
    // Gives the Player the given number of credits.
    public void setCredits(int newCredits) {
       this.credits = newCredits;
    }
-   
+
    // Sets the Player's rank to the given rank.
    public void setRank(int newRank) {
       this.rank = newRank;
    }
-   
+
    // Gives the Player the given Role.
    public void setCurrentRole(Role newRole) {
       this.currentRole = newRole;
