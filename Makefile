@@ -4,11 +4,11 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = *.java Model/*.java View/*.java
+CLASSES = *.java Model/*.java View/*.java Observer/*.java
 
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
 clean:
-	$(RM) *.class Model/*.class View/*.class
+	$(RM) *.class Model/*.class View/*.class Observer/*.class
