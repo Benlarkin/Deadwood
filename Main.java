@@ -1,12 +1,18 @@
-public class Main extends Globals{
+import Observer.*;
+import Model.*;
+import View.*;
+
+public class Main {
+
+  // Creates a new game of Deadwood, then starts it.
   public static void main(String[] args) {
 	  if(args.length != 1) {
-		  System.out.println(PLAYMSG);
+		  System.out.println("ERROR");
 	  }
 	  else {
 		  try {
-			  Deadwood deadwood = Deadwood.newGame();
-			  deadwood.startGame(Integer.parseInt(args[0]));
+        Observer observer = Observer.getObserver();
+        observer.startGame(Integer.parseInt(args[0]));
 		  }
 		  catch(Exception e) {
 			  System.out.println(e);
