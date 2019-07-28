@@ -14,6 +14,9 @@ public class DeadwoodFrame extends JFrame {
     private JButton buttonAct;
     private JButton buttonRehearse;
     private JButton buttonMove;
+    private JButton buttonTake;
+    private JButton buttonPromote;
+    private JButton buttonEnd;
 
     private JLayeredPane paneDeadwood;
 
@@ -25,7 +28,10 @@ public class DeadwoodFrame extends JFrame {
     private static final String DICE_IMAGE = "images/r2.png";
     private static final String MENU_LABEL_TEXT = "MENU";
     private static final String ACT_BUTTON_TEXT = "ACT";
+    private static final String TAKE_BUTTON_TEXT = "TAKE";
     private static final String REHEARSE_BUTTON_TEXT = "REHEARSE";
+    private static final String PROMOTE_BUTTON_TEXT = "PROMOTE";
+    private static final String END_BUTTON_TEXT = "END";
     private static final String MOVE_BUTTON_TEXT = "MOVE";
     protected static final String PLAYERMSG = "Player %d name: ";
 
@@ -80,6 +86,9 @@ public class DeadwoodFrame extends JFrame {
         setupActButton();
         setupRehearseButton();
         setupMoveButton();
+        setupTakeButton();
+        setupPromoteButton();
+        setupEndButton();
     }
 
     private void setupActButton() {
@@ -87,6 +96,27 @@ public class DeadwoodFrame extends JFrame {
         buttonAct.setBackground(Color.white);
         buttonAct.setBounds(iconGameBoard.getIconWidth() + 10, 30, 100, 20);
         buttonAct.addMouseListener(new ActButtonMouseListener());
+    }
+
+    private void setupEndButton() {
+        buttonEnd = new JButton(END_BUTTON_TEXT);
+        buttonEnd.setBackground(Color.white);
+        buttonEnd.setBounds(iconGameBoard.getIconWidth() + 10, 180, 100, 20);
+        buttonEnd.addMouseListener(new EndButtonMouseListener());
+    }
+
+    private void setupPromoteButton() {
+        buttonPromote = new JButton(PROMOTE_BUTTON_TEXT);
+        buttonPromote.setBackground(Color.white);
+        buttonPromote.setBounds(iconGameBoard.getIconWidth() + 10, 150, 100, 20);
+        buttonPromote.addMouseListener(new PromoteButtonMouseListener());
+    }
+
+    private void setupTakeButton() {
+      buttonTake = new JButton(TAKE_BUTTON_TEXT);
+      buttonTake.setBackground(Color.white);
+      buttonTake.setBounds(iconGameBoard.getIconWidth() + 10, 120, 100, 20);
+      buttonTake.addMouseListener(new TakeButtonMouseListener());
     }
 
     private void setupRehearseButton() {
@@ -113,6 +143,9 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonAct, new Integer(2));
         paneDeadwood.add(buttonRehearse, new Integer(2));
         paneDeadwood.add(buttonMove, new Integer(2));
+        paneDeadwood.add(buttonTake, new Integer(2));
+        paneDeadwood.add(buttonPromote, new Integer(2));
+        paneDeadwood.add(buttonEnd, new Integer(2));
     }
 
     public List<JTextField> makeTextPanel(int playerNum) {
@@ -133,18 +166,59 @@ public class DeadwoodFrame extends JFrame {
     	return list;
     }
 
-    // public JButton getActButton() {
-    //   return buttonAct;
-    // }
-    // public JButton getRehearseButton() {
-    //   return buttonRehearse;
-    // }
-    // public JButton getMoveButton() {
-    //   return moveButton;
-    // }
+    public JButton getActButton() {
+      return buttonAct;
+    }
+    public JButton getRehearseButton() {
+      return buttonRehearse;
+    }
+    public JButton getMoveButton() {
+      return buttonMove;
+    }
+    public JButton getTakeButton() {
+      return buttonTake;
+    }
+    public JButton getPromoteButton() {
+      return buttonPromote;
+    }
+    public JButton getEndButton() {
+      return buttonEnd;
+    }
 
 
+    public String getRoomInput(String[] adjacent) {
+      try {
+      String name = (String)JOptionPane.showInputDialog(
+                          this,
+                          "Adjacent Rooms:\n",
+                          "Select Room to Move to:",
+                          JOptionPane.QUESTION_MESSAGE,
+                          null,
+                          adjacent,
+                          adjacent[0]);
+      return name;
+    }
+    catch(Exception e) {
+      return null;
+    }
+    }
 
+    public String getTakeInput(String[] roles) {
+      try {
+      String name = (String)JOptionPane.showInputDialog(
+                          this,
+                          "Valid Roles:\n",
+                          "Select Role to Take:",
+                          JOptionPane.QUESTION_MESSAGE,
+                          null,
+                          roles,
+                          roles[0]);
+      return name;
+    }
+    catch(Exception e) {
+      return null;
+    }
+    }
 
     public List<String> getNameInput(int playerNum) {
       List<String> names = new ArrayList<String>();
@@ -168,6 +242,10 @@ public class DeadwoodFrame extends JFrame {
           return name;
         }
         return retryGetPlayerName(playerNum);
+    }
+
+    public void errorMessagePopup(String message) {
+      JOptionPane.showMessageDialog(this, message);
     }
 
     private String retryGetPlayerName(int playerNum) {

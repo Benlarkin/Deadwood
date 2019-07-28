@@ -1,10 +1,10 @@
 package View;
+import Observer.Observer;
 import java.awt.event.MouseEvent;
 
 public class MoveButtonMouseListener extends BaseDeadwoodMouseListener {
-    private final String MOVE_SELECT_MSG = "Move is Selected\n";
 
-    public void mouseClicked(MouseEvent e) {
-        //Observer.moveButtonPressed();
+    public void mouseReleased(MouseEvent e) {
+        Observer.moveButtonPressed();
     }
 }

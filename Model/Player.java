@@ -1,6 +1,6 @@
 package Model;
 import javax.swing.*;
-
+import Observer.Observer;
 public class Player extends Graphic {
 
    private String name;
@@ -10,6 +10,7 @@ public class Player extends Graphic {
    private int rehearsalChips;
    private Room currentRoom;
    private Role currentRole;
+   private boolean takingTurn;
 
    public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
       this.name = playerName;
@@ -19,6 +20,7 @@ public class Player extends Graphic {
       this.rehearsalChips = 0;
       this.currentRoom = null;
       this.currentRole = null;
+      takingTurn = false;
    }
 
    // Begins the Player's turn.
@@ -39,25 +41,31 @@ public class Player extends Graphic {
    private void handleTurn() {
       String moved = MOVEPLAYER;
       String worked = WORK;
-      boolean takingAction = true;
-      while (takingAction == true) {
-         int actionHandled = handleAction(moved, worked);
-         if (actionHandled == PLAYEREND) {
-            takingAction = false;
-         } else if (actionHandled == PLAYERMOVE) {
-            moved = BLANK;
-         } else if (actionHandled == PLAYERWORK) {
-            worked = BLANK;
-         } else if (actionHandled == INVALIDACTION) {
-            System.out.println(INVALIDACTIONMSG);
-         }
-         else if(actionHandled == SUCCESSACTACTION) {
-            moved = BLANK;
-            worked = BLANK;
-         }
+      takingTurn = true;
+      while (takingTurn == true) {
+        System.out.print("");
+         Observer.hideButtons(currentRoom, this);
+        //  int actionHandled = -8;
+        //  handleAction(moved, worked);
+        //  if (actionHandled == PLAYEREND) {
+        //     takingAction = false;
+        //  } else if (actionHandled == PLAYERMOVE) {
+        //     moved = BLANK;
+        //  } else if (actionHandled == PLAYERWORK) {
+        //     worked = BLANK;
+        //  } else if (actionHandled == INVALIDACTION) {
+        //     System.out.println(INVALIDACTIONMSG);
+        //  }
+        //  else if(actionHandled == SUCCESSACTACTION) {
+        //     moved = BLANK;
+        //     worked = BLANK;
+        //  }
       }
    }
 
+   public void endTurn() {
+     takingTurn = false;
+   }
    // Prints the message to the Player, showing what actions they
    //   are allowed to take based on their location and Role status.
    private int handleAction(String moved, String worked) {
@@ -133,6 +141,9 @@ public class Player extends Graphic {
       return INVALIDACTION;
    }
 
+   public void takeRole(String desiredRole) {
+     handleWork(desiredRole);
+   }
    // Allows a Player to pick a Role. Displays the Roles if no Role is given with the action.
    private int handleWork(String desiredRole) {
       // display roles
