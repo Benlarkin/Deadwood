@@ -33,7 +33,7 @@ public class DeadwoodFrame extends JFrame {
 
     private static final String DEADWOOD_TITLE = "Deadwood";
     private static final String GAME_BOARD_IMAGE = "images/board.jpg";
-    private static final String CARD_IMAGE = "images/01.png";
+    private static final String CARD_IMAGE = "images/Card-Back.png";
     private static final String DICE_IMAGE = "images/r1.png";
     private static final String MENU_LABEL_TEXT = "MENU";
     private static final String ACT_BUTTON_TEXT = "ACT";
@@ -191,9 +191,7 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood = getLayeredPane();
         paneDeadwood.add(labelGameBoard, new Integer(0)); // Add the board to the lowest layer
         paneDeadwood.add(labelCard, new Integer(1)); // Add the card to the lower layer
-        // paneDeadwood.add(label1, new Integer(3)); // add dice
         paneDeadwood.add(labelMenu, new Integer(2)); // add menu
-
         paneDeadwood.add(buttonAct, new Integer(2));
         paneDeadwood.add(buttonRehearse, new Integer(2));
         paneDeadwood.add(buttonMove, new Integer(2));
