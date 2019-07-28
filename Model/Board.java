@@ -90,7 +90,7 @@ public class Board extends Graphic {
    }
 
    // Assigns neighbors in Room form to each Room based on their neighbors in
-   // String fomr.
+   // String form.
    private void assignNeighbors() {
       for (Room currRoom : spaces) {
          List<Room> neighbors = new ArrayList<Room>();

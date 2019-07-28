@@ -20,9 +20,9 @@ public class DeadwoodFrame extends JFrame {
     private ImageIcon iconGameBoard;
 
     private static final String DEADWOOD_TITLE = "Deadwood";
-    private static final String GAME_BOARD_IMAGE = "board.jpg";
-    private static final String CARD_IMAGE = "01.png";
-    private static final String DICE_IMAGE = "r2.png";
+    private static final String GAME_BOARD_IMAGE = "images/board.jpg";
+    private static final String CARD_IMAGE = "images/01.png";
+    private static final String DICE_IMAGE = "images/r2.png";
     private static final String MENU_LABEL_TEXT = "MENU";
     private static final String ACT_BUTTON_TEXT = "ACT";
     private static final String REHEARSE_BUTTON_TEXT = "REHEARSE";

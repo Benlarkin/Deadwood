@@ -1,9 +1,7 @@
 package Model;
 import java.util.*;
 import java.util.List;
-import javax.swing.*;
-import java.awt.*;
-import Observer.Observer;
+
 
 public class Deadwood extends Globals {
 

@@ -1,7 +1,7 @@
 package Model;
 // Global constants and literals used across Classes.
 public class Globals {
-   protected final static String PLAYMSG = "Please enter number of players.";
+   protected final String PLAYMSG = "Please enter number of players.";
    protected final String ERROR = " error in Board.";
    protected final String EMPTY = "";
    protected final String CASTING = "office";
@@ -61,8 +61,8 @@ public class Globals {
    protected final String BLANK = "";
    protected final String MOVE = "move";
    protected final String ROLEMSG = "They are working %s, \"%s\"\n\n";
-   protected final String CARDFILE = "cards.xml";
-   protected final String BOARDFILE = "board.xml";
+   protected final String CARDFILE = "Model/cards.xml";
+   protected final String BOARDFILE = "Model/board.xml";
    protected final String CARD = "card";
    protected final String NAME = "name";
    protected final String BUDGET = "budget";

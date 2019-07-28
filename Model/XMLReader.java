@@ -115,7 +115,6 @@ public class XMLReader extends Globals {
          return resultDeck;
       }
       catch(Exception e) {
-
          return null;
       }
    }
