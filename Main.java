@@ -1,6 +1,5 @@
 import Observer.*;
-import Model.*;
-import View.*;
+
 
 public class Main {
 
