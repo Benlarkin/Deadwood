@@ -4,7 +4,7 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = *.java Model/*.java View/*.java Observer/*.java
+CLASSES = Model/*.java View/*.java Observer/*.java
 
 default: classes
 

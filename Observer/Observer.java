@@ -21,6 +21,7 @@ public class Observer {
 
   public void startGame(int playerNum) {
     List<String> names = frame.getNameInput(playerNum);
+    frame.initDice(playerNum);
     frame.setVisible(true);
     game.startGame(names, playerNum);
   }
@@ -94,7 +95,7 @@ public class Observer {
   }
 
   private static void defaultButtons(boolean actShow, boolean rehearseShow,
-              boolean moveShow, boolean takeShow, boolean promoteShow) {
+    boolean moveShow, boolean takeShow, boolean promoteShow) {
     JButton act = frame.getActButton();
     JButton rehearse = frame.getRehearseButton();
     JButton move = frame.getMoveButton();
@@ -106,6 +107,7 @@ public class Observer {
     take.setVisible(takeShow);
     promote.setVisible(promoteShow);
   }
+
 
   public static void endCurrentTurn() {
     game.board.getTimer().getActive().endTurn();
