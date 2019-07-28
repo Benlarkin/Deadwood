@@ -19,6 +19,7 @@ public class Observer {
 
   public void startGame(int playerNum) {
     List<String> names = frame.getNameInput(playerNum);
+    frame.initDice(playerNum);
     frame.setVisible(true);
     game.startGame(names, playerNum);
   }
@@ -27,5 +28,8 @@ public class Observer {
 
   }
 
+  public void initDice(){
+    
+  }
 
 }
