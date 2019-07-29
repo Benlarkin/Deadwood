@@ -200,7 +200,7 @@ public class Player extends Graphic {
    }
 
    // Allows the Player to access the Casting Office for fame promotion/
-   private void handlePromotion() {
+   public void handlePromotion() {
       CastingOffice co = (CastingOffice) currentRoom;
       co.promote(this);
    }

@@ -1,11 +1,13 @@
 package View;
 
 import java.awt.event.MouseEvent;
+import Observer.Observer;
+
 
 public class PromoteButtonMouseListener extends BaseDeadwoodMouseListener {
 
 
     public void mouseClicked(MouseEvent e) {
-	System.out.println("hi");
+      	Observer.promoteClicked();
     }
 }

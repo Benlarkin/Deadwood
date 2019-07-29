@@ -117,4 +117,8 @@ public class Observer {
 
   }
 
+  public static void promoteClicked() {
+    game.board.getTimer().getActive()handlePromotion();
+  }
+
 }
