@@ -7,7 +7,7 @@ public class CastingOffice extends Room {
   // cost[x][0] = rank 2, cost[x][4] = rank 6;
   // cost[1][0] is price to upgrade to rank 2 in credits
   // cost[0][3] is price to upgrade to rank 5 in dollars
-  private int[][] cost = setUpgradeCost();
+  private static int[][] cost = setUpgradeCost();
 
   public CastingOffice(List<String> adjacent, Area location) {
     super.name = OFFICE;
@@ -18,33 +18,33 @@ public class CastingOffice extends Room {
   // it is ok if player is max rank
   // promote player via private function OR return "insufficient currency"
   // (put this function inside of loop during player turn?)
-  public void promote(Player player) {
-    if (player.getRank() == 6) {
-      System.out.println(MAXRANK);
-      return;
-    }
-    // only displays 1 rankup option
-    if (player.getRank() == 5) {
-      System.out.println(RANKREQUEST5 + player.getRank());
-    } else {
-      // basic flow case
-      System.out.println(RANKREQUEST + (player.getRank() + 1) + RANKREQUEST_PT2 + player.getRank());
-    }
-    System.out.println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
-    // print a pretty array with leveling costs here
-    representCost();
-    int desiredRank = Integer.parseInt(Input.playerInput());
-    System.out.println(DESIREDCURRENCYMSG);
-    // check if sufficient currency
-    String desiredCurrency = Input.playerInput();
-    if (currencyCheck(player, desiredRank, desiredCurrency)) {
-      promote(player, desiredRank, desiredCurrency);
-    } else {
-      System.out.println(INSUFFICIENTCURRENCY);
-    }
-  }
+  // public void promote(Player player, int ) {
+  //   if (player.getRank() == 6) {
+  //     System.out.println(MAXRANK);
+  //     return;
+  //   }
+  //   // only displays 1 rankup option
+  //   if (player.getRank() == 5) {
+  //     System.out.println(RANKREQUEST5 + player.getRank());
+  //   } else {
+  //     // basic flow case
+  //     System.out.println(RANKREQUEST + (player.getRank() + 1) + RANKREQUEST_PT2 + player.getRank());
+  //   }
+  //   System.out.println(CURRENCYMSG1 + player.getDollars() + CURRENCYMSG2 + player.getCredits() + CURRENCYMSG3);
+  //   // print a pretty array with leveling costs here
+  //   representCost();
+  //   int desiredRank = Integer.parseInt(Input.playerInput());
+  //   System.out.println(DESIREDCURRENCYMSG);
+  //   // check if sufficient currency
+  //   String desiredCurrency = Input.playerInput();
+  //   if (currencyCheck(player, desiredRank, desiredCurrency)) {
+  //     promote(player, desiredRank, desiredCurrency);
+  //   } else {
+  //     System.out.println(INSUFFICIENTCURRENCY);
+  //   }
+  // }
 
-  private int promote(Player player, int desiredRank, String desiredCurrency) {
+  public int promote(Player player, int desiredRank, String desiredCurrency) {
     // update rank
     player.setRank(desiredRank);
     // adjust number for cost array
@@ -62,7 +62,7 @@ public class CastingOffice extends Room {
     return player.getRank();
   }
 
-  private int[][] setUpgradeCost() {
+  private static int[][] setUpgradeCost() {
     int[][] a = new int[2][5];
     // initialize dollars for rank 2-6
     a[0][0] = 4;
@@ -128,4 +128,7 @@ public class CastingOffice extends Room {
     }
   }
 
+  public static int[][] getCost() {
+    return cost;
+  }
 }

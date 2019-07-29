@@ -127,7 +127,7 @@ public class Player extends Graphic {
          }
       } else if (desiredAction.equalsIgnoreCase(PROMOTEACTION) && currentRoom instanceof CastingOffice) {
          // promote here
-         handlePromotion();
+        //  handlePromotion();
          return SUCCESSACTION;
       } else if (desiredAction.equalsIgnoreCase(ACTIVE)) {
          printActive();
@@ -200,9 +200,11 @@ public class Player extends Graphic {
    }
 
    // Allows the Player to access the Casting Office for fame promotion/
-   public void handlePromotion() {
+   public void handlePromotion(int newRank, String desiredCurrency) {
+     if(newRank > 0) {
       CastingOffice co = (CastingOffice) currentRoom;
-      co.promote(this);
+      co.promote(this, newRank, desiredCurrency);
+    }
    }
 
    // Prints the status of the Active Player.

@@ -118,7 +118,24 @@ public class Observer {
   }
 
   public static void promoteClicked() {
-    game.board.getTimer().getActive()handlePromotion();
+    Player active = game.board.getTimer().getActive();
+    String desiredCurrency = frame.getDesiredCurrency();
+    try {
+    if(desiredCurrency.equals("Dollars")) {
+      active.handlePromotion(Integer.parseInt(frame.getPromoteRankDollars(active.getDollars(), active.getRank())), desiredCurrency);
+    }
+    else if(desiredCurrency.equals("Credits")) {
+        active.handlePromotion(Integer.parseInt(frame.getPromoteRankCredits(active.getCredits(), active.getRank())), desiredCurrency);
+    }
+  }
+  catch(Exception e) {
+    
+  }
+
+  }
+
+  public static int[][] getUpgradeCost() {
+    return CastingOffice.getCost();
   }
 
 }

@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.util.List;
 import java.util.*;
+import Observer.Observer;
 
 public class DeadwoodFrame extends JFrame {
     private JLabel labelGameBoard;
@@ -303,4 +304,81 @@ public class DeadwoodFrame extends JFrame {
         }
         return retryGetPlayerName(playerNum);
     }
+
+
+    public String getDesiredCurrency() {
+      try {
+      String[] options = {"Dollars", "Credits"};
+      String name = (String)JOptionPane.showInputDialog(
+                          this,
+                          "Dollars or Credits:\n",
+                          "Select Currency Option:",
+                          JOptionPane.QUESTION_MESSAGE,
+                          null,
+                          options,
+                          options[0]);
+      return name;
+    }
+    catch(Exception e) {
+      return null;
+    }
+    }
+
+
+    public String getPromoteRankDollars(int dollars, int rank) {
+      try {
+        String[] options = makeOptions(dollars, rank, 0);
+        return(getPromoteRank(options));
+      }
+    catch(Exception e) {
+      return null;
+    }
+    }
+
+    public String getPromoteRankCredits(int credits, int rank) {
+      try {
+        String[] options = makeOptions(credits, rank, 1);
+        return(getPromoteRank(options));
+      }
+    catch(Exception e) {
+      return null;
+    }
+    }
+
+    private String getPromoteRank(String[] options) {
+      if(options.length == 0) {
+        errorMessagePopup("You can't afford a rank up!");
+        return null;
+      }
+      String desiredRank = (String)JOptionPane.showInputDialog(
+                        this,
+                        "Affordable Options:\n",
+                        "Choose a Rank to Promote To:",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+    return desiredRank;
+    }
+
+    private String[] makeOptions(int wealth, int rank, int credOrDoll) {
+      List<String> options = new ArrayList<String>();
+      int[][] cost = Observer.getUpgradeCost();
+      for(int i = rank; i < 6; i++) {
+        if(cost[0][credOrDoll] <= wealth) {
+          options.add(Integer.toString(i));
+        }
+      }
+      return arrayListToArray(options);
+    }
+
+    private String[] arrayListToArray(List<String> options) {
+      int size = options.size();
+      String[] array = new String[size];
+      for(int i = 0; i < size; i++) {
+        array[i] = options.get(i);
+      }
+      return array;
+    }
+
 }
