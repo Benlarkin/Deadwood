@@ -3,3 +3,6 @@
 /DeadwoodFrame.class
 /MoveButtonMouseListener.class
 /RehearseButtonMouseListener.class
+/EndButtonMouseListener.class
+/PromoteButtonMouseListener.class
+/TakeButtonMouseListener.class

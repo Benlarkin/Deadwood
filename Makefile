@@ -4,11 +4,14 @@ JC = javac
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = Model/*.java View/*.java Observer/*.java
+CLASSES = *.java model/*.java view/*.java controller/*.java
 
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
+addJava:
+	git add $(CLASSES)
+
 clean:
-	$(RM) *.class Model/*.class View/*.class Observer/*.class
+	$(RM) *.class model/*.class view/*.class controller/*.class
