@@ -96,7 +96,7 @@ public class DeadwoodFrame extends JFrame {
         }
         paneDeadwood = getLayeredPane();
         label_p1 = new JLabel();
-        ImageIcon icon1 = new ImageIcon(P1DICE, 1);
+        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
             if(flag){
                 icon1 = new ImageIcon("images/dice/b2.png");
             }
