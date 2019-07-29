@@ -21,6 +21,7 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p8;
 
     private ArrayList<JLabel> playerDice = new ArrayList();
+    private int turn;
 
     private JButton buttonAct;
     private JButton buttonRehearse;
@@ -45,6 +46,16 @@ public class DeadwoodFrame extends JFrame {
     private static final String END_BUTTON_TEXT = "END";
     private static final String MOVE_BUTTON_TEXT = "MOVE";
     protected static final String PLAYERMSG = "Player %d name: ";
+
+
+    protected static final String P1DICE = "images/dice/b%d.png";
+    protected static final String P2DICE = "images/dice/c%d.png";
+    protected static final String P3DICE = "images/dice/g%d.png";
+    protected static final String P4DICE = "images/dice/o%d.png";
+    protected static final String P5DICE = "images/dice/p%d.png";
+    protected static final String P6DICE = "images/dice/r%d.png";
+    protected static final String P7DICE = "images/dice/v%d.png";
+    protected static final String P8DICE = "images/dice/y%d.png";
 
     public DeadwoodFrame() {
         super(DEADWOOD_TITLE);
@@ -84,7 +95,7 @@ public class DeadwoodFrame extends JFrame {
         }
         paneDeadwood = getLayeredPane();
         label_p1 = new JLabel();
-        ImageIcon icon1 = new ImageIcon("images/dice/b1.png");
+        ImageIcon icon1 = new ImageIcon(P1DICE, 1);
             if(flag){
                 icon1 = new ImageIcon("images/dice/b2.png");
             }
@@ -231,6 +242,14 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonTake, new Integer(2));
         paneDeadwood.add(buttonPromote, new Integer(2));
         paneDeadwood.add(buttonEnd, new Integer(2));
+    }
+  
+    public void nextDice() {
+        if (turn++ == playerDice.size()) {
+            turn = 0;
+            return;
+        }
+        turn++;
     }
 
     public List<JTextField> makeTextPanel(int playerNum) {
