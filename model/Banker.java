@@ -1,4 +1,4 @@
-package Model;
+package model;
 public class Banker {
 
    // Adds the given amount to the given player's total dollars.

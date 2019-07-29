@@ -1,4 +1,4 @@
-package Model;
+package model;
   /* Instructions on how to begin XML parsing were learned from
    * https://stackoverflow.com/questions/428073/what-is-the-best-simplest-way-to-read-in-an-xml-file-in-java-application
    */

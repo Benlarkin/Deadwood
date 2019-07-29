@@ -1,6 +1,7 @@
-package Model;
+package model;
 import javax.swing.*;
-import Observer.Observer;
+
+import controller.Controller;
 public class Player extends Graphic {
 
    private String name;
@@ -44,7 +45,7 @@ public class Player extends Graphic {
       takingTurn = true;
       while (takingTurn == true) {
         System.out.print("");
-         Observer.hideButtons(currentRoom, this);
+         Controller.hideButtons(currentRoom, this);
         //  int actionHandled = -8;
         //  handleAction(moved, worked);
         //  if (actionHandled == PLAYEREND) {

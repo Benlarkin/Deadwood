@@ -1,4 +1,4 @@
-package View;
+package view;
 import java.awt.event.MouseEvent;
 
 public class RehearseButtonMouseListener extends BaseDeadwoodMouseListener {

@@ -1,10 +1,11 @@
-package View;
-import Observer.Observer;
+package view;
 import java.awt.event.MouseEvent;
+
+import controller.Controller;
 
 public class TakeButtonMouseListener extends BaseDeadwoodMouseListener {
 
     public void mouseReleased(MouseEvent e) {
-        Observer.takeButtonPressed();
+        Controller.takeButtonPressed();
     }
 }

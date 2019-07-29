@@ -1,14 +1,20 @@
-package View;
+package view;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+
+import controller.Controller;
+
 import java.util.List;
 import java.util.*;
-import Observer.Observer;
 
 public class DeadwoodFrame extends JFrame {
-    private JLabel labelGameBoard;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel labelGameBoard;
     private JLabel labelCard;
     private JLabel labelPlayer;
     private JLabel labelMenu;
@@ -21,7 +27,7 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p7;
     private JLabel label_p8;
 
-    private ArrayList<JLabel> playerDice = new ArrayList();
+    private List<JLabel> playerDice = new ArrayList<JLabel>();
     private int turn;
 
     private JButton buttonAct;
@@ -271,7 +277,7 @@ public class DeadwoodFrame extends JFrame {
         return list;
     }
     
-    public ArrayList<JLabel> getDiceList(){
+    public List<JLabel> getDiceList(){
         return playerDice;
     }
 
@@ -419,7 +425,7 @@ public class DeadwoodFrame extends JFrame {
 
     private String[] makeOptions(int wealth, int rank, int credOrDoll) {
       List<String> options = new ArrayList<String>();
-      int[][] cost = Observer.getUpgradeCost();
+      int[][] cost = Controller.getUpgradeCost();
       for(int i = rank; i < 6; i++) {
         if(cost[0][credOrDoll] <= wealth) {
           options.add(Integer.toString(i));

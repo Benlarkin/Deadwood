@@ -1,13 +1,14 @@
-package View;
+package view;
 
 import java.awt.event.MouseEvent;
-import Observer.Observer;
+
+import controller.Controller;
 
 
 public class PromoteButtonMouseListener extends BaseDeadwoodMouseListener {
 
 
     public void mouseClicked(MouseEvent e) {
-      	Observer.promoteClicked();
+      	Controller.promoteClicked();
     }
 }

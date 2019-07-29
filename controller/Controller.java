@@ -1,22 +1,23 @@
-package Observer;
-import View.*;
-import Model.*;
+package controller;
+import model.*;
+import view.*;
+
 import java.util.*;
 import javax.swing.*;
 
-public class Observer {
+public class Controller {
   private static final String NOPSBLEROLES = "You do not have enough fame \n to take any roles here.";
   private static Deadwood game;
   private static DeadwoodFrame frame;
-  private static Observer observer = new Observer();
+  private static Controller Controller = new Controller();
 
-  private Observer() {
+  private Controller() {
     game = Deadwood.newGame();
     frame = new DeadwoodFrame();
   }
 
-  public static Observer getObserver() {
-    return observer;
+  public static Controller getObserver() {
+    return Controller;
   }
 
   public void startGame(int playerNum) {

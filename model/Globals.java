@@ -1,4 +1,4 @@
-package Model;
+package model;
 // Global constants and literals used across Classes.
 public class Globals {
    protected final String PLAYMSG = "Please enter number of players.";

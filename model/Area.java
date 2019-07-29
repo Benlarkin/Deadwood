@@ -1,4 +1,4 @@
-package Model;
+package model;
 public class Area {
    private int x;
    private int y;

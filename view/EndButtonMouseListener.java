@@ -1,11 +1,12 @@
-package View;
-import Observer.Observer;
+package view;
 import java.awt.event.MouseEvent;
+
+import controller.Controller;
 
 public class EndButtonMouseListener extends BaseDeadwoodMouseListener {
 
 
     public void mouseClicked(MouseEvent e) {
-        Observer.endCurrentTurn();
+        Controller.endCurrentTurn();
     }
 }

@@ -1,4 +1,4 @@
-package Model;
+package model;
 public class StarringRole extends Role {
 
    public StarringRole(String name, String line, int req, Area location) {

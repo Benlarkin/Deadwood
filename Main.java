@@ -1,4 +1,4 @@
-import Observer.*;
+import controller.*;
 
 
 public class Main {
@@ -10,7 +10,7 @@ public class Main {
 	  }
 	  else {
 		  try {
-        Observer observer = Observer.getObserver();
+        Controller observer = Controller.getObserver();
         observer.startGame(Integer.parseInt(args[0]));
 		  }
 		  catch(Exception e) {
