@@ -1,7 +1,0 @@
-GUI NOTES
-
-implement functionality
-
-player sprites
-images near buttons
-cards placed on board
