@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import controller.*;
 
 public class Dice extends Graphic {
 

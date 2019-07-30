@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 
 import controller.Controller;
+import controller.Area;
 
 import java.util.List;
 import java.util.*;
@@ -74,7 +75,7 @@ public class DeadwoodFrame extends JFrame {
 
     private void initializeLabels() {
         setupGameBoardLabel();
-        setupCardLabel();
+        // setupCardLabel();
         setupMenuLabel();
     }
 
@@ -86,12 +87,16 @@ public class DeadwoodFrame extends JFrame {
         setSize(iconGameBoard.getIconWidth() + 200, iconGameBoard.getIconHeight()); // Set the size of the GUI
     }
 
-    private void setupCardLabel() {
+    private void setupCardLabel(Area area) {
         labelCard = new JLabel();
         ImageIcon cardIcon = new ImageIcon(CARD_IMAGE);
         labelCard.setIcon(cardIcon);
-        labelCard.setBounds(20, 65, cardIcon.getIconWidth() + 2, cardIcon.getIconHeight());
+        labelCard.setBounds(area.getX(), area.getY(), area.getW(), area.getH());
         labelCard.setOpaque(true);
+    }
+
+    public void setCard(Area area) {
+      setupCardLabel(area);
     }
 
     // SET UP Player dice in trailers at start of game
@@ -298,9 +303,9 @@ public class DeadwoodFrame extends JFrame {
     }
 
     public void moveActiveDice(){
-      
+
       JLabel currDice = playerDice.get(turn);
-      // xml parse location? need to be passed to this? 
+      // xml parse location? need to be passed to this?
       // currDice.setBounds(x, y, 46, 46);
     }
 

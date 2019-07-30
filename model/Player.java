@@ -1,7 +1,7 @@
 package model;
 import javax.swing.*;
 
-import controller.Controller;
+import controller.*;
 public class Player extends Graphic {
 
    private String name;

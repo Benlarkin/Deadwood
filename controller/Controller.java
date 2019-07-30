@@ -192,4 +192,9 @@ public class Controller {
     actionTaken(false);
   }
 
+
+  public static void setCardDown(Area area) {
+    frame.setCard(area);
+  }
+
 }

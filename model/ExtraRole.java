@@ -1,4 +1,5 @@
 package model;
+import controller.*;
 public class ExtraRole extends Role {
 
    public ExtraRole(String name, String line, int req, Area location) {

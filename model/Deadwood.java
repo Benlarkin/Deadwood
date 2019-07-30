@@ -1,6 +1,7 @@
 package model;
 import java.util.*;
 import java.util.List;
+import controller.*;
 
 
 public class Deadwood extends Globals {

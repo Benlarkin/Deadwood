@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.io.*;
 import org.w3c.dom.*;
-
+import controller.*;
 public class XMLReader extends Globals {
 
 

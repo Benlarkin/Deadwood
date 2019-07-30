@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import controller.*;
 
 public class Board extends Graphic {
 
@@ -45,6 +46,7 @@ public class Board extends Graphic {
       for (int i = 0; i < spaces.size(); i++) {
          Room current = spaces.get(i);
          if (!current.getName().equals(TRAILER) && !current.getName().equals(CASTING)) {
+            Controller.setCardDown(current.getLocation());
             MovieSet currentSet = (MovieSet) current;
             currentSet.setScene(deck.remove(i));
             cardsLeft++;

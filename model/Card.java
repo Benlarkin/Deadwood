@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.awt.*;
+import controller.*;
 
 public class Card extends Graphic {
 

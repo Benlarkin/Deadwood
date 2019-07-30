@@ -1,5 +1,6 @@
 package model;
 import java.util.List;
+import controller.*;
 
 public class MovieSet extends Room {
 
