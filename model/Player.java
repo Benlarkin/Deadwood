@@ -12,6 +12,8 @@ public class Player extends Graphic {
    private Room currentRoom;
    private Role currentRole;
    private boolean takingTurn;
+   
+   public int lastRoll;
 
    public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
       this.name = playerName;
@@ -21,6 +23,7 @@ public class Player extends Graphic {
       this.rehearsalChips = 0;
       this.currentRoom = null;
       this.currentRole = null;
+      this.lastRoll = -1;
       takingTurn = false;
    }
 
@@ -238,7 +241,8 @@ public class Player extends Graphic {
       Role cRole = currentRole;
       MovieSet playerRoom = (MovieSet) currentRoom;
       int budget = playerRoom.getScene().getBudget();
-      if (Dice.roll(rehearsalChips) >= budget) {
+      lastRoll = Dice.roll(rehearsalChips);
+      if (lastRoll >= budget) {
          // success case 1: starring
          cRole.onSuccess(this);
         return true;

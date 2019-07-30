@@ -274,6 +274,8 @@ public class DeadwoodFrame extends JFrame {
     		}
     		catch(Exception e) {
     			card.setVisible(false);
+    			card.validate();
+    		    card.repaint();
     		}
     	}
     }

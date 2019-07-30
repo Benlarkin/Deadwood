@@ -89,7 +89,7 @@ public class Globals {
    public static final String DOLLARS = "Dollars";
    public static final String CREDITS = "Credits";
    public static final String REHEARSALPOPUP = "%s spent their turn rehearsing. They now have %d rehearsal chips.";
-   public static final String ACTPOPUP = "%s %s their role this turn.";
+   public static final String ACTPOPUP = "%s %s their role this turn with a roll of %d (+%d).";
    public static final String SUCCESS = "succeeded on acting";
    public static final String FAIL = "failed to act";
 

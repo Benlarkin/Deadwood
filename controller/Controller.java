@@ -186,10 +186,10 @@ public class Controller extends Globals {
   public static void actClicked() {
     Player active = timer.getActive();
     if(active.actSuccess()) {
-      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), SUCCESS));
+      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), SUCCESS, active.lastRoll, active.getRehearsalChips()));
     }
     else {
-      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), FAIL));
+      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), FAIL, active.lastRoll, active.getRehearsalChips()));
     }
     actionTaken(false);
   }
