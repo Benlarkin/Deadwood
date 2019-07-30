@@ -109,8 +109,12 @@ public class Controller {
     promote.setVisible(promoteShow);
   }
 
+  public void updateDice(int rank){
+    frame.updateActiveDice(rank);
+  }
 
   public static void endCurrentTurn() {
+    frame.nextDice();
     game.board.getTimer().getActive().endTurn();
   }
 
@@ -128,6 +132,7 @@ public class Controller {
     else if(desiredCurrency.equals("Credits")) {
         active.handlePromotion(Integer.parseInt(frame.getPromoteRankCredits(active.getCredits(), active.getRank())), desiredCurrency);
     }
+    frame.updateActiveDice(game.board.getTimer().getActive().getRank());
   }
   catch(Exception e) {
     
