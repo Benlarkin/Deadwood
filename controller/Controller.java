@@ -6,7 +6,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class Controller extends Globals {
-  
+
   private static Deadwood game;
   private static DeadwoodFrame frame;
   private static Controller Controller = new Controller();
@@ -163,11 +163,11 @@ public class Controller extends Globals {
   }
 
   }
-  
+
   public static void flipCard(Room room, String image) {
 	  frame.updateCard(room.getLocation(), image);
   }
-  
+
   public static void removeCard(Room room) {
 	  frame.updateCard(room.getLocation(), BLANK);
   }
