@@ -42,6 +42,7 @@ public class Controller {
     String desiredRoom = frame.getRoomInput(adjacent);
     if(desiredRoom != null && desiredRoom.length() > 0) {
       game.board.getTimer().getActive().move(desiredRoom);
+          actionTaken(true);
     }
   }
 
@@ -55,15 +56,21 @@ public class Controller {
   }
 
   public static void takeButtonPressed() {
+    try {
     Player activePlayer = timer.getActive();
     MovieSet room = ((MovieSet) activePlayer.getCurrentRoom());
     String[] possibleRoles = getPossibleRoles(room.getScene().getRoles(), room.getExtras(), activePlayer.getRank());
-    if(possibleRoles.length > 0) {
+    if(possibleRoles.length > 0 && possibleRoles != null) {
       activePlayer.takeRole(frame.getTakeInput(possibleRoles));
+          actionTaken(false);
     }
     else {
       frame.errorMessagePopup(NOPSBLEROLES);
     }
+  }
+  catch(Exception e) {
+
+  }
   }
 
   private static String[] getPossibleRoles(List<Role> starring, List<Role> extra, int rank) {
@@ -116,6 +123,7 @@ public class Controller {
     move.setVisible(moveShow);
     take.setVisible(takeShow);
     promote.setVisible(promoteShow);
+    frame.updateMenu();
   }
 
   public void updateDice(int rank){
@@ -127,8 +135,19 @@ public class Controller {
     frame.nextDice();
   }
 
-  public static void actionTaken(Room room) {
-
+  public static void actionTaken(boolean moved) {
+    Room room = timer.getActive().getCurrentRoom();
+    if(moved && room instanceof MovieSet) {
+      if(((MovieSet) room).getScene() != null) {
+        defaultButtons(false, false, false, true, false);
+      }
+      else {
+        defaultButtons(false, false, false, false, false);
+      }
+    }
+    else {
+      defaultButtons(false, false, false, false, false);
+    }
   }
 
   public static void promoteClicked() {
@@ -142,6 +161,7 @@ public class Controller {
         active.handlePromotion(Integer.parseInt(frame.getPromoteRankCredits(active.getCredits(), active.getRank())), desiredCurrency);
     }
     frame.updateActiveDice(game.board.getTimer().getActive().getRank());
+        actionTaken(false);
   }
   catch(Exception e) {
 
@@ -157,6 +177,7 @@ public class Controller {
     Player active = timer.getActive();
     active.incRehearsalChips();
     frame.errorMessagePopup(String.format(REHEARSALPOPUP, active.getName(), active.getRehearsalChips()));
+    actionTaken(false);
   }
 
   public static void actClicked() {
@@ -167,6 +188,7 @@ public class Controller {
     else {
       frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), FAIL));
     }
+    actionTaken(false);
   }
 
 }

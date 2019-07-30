@@ -43,9 +43,10 @@ public class Player extends Graphic {
       String moved = MOVEPLAYER;
       String worked = WORK;
       takingTurn = true;
+      Controller.hideButtons(currentRoom, this);
       while (takingTurn == true) {
         System.out.print("");
-         Controller.hideButtons(currentRoom, this);
+
         //  int actionHandled = -8;
         //  handleAction(moved, worked);
         //  if (actionHandled == PLAYEREND) {

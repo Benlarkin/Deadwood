@@ -11,7 +11,7 @@ import java.util.*;
 
 public class DeadwoodFrame extends JFrame {
     /**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel labelGameBoard;
@@ -250,7 +250,22 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonPromote, new Integer(2));
         paneDeadwood.add(buttonEnd, new Integer(2));
     }
-  
+
+    public void updateMenu() {
+      buttonRehearse.validate();
+      buttonRehearse.repaint();
+      buttonAct.validate();
+      buttonAct.repaint();
+      buttonMove.validate();
+      buttonMove.repaint();
+      buttonTake.validate();
+      buttonTake.repaint();
+      buttonPromote.validate();
+      buttonPromote.repaint();
+      labelMenu.validate();
+      labelMenu.repaint();
+    }
+
     public void nextDice() {
         if (turn++ == playerDice.size()) {
             turn = 0;
@@ -299,7 +314,7 @@ public class DeadwoodFrame extends JFrame {
         this.setVisible(true);
         return list;
     }
-    
+
     public List<JLabel> getDiceList(){
         return playerDice;
     }
