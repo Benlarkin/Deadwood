@@ -15,12 +15,13 @@ public class Card extends Graphic {
    private boolean revealed;
 
    // Creates a Card object to be used in the game.
-   public Card(List<Role> roles, String sceneName, String line, int budget, int sceneNumber, Image background) {
+   public Card(List<Role> roles, String sceneName, String line, int budget, int sceneNumber, String background) {
       this.roles = roles;
       this.sceneName = sceneName;
       this.line = line;
       this.budget = budget;
       this.sceneNumber = sceneNumber;
+      this.background = background;
       revealed = false;
    }
 

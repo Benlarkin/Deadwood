@@ -1,12 +1,12 @@
 package controller;
-import java.awt.*;
+
 public class Graphic extends Globals {
 
-   protected Image background;
+   protected String background;
    protected Area location;
 
    // Returns the Graphic's Image.
-   public Image getBackground() {
+   public String getBackground() {
       return background;
    }
 

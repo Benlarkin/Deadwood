@@ -83,6 +83,7 @@ public class Board extends Graphic {
 
    // Removes a Card from the Board.
    public void removeCard() {
+	  Controller.removeCard(timer.getActive().getCurrentRoom());
       cardsLeft--;
    }
 

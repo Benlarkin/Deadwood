@@ -4,8 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 
-import controller.Controller;
-import controller.Area;
+import controller.*;
 
 import java.util.List;
 import java.util.*;
@@ -16,7 +15,7 @@ public class DeadwoodFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel labelGameBoard;
-    private JLabel labelCard;
+    private List<JLabel> labelCards = new ArrayList<JLabel>();
     private JLabel labelPlayer;
     private JLabel labelMenu;
     private JLabel label_p1;
@@ -70,7 +69,6 @@ public class DeadwoodFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeLabels();
         initializeButtons();
-        initializeDeadwoodPane();
     }
 
     private void initializeLabels() {
@@ -87,12 +85,14 @@ public class DeadwoodFrame extends JFrame {
         setSize(iconGameBoard.getIconWidth() + 200, iconGameBoard.getIconHeight()); // Set the size of the GUI
     }
 
+
     private void setupCardLabel(Area area) {
-        labelCard = new JLabel();
+        JLabel card = new JLabel();
         ImageIcon cardIcon = new ImageIcon(CARD_IMAGE);
-        labelCard.setIcon(cardIcon);
-        labelCard.setBounds(area.getX(), area.getY(), area.getW(), area.getH());
-        labelCard.setOpaque(true);
+        card.setIcon(cardIcon);
+        card.setBounds(area.getX(), area.getY(), area.getW(), area.getH());
+        card.setOpaque(true);
+        labelCards.add(card);
     }
 
     public void setCard(Area area) {
@@ -243,10 +243,12 @@ public class DeadwoodFrame extends JFrame {
         buttonMove.addMouseListener(new MoveButtonMouseListener());
     }
 
-    private void initializeDeadwoodPane() {
+    public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
         paneDeadwood.add(labelGameBoard, new Integer(0)); // Add the board to the lowest layer
-        paneDeadwood.add(labelCard, new Integer(1)); // Add the card to the lower layer
+        for(int i = 0; i < labelCards.size(); i++) {
+          paneDeadwood.add(labelCards.get(i), new Integer(1));
+        } // Add the card to the lower layer
         paneDeadwood.add(labelMenu, new Integer(2)); // add menu
         paneDeadwood.add(buttonAct, new Integer(2));
         paneDeadwood.add(buttonRehearse, new Integer(2));
@@ -254,6 +256,26 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonTake, new Integer(2));
         paneDeadwood.add(buttonPromote, new Integer(2));
         paneDeadwood.add(buttonEnd, new Integer(2));
+    }
+    
+    public void updateCard(Area area, String image) {
+    	JLabel card = null;
+    	for(int i = 0; i < labelCards.size(); i++) {
+    		JLabel temp = labelCards.get(i);
+    		if(temp.getX() == area.getX() && temp.getY() == area.getY()) {
+    			card = temp;
+    			break;
+    		}
+    	}
+    	if(card != null) {
+    		try {
+    			ImageIcon icon = new ImageIcon(image);
+    			card.setIcon(icon);
+    		}
+    		catch(Exception e) {
+    			card.setVisible(false);
+    		}
+    	}
     }
 
     public void updateMenu() {

@@ -285,6 +285,7 @@ public class Player extends Graphic {
          Card scene = ((MovieSet) r).getScene();
          if(!scene.isRevealed()) {
             scene.reveal();
+            Controller.flipCard(currentRoom, scene.getBackground());
          }
       }
    }

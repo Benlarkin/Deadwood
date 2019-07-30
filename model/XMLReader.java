@@ -142,7 +142,8 @@ public class XMLReader extends Globals {
       for(int i = 0; i < roleList.getLength(); i++) {
          cardRoles.add(makeRole(roleList.item(i), true));
       }
-      return new Card(cardRoles, cardName, cardLine, cardBudget, sceneNumber, null);
+      String cardImg = cardElement.getAttribute(IMG);
+      return new Card(cardRoles, cardName, cardLine, cardBudget, sceneNumber, String.format(CARDIMGLOCAL,cardImg));
    }
 
    // Stores the area from the XML as an Area

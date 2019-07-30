@@ -5,24 +5,18 @@ import model.Timer;
 import java.util.*;
 import javax.swing.*;
 
-public class Controller {
-  private static final String NOPSBLEROLES = "You do not have enough fame \n to take any roles here.";
-  private static final String DOLLARS = "Dollars";
-  private static final String CREDITS = "Credits";
-  private static final String REHEARSALPOPUP = "%s spent their turn rehearsing. They now have %d rehearsal chips.";
-  private static final String ACTPOPUP = "%s %s their role this turn.";
-  private static final String SUCCESS = "succeeded on acting";
-  private static final String FAIL = "failed to act";
-
+public class Controller extends Globals {
+  
   private static Deadwood game;
   private static DeadwoodFrame frame;
   private static Controller Controller = new Controller();
   private static Timer timer;
 
   private Controller() {
+	frame = new DeadwoodFrame();
     game = Deadwood.newGame();
     timer = game.board.getTimer();
-    frame = new DeadwoodFrame();
+    frame.initializeDeadwoodPane();
   }
 
   public static Controller getObserver() {
@@ -168,6 +162,14 @@ public class Controller {
 
   }
 
+  }
+  
+  public static void flipCard(Room room, String image) {
+	  frame.updateCard(room.getLocation(), image);
+  }
+  
+  public static void removeCard(Room room) {
+	  frame.updateCard(room.getLocation(), BLANK);
   }
 
   public static int[][] getUpgradeCost() {
