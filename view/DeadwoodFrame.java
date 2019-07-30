@@ -259,6 +259,29 @@ public class DeadwoodFrame extends JFrame {
         turn++;
     }
 
+    public void updateActiveDice(int rank){
+      ImageIcon temp = new ImageIcon();
+      switch(turn){
+        case 1: temp = new ImageIcon(String.format(P1DICE, rank));
+                break;
+        case 2: temp = new ImageIcon(String.format(P2DICE, rank));
+        break;
+        case 3: temp = new ImageIcon(String.format(P3DICE, rank));
+        break;
+        case 4: temp = new ImageIcon(String.format(P4DICE, rank));
+        break;
+        case 5: temp = new ImageIcon(String.format(P5DICE, rank));
+        break;
+        case 6: temp = new ImageIcon(String.format(P6DICE, rank));
+        break;
+        case 7: temp = new ImageIcon(String.format(P7DICE, rank));
+        break;
+        case 8: temp = new ImageIcon(String.format(P8DICE, rank));
+        break;
+      }
+      playerDice.get(turn).setIcon(temp);
+    }
+
     public List<JTextField> makeTextPanel(int playerNum) {
         JPanel panel = new JPanel();
         List<JTextField> list = new ArrayList<JTextField>();

@@ -13,7 +13,7 @@ public class Controller {
   private static final String ACTPOPUP = "%s %s their role this turn.";
   private static final String SUCCESS = "succeeded on acting";
   private static final String FAIL = "failed to act";
-  
+
   private static Deadwood game;
   private static DeadwoodFrame frame;
   private static Controller Controller = new Controller();
@@ -118,9 +118,13 @@ public class Controller {
     promote.setVisible(promoteShow);
   }
 
+  public void updateDice(int rank){
+    frame.updateActiveDice(rank);
+  }
 
   public static void endCurrentTurn() {
     timer.getActive().endTurn();
+    frame.nextDice();
   }
 
   public static void actionTaken(Room room) {
@@ -137,6 +141,7 @@ public class Controller {
     else if(desiredCurrency.equals(CREDITS)) {
         active.handlePromotion(Integer.parseInt(frame.getPromoteRankCredits(active.getCredits(), active.getRank())), desiredCurrency);
     }
+    frame.updateActiveDice(game.board.getTimer().getActive().getRank());
   }
   catch(Exception e) {
 
