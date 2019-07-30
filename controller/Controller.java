@@ -1,18 +1,27 @@
 package controller;
 import model.*;
 import view.*;
-
+import model.Timer;
 import java.util.*;
 import javax.swing.*;
 
 public class Controller {
   private static final String NOPSBLEROLES = "You do not have enough fame \n to take any roles here.";
+  private static final String DOLLARS = "Dollars";
+  private static final String CREDITS = "Credits";
+  private static final String REHEARSALPOPUP = "%s spent their turn rehearsing. They now have %d rehearsal chips.";
+  private static final String ACTPOPUP = "%s %s their role this turn.";
+  private static final String SUCCESS = "succeeded on acting";
+  private static final String FAIL = "failed to act";
+  
   private static Deadwood game;
   private static DeadwoodFrame frame;
   private static Controller Controller = new Controller();
+  private static Timer timer;
 
   private Controller() {
     game = Deadwood.newGame();
+    timer = game.board.getTimer();
     frame = new DeadwoodFrame();
   }
 
@@ -28,7 +37,7 @@ public class Controller {
   }
 
   public static void moveButtonPressed() {
-    Player activePlayer = game.board.getTimer().getActive();
+    Player activePlayer = timer.getActive();
     String[] adjacent = arrayListToArray(activePlayer.getCurrentRoom().getAdjacent());
     String desiredRoom = frame.getRoomInput(adjacent);
     if(desiredRoom != null && desiredRoom.length() > 0) {
@@ -46,7 +55,7 @@ public class Controller {
   }
 
   public static void takeButtonPressed() {
-    Player activePlayer = game.board.getTimer().getActive();
+    Player activePlayer = timer.getActive();
     MovieSet room = ((MovieSet) activePlayer.getCurrentRoom());
     String[] possibleRoles = getPossibleRoles(room.getScene().getRoles(), room.getExtras(), activePlayer.getRank());
     if(possibleRoles.length > 0) {
@@ -111,7 +120,7 @@ public class Controller {
 
 
   public static void endCurrentTurn() {
-    game.board.getTimer().getActive().endTurn();
+    timer.getActive().endTurn();
   }
 
   public static void actionTaken(Room room) {
@@ -119,24 +128,40 @@ public class Controller {
   }
 
   public static void promoteClicked() {
-    Player active = game.board.getTimer().getActive();
+    Player active = timer.getActive();
     String desiredCurrency = frame.getDesiredCurrency();
     try {
-    if(desiredCurrency.equals("Dollars")) {
+    if(desiredCurrency.equals(DOLLARS)) {
       active.handlePromotion(Integer.parseInt(frame.getPromoteRankDollars(active.getDollars(), active.getRank())), desiredCurrency);
     }
-    else if(desiredCurrency.equals("Credits")) {
+    else if(desiredCurrency.equals(CREDITS)) {
         active.handlePromotion(Integer.parseInt(frame.getPromoteRankCredits(active.getCredits(), active.getRank())), desiredCurrency);
     }
   }
   catch(Exception e) {
-    
+
   }
 
   }
 
   public static int[][] getUpgradeCost() {
     return CastingOffice.getCost();
+  }
+
+  public static void rehearseClicked() {
+    Player active = timer.getActive();
+    active.incRehearsalChips();
+    frame.errorMessagePopup(String.format(REHEARSALPOPUP, active.getName(), active.getRehearsalChips()));
+  }
+
+  public static void actClicked() {
+    Player active = timer.getActive();
+    if(active.actSuccess()) {
+      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), SUCCESS));
+    }
+    else {
+      frame.errorMessagePopup(String.format(ACTPOPUP, active.getName(), FAIL));
+    }
   }
 
 }

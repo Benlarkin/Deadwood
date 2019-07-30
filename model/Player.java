@@ -228,18 +228,22 @@ public class Player extends Graphic {
       }
    }
 
+   public boolean actSuccess() {
+     return actScene();
+   }
+
    // Allows a Player to act on their Role, regardless of being an ExtraRole or StarringRole.
-   private void actScene() {
+   private boolean actScene() {
       Role cRole = currentRole;
       MovieSet playerRoom = (MovieSet) currentRoom;
       int budget = playerRoom.getScene().getBudget();
       if (Dice.roll(rehearsalChips) >= budget) {
          // success case 1: starring
          cRole.onSuccess(this);
-         System.out.println(ACTMSG);
+        return true;
       } else {
          cRole.onFail(this);
-         System.out.println(FAILACTMSG);
+         return false;
       }
    }
 

@@ -1,10 +1,11 @@
 package view;
 import java.awt.event.MouseEvent;
+import controller.Controller;
 
 public class RehearseButtonMouseListener extends BaseDeadwoodMouseListener {
-    private final String REHEARSE_SELECT_MSG = "Rehearse is Selected\n";
+
 
     public void mouseClicked(MouseEvent e) {
-        System.out.println(REHEARSE_SELECT_MSG);
+        Controller.rehearseClicked();
     }
 }

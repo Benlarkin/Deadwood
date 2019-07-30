@@ -4,11 +4,11 @@ public class Globals {
    protected final String PLAYMSG = "Please enter number of players.";
    protected final String ERROR = " error in Board.";
    protected final String EMPTY = "";
-   protected final String CASTING = "office";
+   protected final String CASTING = "Office";
    protected final String IN = "is in ";
    protected final String SPACE = " ";
    protected final String MAXRANK = "You are already max rank!";
-   protected final String OFFICE = "office";
+   protected final String OFFICE = "Office";
    protected final String RANKREQUEST5 = "What rank would you like to promote to? (6). You are currently rank: ";
    protected final String RANKREQUEST = "What rank would you like to promote to? (";
    protected final String RANKREQUEST_PT2 = "-6). You are currently rank: ";
@@ -52,7 +52,7 @@ public class Globals {
    protected final String WORKACTION = "work";
    protected final String PROMOTE = "promote/";
    protected final String PROMOTEACTION = "promote";
-   protected final String TRAILER = "trailer";
+   protected final String TRAILER = "Trailers";
    protected final String END = "end";
    protected final String MOVEPLAYER = "move/";
    protected final String ACTIVE = "active";
@@ -61,8 +61,8 @@ public class Globals {
    protected final String BLANK = "";
    protected final String MOVE = "move";
    protected final String ROLEMSG = "They are working %s, \"%s\"\n\n";
-   protected final String CARDFILE = "Model/cards.xml";
-   protected final String BOARDFILE = "Model/board.xml";
+   protected final String CARDFILE = "model/cards.xml";
+   protected final String BOARDFILE = "model/board.xml";
    protected final String CARD = "card";
    protected final String NAME = "name";
    protected final String BUDGET = "budget";
