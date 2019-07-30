@@ -42,6 +42,7 @@ public class Controller {
     String desiredRoom = frame.getRoomInput(adjacent);
     if(desiredRoom != null && desiredRoom.length() > 0) {
       game.board.getTimer().getActive().move(desiredRoom);
+      frame.moveActiveDice(); // update image of dice in view
     }
   }
 
