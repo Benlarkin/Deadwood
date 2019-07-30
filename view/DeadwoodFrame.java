@@ -297,6 +297,13 @@ public class DeadwoodFrame extends JFrame {
       playerDice.get(turn).setIcon(temp);
     }
 
+    public void moveActiveDice(){
+      
+      JLabel currDice = playerDice.get(turn);
+      // xml parse location? need to be passed to this? 
+      // currDice.setBounds(x, y, 46, 46);
+    }
+
     public List<JTextField> makeTextPanel(int playerNum) {
         JPanel panel = new JPanel();
         List<JTextField> list = new ArrayList<JTextField>();
