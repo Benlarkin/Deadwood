@@ -37,7 +37,7 @@ public class Controller extends Globals {
     if(desiredRoom != null && desiredRoom.length() > 0) {
       game.board.getTimer().getActive().move(desiredRoom);
           actionTaken(true);
-      frame.moveActiveDice(); // update image of dice in view
+      // frame.moveActiveDice(); // update image of dice in view
     }
   }
 
@@ -126,8 +126,8 @@ public class Controller extends Globals {
   }
 
   public static void endCurrentTurn() {
-    timer.getActive().endTurn();
     frame.nextDice();
+    timer.getActive().endTurn();
   }
 
   public static void actionTaken(boolean moved) {
