@@ -37,8 +37,8 @@ public class Controller extends Globals {
     if(desiredRoom != null && desiredRoom.length() > 0) {
       game.board.getTimer().getActive().move(desiredRoom);
           actionTaken(true);
-      // frame.moveActiveDice(); // update image of dice in view
-    }
+        }
+        frame.moveActiveDice(activePlayer.getCurrentRoom()); // update image of dice in view
   }
 
   private static String[] arrayListToArray(List<String> list) {
