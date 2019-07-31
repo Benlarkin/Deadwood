@@ -100,91 +100,91 @@ public class DeadwoodFrame extends JFrame {
     }
 
     // SET UP Player dice in trailers at start of game
-    public void initDice(int playerCount) {
-        boolean flag = false;
-        if(playerCount>=7){
-            flag = true;
-        }
-        paneDeadwood = getLayeredPane();
-        label_p1 = new JLabel();
-        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
-            if(flag){
-                icon1 = new ImageIcon("images/dice/b2.png");
-            }
-        label_p1.setIcon(icon1);
-        label_p2 = new JLabel();
-        ImageIcon icon2 = new ImageIcon("images/dice/c1.png");
-        if(flag){
-            icon2 = new ImageIcon("images/dice/c2.png");
-        }
-        label_p2.setIcon(icon2);
-        label_p1.setBounds(1030, 400, 46, 46);
-        label_p2.setBounds(1030, 350, 46, 46);
-        paneDeadwood.add(label_p1, new Integer(3));
-        paneDeadwood.add(label_p2, new Integer(3));
-        playerDice.add(label_p1);
-        playerDice.add(label_p2);
-        if (playerCount >= 3) {
-            label_p3 = new JLabel();
-            ImageIcon icon3 = new ImageIcon("images/dice/g1.png");
-            if(flag){
-                icon3 = new ImageIcon("images/dice/g2.png");
-            }
-            label_p3.setIcon(icon3);
-            label_p3.setBounds(1030, 300, 46, 46);
-            paneDeadwood.add(label_p3, new Integer(3));
-            playerDice.add(label_p3);
-        }
-        if (playerCount >= 4) {
-            label_p4 = new JLabel();
-            ImageIcon icon4 = new ImageIcon("images/dice/o1.png");
-            if(flag){
-                icon4 = new ImageIcon("images/dice/o2.png");
-            }
-            label_p4.setIcon(icon4);
-            label_p4.setBounds(1030, 250, 46, 46);
-            paneDeadwood.add(label_p4, new Integer(3));
-            playerDice.add(label_p4);
-        }
-        if (playerCount >= 5) {
-            label_p5 = new JLabel();
-            ImageIcon icon5 = new ImageIcon("images/dice/p1.png");
-            if(flag){
-                icon5 = new ImageIcon("images/dice/p2.png");
-            }
-            label_p5.setIcon(icon5);
-            label_p5.setBounds(1120, 250, 46, 46);
-            paneDeadwood.add(label_p5, new Integer(3));
-            playerDice.add(label_p5);
-        }
-        if (playerCount >= 6) {
-            label_p6 = new JLabel();
-            ImageIcon icon6 = new ImageIcon("images/dice/r1.png");
-            if(flag){
-                icon6 = new ImageIcon("images/dice/r2.png");
-            }
-            label_p6.setIcon(icon6);
-            label_p6.setBounds(1120, 300, 46, 46);
-            paneDeadwood.add(label_p6, new Integer(3));
-            playerDice.add(label_p6);
-        }
-        if (playerCount >= 7) {
-            label_p7 = new JLabel();
-            ImageIcon icon7 = new ImageIcon("images/dice/v2.png");
-            label_p7.setIcon(icon7);
-            label_p7.setBounds(1120, 350, 46, 46);
-            paneDeadwood.add(label_p7, new Integer(3));
-            playerDice.add(label_p7);
-        }
-        if (playerCount == 8) {
-            label_p8 = new JLabel();
-            ImageIcon icon8 = new ImageIcon("images/dice/y2.png");
-            label_p8.setIcon(icon8);
-            label_p8.setBounds(1120, 400, 46, 46);
-            paneDeadwood.add(label_p8, new Integer(3));
-            playerDice.add(label_p8);
-        }
+  public void initDice(int playerCount) {
+    boolean flag = false;
+    if (playerCount >= 7) {
+      flag = true;
     }
+    paneDeadwood = getLayeredPane();
+    label_p1 = new JLabel();
+    ImageIcon icon1 = new ImageIcon(String.format(Controller.getPlayers().get(0).getBackground(), 1));
+    if (flag) {
+      icon1 = new ImageIcon(String.format(Controller.getPlayers().get(0).getBackground(), 2));
+    }
+    label_p1.setIcon(icon1);
+    label_p2 = new JLabel();
+    ImageIcon icon2 = new ImageIcon(String.format(Controller.getPlayers().get(1).getBackground(), 1));
+    if (flag) {
+      icon2 = new ImageIcon(String.format(Controller.getPlayers().get(1).getBackground(), 2));
+    }
+    label_p2.setIcon(icon2);
+    label_p1.setBounds(1030, 400, 46, 46);
+    label_p2.setBounds(1030, 350, 46, 46);
+    paneDeadwood.add(label_p1, new Integer(3));
+    paneDeadwood.add(label_p2, new Integer(3));
+    playerDice.add(label_p1);
+    playerDice.add(label_p2);
+    if (playerCount >= 3) {
+      label_p3 = new JLabel();
+      ImageIcon icon3 = new ImageIcon(String.format(Controller.getPlayers().get(2).getBackground(), 1));
+      if (flag) {
+        icon3 = new ImageIcon(String.format(Controller.getPlayers().get(2).getBackground(), 2));
+      }
+      label_p3.setIcon(icon3);
+      label_p3.setBounds(1030, 300, 46, 46);
+      paneDeadwood.add(label_p3, new Integer(3));
+      playerDice.add(label_p3);
+    }
+    if (playerCount >= 4) {
+      label_p4 = new JLabel();
+      ImageIcon icon4 = new ImageIcon(String.format(Controller.getPlayers().get(3).getBackground(), 1));
+      if (flag) {
+        icon4 = new ImageIcon(String.format(Controller.getPlayers().get(3).getBackground(), 2));
+      }
+      label_p4.setIcon(icon4);
+      label_p4.setBounds(1030, 250, 46, 46);
+      paneDeadwood.add(label_p4, new Integer(3));
+      playerDice.add(label_p4);
+    }
+    if (playerCount >= 5) {
+      label_p5 = new JLabel();
+      ImageIcon icon5 = new ImageIcon(String.format(Controller.getPlayers().get(4).getBackground(), 1));
+      if (flag) {
+        icon5 = new ImageIcon(String.format(Controller.getPlayers().get(4).getBackground(), 2));
+      }
+      label_p5.setIcon(icon5);
+      label_p5.setBounds(1120, 250, 46, 46);
+      paneDeadwood.add(label_p5, new Integer(3));
+      playerDice.add(label_p5);
+    }
+    if (playerCount >= 6) {
+      label_p6 = new JLabel();
+      ImageIcon icon6 = new ImageIcon(String.format(Controller.getPlayers().get(5).getBackground(), 1));
+      if (flag) {
+        icon6 = new ImageIcon(String.format(Controller.getPlayers().get(5).getBackground(), 2));
+      }
+      label_p6.setIcon(icon6);
+      label_p6.setBounds(1120, 300, 46, 46);
+      paneDeadwood.add(label_p6, new Integer(3));
+      playerDice.add(label_p6);
+    }
+    if (playerCount >= 7) {
+      label_p7 = new JLabel();
+      ImageIcon icon7 = new ImageIcon(String.format(Controller.getPlayers().get(6).getBackground(), 2));
+      label_p7.setIcon(icon7);
+      label_p7.setBounds(1120, 350, 46, 46);
+      paneDeadwood.add(label_p7, new Integer(3));
+      playerDice.add(label_p7);
+    }
+    if (playerCount == 8) {
+      label_p8 = new JLabel();
+      ImageIcon icon8 = new ImageIcon(String.format(Controller.getPlayers().get(7).getBackground(), 2));
+      label_p8.setIcon(icon8);
+      label_p8.setBounds(1120, 400, 46, 46);
+      paneDeadwood.add(label_p8, new Integer(3));
+      playerDice.add(label_p8);
+    }
+  }
 
 
     private void setupMenuLabel() {
