@@ -53,7 +53,7 @@ public class Deadwood extends Globals {
 
   private void addPlayersToGame(List<String> names, int playerNum, int startDollars, int startCredits, int startRank) {
     for(int i = 0; i < playerNum; i++) {
-      addPlayer(new Player(names.get(i), startDollars, startCredits, startRank));
+      addPlayer(new Player(names.get(i), startDollars, startCredits, startRank, PLAYERDICE[i]));
     }
   }
 
@@ -79,6 +79,8 @@ public class Deadwood extends Globals {
 
   // Runs each turn of Deadwood. Ends the game when the timer hits 5 days.
   private void runTurns(Timer timer) {
+	  board.sendToTrailers(players);
+	Controller.makeDiceIcons(players);
     while(timer.getDay() < 5) {
       board.placeCards();
       board.sendToTrailers(players);

@@ -40,7 +40,7 @@ public class DeadwoodFrame extends JFrame {
     private JButton buttonPromote;
     private JButton buttonEnd;
     private JLayeredPane paneDeadwood;
- 
+
 
     private ImageIcon iconGameBoard;
 
@@ -66,7 +66,7 @@ public class DeadwoodFrame extends JFrame {
     protected static final String P6DICE = "images/dice/r%d.png";
     protected static final String P7DICE = "images/dice/v%d.png";
     protected static final String P8DICE = "images/dice/y%d.png";
-    
+
     public DeadwoodFrame() {
         super(DEADWOOD_TITLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -103,96 +103,156 @@ public class DeadwoodFrame extends JFrame {
     }
 
     // SET UP Player dice in trailers at start of game
-    public void initDice(int playerCount) {
-        boolean flag = false;
-        if(playerCount>=7){
-            flag = true;
-        }
-        paneDeadwood = getLayeredPane();
-        label_p1 = new JLabel();
-        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
-            if(flag){
-                icon1 = new ImageIcon("images/dice/b2.png");
-            }
-        label_p1.setIcon(icon1);
-        label_p2 = new JLabel();
-        ImageIcon icon2 = new ImageIcon("images/dice/c1.png");
-        if(flag){
-            icon2 = new ImageIcon("images/dice/c2.png");
-        }
-        label_p2.setIcon(icon2);
-        label_p1.setBounds(1030, 400, 46, 46);
-        label_p2.setBounds(1030, 350, 46, 46);
-        paneDeadwood.add(label_p1, new Integer(3));
-        paneDeadwood.add(label_p2, new Integer(3));
-        playerDice.add(label_p1);
-        playerDice.add(label_p2);
-        if (playerCount >= 3) {
-            label_p3 = new JLabel();
-            ImageIcon icon3 = new ImageIcon("images/dice/g1.png");
-            if(flag){
-                icon3 = new ImageIcon("images/dice/g2.png");
-            }
-            label_p3.setIcon(icon3);
-            label_p3.setBounds(1030, 300, 46, 46);
-            paneDeadwood.add(label_p3, new Integer(3));
-            playerDice.add(label_p3);
-        }
-        if (playerCount >= 4) {
-            label_p4 = new JLabel();
-            ImageIcon icon4 = new ImageIcon("images/dice/o1.png");
-            if(flag){
-                icon4 = new ImageIcon("images/dice/o2.png");
-            }
-            label_p4.setIcon(icon4);
-            label_p4.setBounds(1030, 250, 46, 46);
-            paneDeadwood.add(label_p4, new Integer(3));
-            playerDice.add(label_p4);
-        }
-        if (playerCount >= 5) {
-            label_p5 = new JLabel();
-            ImageIcon icon5 = new ImageIcon("images/dice/p1.png");
-            if(flag){
-                icon5 = new ImageIcon("images/dice/p2.png");
-            }
-            label_p5.setIcon(icon5);
-            label_p5.setBounds(1120, 250, 46, 46);
-            paneDeadwood.add(label_p5, new Integer(3));
-            playerDice.add(label_p5);
-        }
-        if (playerCount >= 6) {
-            label_p6 = new JLabel();
-            ImageIcon icon6 = new ImageIcon("images/dice/r1.png");
-            if(flag){
-                icon6 = new ImageIcon("images/dice/r2.png");
-            }
-            label_p6.setIcon(icon6);
-            label_p6.setBounds(1120, 300, 46, 46);
-            paneDeadwood.add(label_p6, new Integer(3));
-            playerDice.add(label_p6);
-        }
-        if (playerCount >= 7) {
-            label_p7 = new JLabel();
-            ImageIcon icon7 = new ImageIcon("images/dice/v2.png");
-            label_p7.setIcon(icon7);
-            label_p7.setBounds(1120, 350, 46, 46);
-            paneDeadwood.add(label_p7, new Integer(3));
-            playerDice.add(label_p7);
-        }
-        if (playerCount == 8) {
-            label_p8 = new JLabel();
-            ImageIcon icon8 = new ImageIcon("images/dice/y2.png");
-            label_p8.setIcon(icon8);
-            label_p8.setBounds(1120, 400, 46, 46);
-            paneDeadwood.add(label_p8, new Integer(3));
-            playerDice.add(label_p8);
-        }
-    }
+//    public void initDice(int playerCount) {
+//        boolean flag = false;
+//        if(playerCount>=7){
+//            flag = true;
+//        }
+//        paneDeadwood = getLayeredPane();
+//        label_p1 = new JLabel();
+//        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
+//            if(flag){
+//                icon1 = new ImageIcon("images/dice/b2.png");
+//            }
+//        label_p1.setIcon(icon1);
+//        label_p2 = new JLabel();
+//        ImageIcon icon2 = new ImageIcon("images/dice/c1.png");
+//        if(flag){
+//            icon2 = new ImageIcon("images/dice/c2.png");
+//        }
+//        label_p2.setIcon(icon2);
+//        label_p1.setBounds(1030, 400, 46, 46);
+//        label_p2.setBounds(1030, 350, 46, 46);
+//        paneDeadwood.add(label_p1, new Integer(3));
+//        paneDeadwood.add(label_p2, new Integer(3));
+//        playerDice.add(label_p1);
+//        playerDice.add(label_p2);
+//        if (playerCount >= 3) {
+//            label_p3 = new JLabel();
+//            ImageIcon icon3 = new ImageIcon("images/dice/g1.png");
+//            if(flag){
+//                icon3 = new ImageIcon("images/dice/g2.png");
+//            }
+//            label_p3.setIcon(icon3);
+//            label_p3.setBounds(1030, 300, 46, 46);
+//            paneDeadwood.add(label_p3, new Integer(3));
+//            playerDice.add(label_p3);
+//        }
+//        if (playerCount >= 4) {
+//            label_p4 = new JLabel();
+//            ImageIcon icon4 = new ImageIcon("images/dice/o1.png");
+//            if(flag){
+//                icon4 = new ImageIcon("images/dice/o2.png");
+//            }
+//            label_p4.setIcon(icon4);
+//            label_p4.setBounds(1030, 250, 46, 46);
+//            paneDeadwood.add(label_p4, new Integer(3));
+//            playerDice.add(label_p4);
+//        }
+//        if (playerCount >= 5) {
+//            label_p5 = new JLabel();
+//            ImageIcon icon5 = new ImageIcon("images/dice/p1.png");
+//            if(flag){
+//                icon5 = new ImageIcon("images/dice/p2.png");
+//            }
+//            label_p5.setIcon(icon5);
+//            label_p5.setBounds(1120, 250, 46, 46);
+//            paneDeadwood.add(label_p5, new Integer(3));
+//            playerDice.add(label_p5);
+//        }
+//        if (playerCount >= 6) {
+//            label_p6 = new JLabel();
+//            ImageIcon icon6 = new ImageIcon("images/dice/r1.png");
+//            if(flag){
+//                icon6 = new ImageIcon("images/dice/r2.png");
+//            }
+//            label_p6.setIcon(icon6);
+//            label_p6.setBounds(1120, 300, 46, 46);
+//            paneDeadwood.add(label_p6, new Integer(3));
+//            playerDice.add(label_p6);
+//        }
+//        if (playerCount >= 7) {
+//            label_p7 = new JLabel();
+//            ImageIcon icon7 = new ImageIcon("images/dice/v2.png");
+//            label_p7.setIcon(icon7);
+//            label_p7.setBounds(1120, 350, 46, 46);
+//            paneDeadwood.add(label_p7, new Integer(3));
+//            playerDice.add(label_p7);
+//        }
+//        if (playerCount == 8) {
+//            label_p8 = new JLabel();
+//            ImageIcon icon8 = new ImageIcon("images/dice/y2.png");
+//            label_p8.setIcon(icon8);
+//            label_p8.setBounds(1120, 400, 46, 46);
+//            paneDeadwood.add(label_p8, new Integer(3));
+//            playerDice.add(label_p8);
+//        }
+//    }
 
 
     private void setupMenuLabel() {
         labelMenu = new JLabel(MENU_LABEL_TEXT);
         labelMenu.setBounds(iconGameBoard.getIconWidth() + 40, 0, 100, 20);
+    }
+    
+    public void initializeDiceIcon(String image, int rank, int player, int x, int y) {
+    	ImageIcon icon = new ImageIcon(String.format(image, rank));
+    	if(player == 1) {
+        	label_p1 = new JLabel();
+        	label_p1.setIcon(icon);
+        	label_p1.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p1, new Integer(3));
+        	playerDice.add(label_p1);
+    	}
+    	else if(player == 2) {
+    		label_p2 = new JLabel();
+        	label_p2.setIcon(icon);
+        	label_p2.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p2, new Integer(3));
+        	playerDice.add(label_p2);
+    	}
+    	else if(player == 3) {
+    		label_p3 = new JLabel();
+        	label_p3.setIcon(icon);
+        	label_p3.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p3, new Integer(3));
+        	playerDice.add(label_p3);
+    	}
+    	else if(player == 4) { 
+    		label_p4 = new JLabel();
+        	label_p4.setIcon(icon);
+        	label_p4.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p4, new Integer(3));
+        	playerDice.add(label_p4);
+    	}
+    	else if(player == 5) {
+    		label_p5 = new JLabel();
+        	label_p5.setIcon(icon);
+        	label_p5.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p5, new Integer(3));
+        	playerDice.add(label_p5);
+    	}
+    	else if(player == 6) {
+    		label_p6 = new JLabel();
+        	label_p6.setIcon(icon);
+        	label_p6.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p6, new Integer(3));
+        	playerDice.add(label_p6);
+    	}
+    	else if(player == 7) {
+    		label_p7 = new JLabel();
+        	label_p7.setIcon(icon);
+        	label_p7.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p7, new Integer(3));
+        	playerDice.add(label_p7);
+    	}
+    	else {
+    		label_p8 = new JLabel();
+        	label_p8.setIcon(icon);
+        	label_p8.setBounds(x, y, 46, 46);
+        	paneDeadwood.add(label_p8, new Integer(3));
+        	playerDice.add(label_p8);
+    	}    	
     }
 
     private void initializeButtons() {
@@ -203,7 +263,7 @@ public class DeadwoodFrame extends JFrame {
         setupPromoteButton();
         setupEndButton();
     }
-    
+
     private void setupActivePanel() {
     	panelActive = new JPanel();
     	panelActive.setBounds(iconGameBoard.getIconWidth() + 10, 250, 180, 180);
@@ -213,9 +273,9 @@ public class DeadwoodFrame extends JFrame {
     	labelActive = new JLabel(icon);
     	panelActive.add(labelActive);
     }
-    
+
     public void setActive() {
-    	
+ 
     }
 
     private void setupActButton() {
@@ -275,7 +335,7 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonEnd, new Integer(3));
         paneDeadwood.add(panelActive, new Integer(4));
     }
-    
+
     public void updateCard(Area area, String image) {
     	JLabel card = null;
     	for(int i = 0; i < labelCards.size(); i++) {
@@ -338,6 +398,41 @@ public class DeadwoodFrame extends JFrame {
         break;
       }
       playerDice.get(turn).setIcon(temp);
+    }
+
+
+    public void updatePlayerPiece(String image, int x, int y, int player) {
+      JLabel active = getActive(player);
+      active.setBounds(x, y, 45, 45);
+      active.setIcon(new ImageIcon(image));
+      active.revalidate();
+    }
+    
+    private JLabel getActive(int player) {
+    	  if(player == 1) {
+    	        return label_p1;
+    	      }
+    	      else if(player == 2) {
+    	    	  return label_p2;
+    	      }
+    	      else if(player == 3) {
+    	    	  return label_p3;
+    	      }
+    	      else if(player == 4) {
+    	    	  return label_p4;
+    	      }
+    	      else if(player == 5) {
+    	    	  return label_p5;
+    	      }
+    	      else if(player == 6) {
+    	    	  return label_p6;
+    	      }
+    	      else if(player == 7) {
+    	        return label_p7;
+    	      }
+    	      else {
+    	    	  return label_p8;
+    	      }
     }
 
     public void moveActiveDice(Room r){
@@ -527,6 +622,12 @@ public class DeadwoodFrame extends JFrame {
         array[i] = options.get(i);
       }
       return array;
+    }
+
+    public void updateActivePanel(String image, int dollars, int credits) {
+      ImageIcon icon = new ImageIcon(image);
+      labelActive.setIcon(icon);
+      labelActive.revalidate();
     }
 
 }

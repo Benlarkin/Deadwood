@@ -92,5 +92,13 @@ public class Globals {
    public static final String ACTPOPUP = "%s %s their role this turn with a roll of %d (+%d).";
    public static final String SUCCESS = "succeeded on acting";
    public static final String FAIL = "failed to act";
+   public static final String[] PLAYERDICE = {"images/dice/b%d.png",
+                                              "images/dice/c%d.png",
+                                              "images/dice/g%d.png",
+                                              "images/dice/o%d.png",
+                                              "images/dice/p%d.png",
+                                              "images/dice/r%d.png",
+                                              "images/dice/v%d.png",
+                                              "images/dice/y%d.png"};
 
 }

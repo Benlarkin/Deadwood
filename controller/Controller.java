@@ -25,11 +25,19 @@ public class Controller extends Globals {
 
   public void startGame(int playerNum) {
     List<String> names = frame.getNameInput(playerNum);
-    frame.initDice(playerNum);
+//    frame.initDice(playerNum);
     frame.setVisible(true);
     game.startGame(names, playerNum);
   }
 
+  public static void makeDiceIcons(List<Player> players) {
+	  for(int i = 0; i < players.size(); i++) {
+		  Player current = players.get(i);
+		  Area area = current.getLocation();
+		  frame.initializeDiceIcon(current.getBackground(), current.getRank(), i+1, area.getX(), area.getY());
+	  }
+  }
+  
   public static void moveButtonPressed() {
     Player activePlayer = timer.getActive();
     String[] adjacent = arrayListToArray(activePlayer.getCurrentRoom().getAdjacent());
@@ -38,7 +46,8 @@ public class Controller extends Globals {
       game.board.getTimer().getActive().move(desiredRoom);
           actionTaken(true);
         }
-        frame.moveActiveDice(activePlayer.getCurrentRoom()); // update image of dice in view
+//        frame.moveActiveDice(activePlayer.getCurrentRoom()); // update image of dice in view
+    updatePlayer();
   }
 
   private static String[] arrayListToArray(List<String> list) {
@@ -199,4 +208,14 @@ public class Controller extends Globals {
     frame.setCard(area);
   }
 
+  public static void updateActive() {
+    Player active = timer.getActive();
+    frame.updateActivePanel(active.getBackground(), active.getDollars(), active.getCredits());
+  }
+
+  public static void updatePlayer() {
+    Player active = timer.getActive();
+    Area area = active.getLocation();
+    frame.updatePlayerPiece(String.format(active.getBackground(), active.getRank()), area.getX(), area.getY(), timer.getPlayers().indexOf(active)+1);
+  }
 }

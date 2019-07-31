@@ -11,10 +11,10 @@ public class Player extends Graphic {
    private Room currentRoom;
    private Role currentRole;
    private boolean takingTurn;
-   
+
    public int lastRoll;
 
-   public Player(String playerName, int startingDollars, int startingCredits, int startingRank) {
+   public Player(String playerName, int startingDollars, int startingCredits, int startingRank, String background) {
       this.name = playerName;
       this.dollars = startingDollars;
       this.credits = startingCredits;
@@ -23,6 +23,7 @@ public class Player extends Graphic {
       this.currentRoom = null;
       this.currentRole = null;
       this.lastRoll = -1;
+      super.background = background;
       takingTurn = false;
    }
 
@@ -45,25 +46,10 @@ public class Player extends Graphic {
       String moved = MOVEPLAYER;
       String worked = WORK;
       takingTurn = true;
+      Controller.updateActive();
       Controller.hideButtons(currentRoom, this);
       while (takingTurn == true) {
         System.out.print("");
-
-        //  int actionHandled = -8;
-        //  handleAction(moved, worked);
-        //  if (actionHandled == PLAYEREND) {
-        //     takingAction = false;
-        //  } else if (actionHandled == PLAYERMOVE) {
-        //     moved = BLANK;
-        //  } else if (actionHandled == PLAYERWORK) {
-        //     worked = BLANK;
-        //  } else if (actionHandled == INVALIDACTION) {
-        //     System.out.println(INVALIDACTIONMSG);
-        //  }
-        //  else if(actionHandled == SUCCESSACTACTION) {
-        //     moved = BLANK;
-        //     worked = BLANK;
-        //  }
       }
    }
 
@@ -147,6 +133,7 @@ public class Player extends Graphic {
 
    public void takeRole(String desiredRole) {
      handleWork(desiredRole);
+     super.location = currentRole.getLocation();
    }
    // Allows a Player to pick a Role. Displays the Roles if no Role is given with the action.
    private int handleWork(String desiredRole) {
@@ -273,7 +260,7 @@ public class Player extends Graphic {
       for (Room r : currentRoom.getNeighbors()) {
          if (r.getName().equals(desiredRoom)) {
             System.out.printf(MOVESUCC, name, currentRoom.getName(), desiredRoom);
-            currentRoom = r;
+            this.setCurrentRoom(r);
             currentRoom.getPlayers().remove(this);
             r.getPlayers().add(this);
             checkCard(r);
@@ -345,6 +332,7 @@ public class Player extends Graphic {
    // Moves the Player to the given Room.
    public Room setCurrentRoom(Room r) {
       this.currentRoom = r;
+      super.location = r.getLocation();
       return currentRoom;
    }
 
@@ -361,10 +349,13 @@ public class Player extends Graphic {
    // Sets the Player's rank to the given rank.
    public void setRank(int newRank) {
       this.rank = newRank;
+      Controller.updatePlayer();
    }
 
    // Gives the Player the given Role.
    public void setCurrentRole(Role newRole) {
       this.currentRole = newRole;
+      super.location = newRole.getLocation();
+      Controller.updatePlayer();
    }
 }
