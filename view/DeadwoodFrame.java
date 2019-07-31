@@ -18,6 +18,8 @@ public class DeadwoodFrame extends JFrame {
     private List<JLabel> labelCards = new ArrayList<JLabel>();
     private JLabel labelPlayer;
     private JLabel labelMenu;
+    private JPanel panelActive;
+    private JLabel labelActive;
     private JLabel label_p1;
     private JLabel label_p2;
     private JLabel label_p3;
@@ -36,8 +38,8 @@ public class DeadwoodFrame extends JFrame {
     private JButton buttonTake;
     private JButton buttonPromote;
     private JButton buttonEnd;
-
     private JLayeredPane paneDeadwood;
+ 
 
     private ImageIcon iconGameBoard;
 
@@ -63,7 +65,7 @@ public class DeadwoodFrame extends JFrame {
     protected static final String P6DICE = "images/dice/r%d.png";
     protected static final String P7DICE = "images/dice/v%d.png";
     protected static final String P8DICE = "images/dice/y%d.png";
-
+    
     public DeadwoodFrame() {
         super(DEADWOOD_TITLE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,7 +75,7 @@ public class DeadwoodFrame extends JFrame {
 
     private void initializeLabels() {
         setupGameBoardLabel();
-        // setupCardLabel();
+        setupActivePanel();
         setupMenuLabel();
     }
 
@@ -200,6 +202,20 @@ public class DeadwoodFrame extends JFrame {
         setupPromoteButton();
         setupEndButton();
     }
+    
+    private void setupActivePanel() {
+    	panelActive = new JPanel();
+    	panelActive.setBounds(iconGameBoard.getIconWidth() + 10, 250, 180, 180);
+    	panelActive.setBackground(Color.RED);
+    	panelActive.setBorder(BorderFactory.createLineBorder(Color.black));
+    	ImageIcon icon = new ImageIcon("images/dice/o4.png");
+    	labelActive = new JLabel(icon);
+    	panelActive.add(labelActive);
+    }
+    
+    public void setActive() {
+    	
+    }
 
     private void setupActButton() {
         buttonAct = new JButton(ACT_BUTTON_TEXT);
@@ -256,6 +272,7 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonTake, new Integer(3));
         paneDeadwood.add(buttonPromote, new Integer(3));
         paneDeadwood.add(buttonEnd, new Integer(3));
+        paneDeadwood.add(panelActive, new Integer(4));
     }
     
     public void updateCard(Area area, String image) {
