@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 
 import controller.*;
+import model.Room;
 
 import java.util.List;
 import java.util.*;
@@ -28,7 +29,7 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p8;
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
-    private int turn;
+    private int turn = 0;
 
     private JButton buttonAct;
     private JButton buttonRehearse;
@@ -296,11 +297,14 @@ public class DeadwoodFrame extends JFrame {
     }
 
     public void nextDice() {
-        if (turn++ == playerDice.size()) {
-            turn = 0;
+        if (this.turn++ == playerDice.size()) {
+            this.turn = 0;
             return;
         }
-        turn++;
+        else{
+
+          this.turn++;
+        }
     }
 
     public void updateActiveDice(int rank){
@@ -326,11 +330,9 @@ public class DeadwoodFrame extends JFrame {
       playerDice.get(turn).setIcon(temp);
     }
 
-    public void moveActiveDice(){
-
-      JLabel currDice = playerDice.get(turn);
-      // xml parse location? need to be passed to this?
-      // currDice.setBounds(x, y, 46, 46);
+    public void moveActiveDice(Room r){
+      JLabel currDice = playerDice.get(turn); // identify current player
+      currDice.setBounds(r.getLocation().getX(), r.getLocation().getY(), 46, 46); // set bounds via Area via Room
     }
 
     public List<JTextField> makeTextPanel(int playerNum) {
