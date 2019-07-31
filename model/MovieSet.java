@@ -1,5 +1,6 @@
 package model;
 import java.util.List;
+import java.util.ArrayList;
 import controller.*;
 
 public class MovieSet extends Room {
@@ -8,7 +9,7 @@ public class MovieSet extends Room {
   private int reqSuccess;
   private Card scene;
 
-  public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras, Area location) {
+  public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras, Area location, ArrayList<Area> takeLocations) {
     super.name = name;
     this.reqSuccess = takes;
     super.adjacent = adjacent;

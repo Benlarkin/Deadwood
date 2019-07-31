@@ -65,8 +65,8 @@ public class XMLReader extends Globals {
       return new CastingOffice(adjacent, location);
    }
 
-   // Makes individual Rooms from the XML file.
-   private Room makeRoom(Node setNode) {
+    // Makes individual Rooms from the XML file.
+    private Room makeRoom(Node setNode) {
       Element setElement = (Element) setNode;
       String setName = setElement.getAttribute(NAME);
       List<String> setNeighbors = new ArrayList<String>();
@@ -77,6 +77,10 @@ public class XMLReader extends Globals {
       }
       Element takesElement = (Element) setElement.getElementsByTagName(TAKE).item(0);
       int setTakes = Integer.parseInt(takesElement.getAttribute(NUMBER));
+      ArrayList<Area> takeLocations = new ArrayList<Area>();
+      for(int k = 0; k<setTakes; k++){
+         takeLocations.add(makeAreaFromTake(setElement.getElementsByTagName(TAKE).item(k)));
+      }
       Area location = makeArea(setElement.getElementsByTagName(AREA).item(0));
       NodeList roleList =  setElement.getElementsByTagName(PART);
       List<Role> setRoles = new ArrayList<Role>();
@@ -84,7 +88,7 @@ public class XMLReader extends Globals {
          Element roleElement = (Element) roleList.item(j);
          setRoles.add(makeRole(roleElement, false));
       }
-      return new MovieSet(setName, setTakes, setNeighbors, setRoles, location);
+      return new MovieSet(setName, setTakes, setNeighbors, setRoles, location, takeLocations);
    }
 
    // Makes a new Role. If the Role is on the card, it is a StarringRole, else its an ExtraRole.
