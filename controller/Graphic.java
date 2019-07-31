@@ -14,4 +14,5 @@ public class Graphic extends Globals {
    public Area getLocation() {
       return location;
    }
+
 }

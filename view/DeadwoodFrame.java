@@ -201,56 +201,56 @@ public class DeadwoodFrame extends JFrame {
         	label_p1 = new JLabel();
         	label_p1.setIcon(icon);
         	label_p1.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p1, new Integer(3));
+        	paneDeadwood.add(label_p1, new Integer(5));
         	playerDice.add(label_p1);
     	}
     	else if(player == 2) {
     		label_p2 = new JLabel();
         	label_p2.setIcon(icon);
         	label_p2.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p2, new Integer(3));
+        	paneDeadwood.add(label_p2, new Integer(5));
         	playerDice.add(label_p2);
     	}
     	else if(player == 3) {
     		label_p3 = new JLabel();
         	label_p3.setIcon(icon);
         	label_p3.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p3, new Integer(3));
+        	paneDeadwood.add(label_p3, new Integer(5));
         	playerDice.add(label_p3);
     	}
     	else if(player == 4) { 
     		label_p4 = new JLabel();
         	label_p4.setIcon(icon);
         	label_p4.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p4, new Integer(3));
+        	paneDeadwood.add(label_p4, new Integer(5));
         	playerDice.add(label_p4);
     	}
     	else if(player == 5) {
     		label_p5 = new JLabel();
         	label_p5.setIcon(icon);
         	label_p5.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p5, new Integer(3));
+        	paneDeadwood.add(label_p5, new Integer(5));
         	playerDice.add(label_p5);
     	}
     	else if(player == 6) {
     		label_p6 = new JLabel();
         	label_p6.setIcon(icon);
         	label_p6.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p6, new Integer(3));
+        	paneDeadwood.add(label_p6, new Integer(5));
         	playerDice.add(label_p6);
     	}
     	else if(player == 7) {
     		label_p7 = new JLabel();
         	label_p7.setIcon(icon);
         	label_p7.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p7, new Integer(3));
+        	paneDeadwood.add(label_p7, new Integer(5));
         	playerDice.add(label_p7);
     	}
     	else {
     		label_p8 = new JLabel();
         	label_p8.setIcon(icon);
         	label_p8.setBounds(x, y, 46, 46);
-        	paneDeadwood.add(label_p8, new Integer(3));
+        	paneDeadwood.add(label_p8, new Integer(5));
         	playerDice.add(label_p8);
     	}    	
     }

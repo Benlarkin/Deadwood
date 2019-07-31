@@ -17,6 +17,7 @@ public class Area {
    public int getX() {
       return x;
    }
+   
 
    // Returns the y coordinate.
    public int getY() {
@@ -31,5 +32,13 @@ public class Area {
    // Returns the width.
    public int getW() {
       return w;
+   }
+   
+   public void setX(int x) {
+	   this.x = x;
+   }
+   
+   public void setY(int y) {
+	   this.y = y;
    }
 }
