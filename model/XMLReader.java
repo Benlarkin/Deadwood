@@ -88,7 +88,7 @@ public class XMLReader extends Globals {
          Element roleElement = (Element) roleList.item(j);
          setRoles.add(makeRole(roleElement, false));
       }
-      return new MovieSet(setName, setTakes, setNeighbors, setRoles, location);
+      return new MovieSet(setName, setTakes, setNeighbors, setRoles, location, takeLocations);
    }
 
    // Makes a new Role. If the Role is on the card, it is a StarringRole, else its an ExtraRole.
