@@ -246,17 +246,17 @@ public class DeadwoodFrame extends JFrame {
 
     public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
-        paneDeadwood.add(labelGameBoard, new Integer(0)); // Add the board to the lowest layer
+        paneDeadwood.add(labelGameBoard, new Integer(1)); // Add the board to the lowest layer
         for(int i = 0; i < labelCards.size(); i++) {
-          paneDeadwood.add(labelCards.get(i), new Integer(1));
+          paneDeadwood.add(labelCards.get(i), new Integer(2));
         } // Add the card to the lower layer
-        paneDeadwood.add(labelMenu, new Integer(2)); // add menu
-        paneDeadwood.add(buttonAct, new Integer(2));
-        paneDeadwood.add(buttonRehearse, new Integer(2));
-        paneDeadwood.add(buttonMove, new Integer(2));
-        paneDeadwood.add(buttonTake, new Integer(2));
-        paneDeadwood.add(buttonPromote, new Integer(2));
-        paneDeadwood.add(buttonEnd, new Integer(2));
+        paneDeadwood.add(labelMenu, new Integer(3)); // add menu
+        paneDeadwood.add(buttonAct, new Integer(3));
+        paneDeadwood.add(buttonRehearse, new Integer(3));
+        paneDeadwood.add(buttonMove, new Integer(3));
+        paneDeadwood.add(buttonTake, new Integer(3));
+        paneDeadwood.add(buttonPromote, new Integer(3));
+        paneDeadwood.add(buttonEnd, new Integer(3));
     }
     
     public void updateCard(Area area, String image) {
@@ -272,28 +272,21 @@ public class DeadwoodFrame extends JFrame {
     		try {
     			ImageIcon icon = new ImageIcon(image);
     			card.setIcon(icon);
+    			getLayeredPane().setLayer(card, 2);
     		}
     		catch(Exception e) {
-    			card.setVisible(false);
-    			card.validate();
-    		    card.repaint();
+    			getLayeredPane().setLayer(card, 0);
     		}
     	}
     }
 
     public void updateMenu() {
       buttonRehearse.validate();
-      buttonRehearse.repaint();
       buttonAct.validate();
-      buttonAct.repaint();
       buttonMove.validate();
-      buttonMove.repaint();
       buttonTake.validate();
-      buttonTake.repaint();
       buttonPromote.validate();
-      buttonPromote.repaint();
       labelMenu.validate();
-      labelMenu.repaint();
     }
 
     public void nextDice() {

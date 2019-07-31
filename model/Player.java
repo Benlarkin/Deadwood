@@ -1,5 +1,4 @@
 package model;
-import javax.swing.*;
 
 import controller.*;
 public class Player extends Graphic {
@@ -245,6 +244,9 @@ public class Player extends Graphic {
       if (lastRoll >= budget) {
          // success case 1: starring
          cRole.onSuccess(this);
+         if(currentRole == null) {
+        	 Controller.removeCard(currentRoom);
+         }
         return true;
       } else {
          cRole.onFail(this);
