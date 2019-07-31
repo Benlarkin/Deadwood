@@ -320,6 +320,12 @@ public class DeadwoodFrame extends JFrame {
         buttonMove.addMouseListener(new MoveButtonMouseListener());
     }
 
+    private void setupShotCounter(ArrayList<Area> takeLocations){
+      // for(Area a : takeLocations){
+        
+      // }
+    }
+
     public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
         paneDeadwood.add(labelGameBoard, new Integer(1)); // Add the board to the lowest layer
