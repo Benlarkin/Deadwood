@@ -6,7 +6,7 @@ public class Graphic extends Globals {
    protected Area location;
 
    // Returns the Graphic's Image.
-   public Image getBackground() {
+   public String getBackground() {
       return background;
    }
 
