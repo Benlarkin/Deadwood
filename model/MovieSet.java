@@ -63,6 +63,7 @@ public class MovieSet extends Room {
       }
       scene = null;
     }
+    Controller.removeShotCounter(takeLocations);
   }
 
  // Finds the starring actors on the scene on this Room.
