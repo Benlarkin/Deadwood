@@ -32,10 +32,8 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p7;
     private JLabel label_p8;
 
-<<<<<<< HEAD
-=======
     private JLabel label_sc;
->>>>>>> 3ae2c3767d196272203120c313d10687a3e3102f
+
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
     private int turn = 0;
