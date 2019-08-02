@@ -31,7 +31,7 @@ public class Card extends Graphic {
       for(int i = 0; i < budget; i++) {
          rolls.add(Dice.roll(0));
       }
-      Collections.sort(rolls);
+      Collections.sort(rolls, Collections.reverseOrder());
       int j = 0;
       while(!rolls.isEmpty()) {
          if(j == players.length) {
