@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+import controller.*;
 
 public class Timer {
 
@@ -31,6 +32,7 @@ public class Timer {
 			turn = 0;
 		}
 		Player activePlayer = players.get(turn);
+		Controller.updateActive(activePlayer);
 		activePlayer.playerTurn();
 		turn++;
 	}

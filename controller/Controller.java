@@ -114,7 +114,7 @@ public class Controller extends Globals {
       }
     }
   }
-
+  
   private static void defaultButtons(boolean actShow, boolean rehearseShow,
     boolean moveShow, boolean takeShow, boolean promoteShow) {
     JButton act = frame.getActButton();
@@ -172,6 +172,10 @@ public class Controller extends Globals {
   }
 
   }
+  
+  public static void updateEvent() {
+	updateActive(timer.getActive());
+  }
 
   public static void flipCard(Room room, String image) {
 	  frame.updateCard(room.getLocation(), image);
@@ -215,10 +219,10 @@ public class Controller extends Globals {
     frame.setCard(area);
   }
 
-  public static void updateActive() {
-    Player active = timer.getActive();
-    frame.updateActivePanel(active.getBackground(), active.getDollars(), active.getCredits());
-  }
+//  public static void updateActive() {
+// Player active = timer.getActive();
+//    frame.updateActivePanel(acti   ve.getBackground(), active.getDollars(), active.getCredits());
+//  }
 
   public static void updatePlayer() {
     Player active = timer.getActive();
@@ -234,5 +238,18 @@ public class Controller extends Globals {
 	    	active.getLocation().setX(active.getLocation().getX() + room.getLocation().getX());
 	    	active.getLocation().setY(active.getLocation().getY() + room.getLocation().getY());
 	    }
+  }
+  
+  public static void updateActive(Player player) {
+	 String role = BLANK;
+	 String line = BLANK;
+	 String rehearsal = BLANK;
+	 Role currRole = player.getCurrentRole();
+	 if(currRole != null) {
+		 role = currRole.getName();
+		 line = "\"" + currRole.getLine() + "\"";
+		 rehearsal = player.getRehearsalChips() + " rehearsals";
+	 }
+	 frame.setActive(timer.getPlayers().indexOf(player) + 1, player.getName(), player.getDollars(), player.getCredits(), role, line, rehearsal);
   }
 }

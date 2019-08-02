@@ -46,7 +46,7 @@ public class Player extends Graphic {
       String moved = MOVEPLAYER;
       String worked = WORK;
       takingTurn = true;
-      Controller.updateActive();
+//      Controller.updateActive();
       Controller.hideButtons(currentRoom, this);
       while (takingTurn == true) {
         System.out.print("");
@@ -178,6 +178,7 @@ public class Player extends Graphic {
             }
          }
       }
+		Controller.updateActive(this);
       return selected;
    }
 
@@ -246,6 +247,7 @@ public class Player extends Graphic {
       Player player = this;
       player.incRehearsalChips();
       System.out.println(REHEARSEMSG);
+		Controller.updateActive(this);
    }
 
    // Allows a Player to move to a new, adjacent Room.
@@ -264,6 +266,7 @@ public class Player extends Graphic {
             currentRoom.getPlayers().remove(this);
             r.getPlayers().add(this);
             checkCard(r);
+    		Controller.updateActive(this);
             return FOUND;
          }
       }
@@ -326,6 +329,7 @@ public class Player extends Graphic {
    // Increases the number of Rehearsal Chips the Player has by one.
    public int incRehearsalChips() {
       this.rehearsalChips++;
+	  Controller.updateActive(this);
       return rehearsalChips;
    }
 
