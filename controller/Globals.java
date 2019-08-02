@@ -45,6 +45,7 @@ public class Globals {
    public static final String H = "h";
    public static final String X = "x";
    public static final String Y = "y";
+   public static final String SHOTCOUNTER_IMAGE = "images/shot.png";
    public static final String IMG = "img";
    public static final String AREA = "area";
    public static final String ACTACTION = "act";

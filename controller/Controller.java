@@ -203,6 +203,9 @@ public class Controller extends Globals {
     actionTaken(false);
   }
 
+  public static void initializeShotCounters(ArrayList<Area> takeLocations){
+    frame.setupShotCounter(takeLocations);
+  }
 
   public static void setCardDown(Area area) {
     frame.setCard(area);
