@@ -3,6 +3,7 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import javax.swing.text.*;
 
 import controller.*;
 import model.Room;
@@ -21,6 +22,7 @@ public class DeadwoodFrame extends JFrame {
     private JLabel labelMenu;
     private JPanel panelActive;
     private JLabel labelActive;
+    private JTextPane textActive;
     private JLabel label_p1;
     private JLabel label_p2;
     private JLabel label_p3;
@@ -29,6 +31,7 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p6;
     private JLabel label_p7;
     private JLabel label_p8;
+
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
     private int turn = 0;
@@ -56,6 +59,7 @@ public class DeadwoodFrame extends JFrame {
     private static final String END_BUTTON_TEXT = "END";
     private static final String MOVE_BUTTON_TEXT = "MOVE";
     protected static final String PLAYERMSG = "Player %d name: ";
+    private static final String ACTIVEMESSAGE = "%s\n%d dollars | %d credits \n%s \n%s\n%s";
 
 
     protected static final String P1DICE = "images/dice/b%d.png";
@@ -267,15 +271,24 @@ public class DeadwoodFrame extends JFrame {
     private void setupActivePanel() {
     	panelActive = new JPanel();
     	panelActive.setBounds(iconGameBoard.getIconWidth() + 10, 250, 180, 180);
-    	panelActive.setBackground(Color.RED);
+    	panelActive.setBackground(Color.WHITE);
     	panelActive.setBorder(BorderFactory.createLineBorder(Color.black));
-    	ImageIcon icon = new ImageIcon("images/dice/o4.png");
-    	labelActive = new JLabel(icon);
-    	panelActive.add(labelActive);
+    	labelActive = new JLabel();
+    	panelActive.add(labelActive, BorderLayout.CENTER);
+    	textActive = new JTextPane();
+    	textActive.setBounds(80, 15, 130, 150);
+    	panelActive.add(textActive, BorderLayout.CENTER);
+    	StyledDocument doc = textActive.getStyledDocument();
+    	SimpleAttributeSet center = new SimpleAttributeSet();
+    	StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+    	doc.setParagraphAttributes(0, doc.getLength(), center, false);
     }
 
-    public void setActive() {
- 
+    public void setActive(int player, String name, int dollars, int credits, String role, String line, String rehearsal) {
+    	labelActive.setIcon(getActive(player).getIcon());
+    	textActive.setText(String.format(ACTIVEMESSAGE, name, dollars, credits, role, line, rehearsal));
+    	textActive.revalidate();
+    	labelActive.revalidate();
     }
 
     private void setupActButton() {
@@ -624,10 +637,10 @@ public class DeadwoodFrame extends JFrame {
       return array;
     }
 
-    public void updateActivePanel(String image, int dollars, int credits) {
-      ImageIcon icon = new ImageIcon(image);
-      labelActive.setIcon(icon);
-      labelActive.revalidate();
-    }
+//    public void updateActivePanel(String image, int dollars, int credits) {
+//      ImageIcon icon = new ImageIcon(image);
+//      labelActive.setIcon(icon);
+//      labelActive.revalidate();
+//    }
 
 }
