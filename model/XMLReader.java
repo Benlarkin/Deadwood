@@ -159,4 +159,13 @@ public class XMLReader extends Globals {
 	   int wArea = Integer.parseInt(areaElement.getAttribute(W));
 	   return new Area(xArea, yArea, hArea, wArea);
    }
+
+   private Area makeAreaFromTake(Node takeNode) {
+	   Element takeElement = (Element) takeNode;
+	   int xArea = Integer.parseInt(takeElement.getAttribute(X));
+	   int yArea = Integer.parseInt(takeElement.getAttribute(Y));
+	   int hArea = Integer.parseInt(takeElement.getAttribute(H));
+	   int wArea = Integer.parseInt(takeElement.getAttribute(W));
+	   return new Area(xArea, yArea, hArea, wArea);
+   }
 }
