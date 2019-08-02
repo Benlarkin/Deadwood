@@ -18,7 +18,6 @@ public class DeadwoodFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel labelGameBoard;
     private List<JLabel> labelCards = new ArrayList<JLabel>();
-    private JLabel labelPlayer;
     private JLabel labelMenu;
     private JPanel panelActive;
     private JLabel labelActive;
@@ -32,9 +31,13 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p7;
     private JLabel label_p8;
 
+
+
     // image jlabels
-    private JLabel label_sc;
-    private JLabel label_rx;
+
+    private List<JLabel> label_sc = new ArrayList<JLabel>();
+    private List<JLabel> label_rx = new ArrayList<JLabel>();
+
 
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
@@ -341,13 +344,15 @@ public class DeadwoodFrame extends JFrame {
     }
 
     public void setupShotCounter(ArrayList<Area> takeLocations){
+    	paneDeadwood = getLayeredPane();
       for(Area a : takeLocations){
         // add shot counter image to pane at Area a.getX(), a.getY()
           ImageIcon icon = new ImageIcon(SHOTCOUNTER_IMAGE);
-          label_sc = new JLabel();
-        	label_sc.setIcon(icon);
-        	label_sc.setBounds(a.getX(), a.getY(), 42, 42);
-        	paneDeadwood.add(label_sc, new Integer(4));
+          JLabel sc = new JLabel();
+        	sc.setIcon(icon);
+        	sc.setBounds(a.getX(), a.getY(), 42, 42);
+        	paneDeadwood.add(sc, new Integer(4));
+        	label_sc.add(sc);
       }
     }
 
@@ -355,10 +360,11 @@ public class DeadwoodFrame extends JFrame {
     Area a = takeLocations.get(takeLocations.size() - 1);
     takeLocations.remove(takeLocations.size() - 1);
     ImageIcon icon = new ImageIcon(REDX_IMAGE);
-    label_rx = new JLabel();
-    label_rx.setIcon(icon);
-    label_rx.setBounds(a.getX(), a.getY(), 42, 42);
-    paneDeadwood.add(label_rx, new Integer(5));
+    JLabel rx = new JLabel();
+    rx.setIcon(icon);
+    rx.setBounds(a.getX(), a.getY(), 42, 42);
+    paneDeadwood.add(rx, new Integer(5));
+    label_rx.add(rx);
   }
 
     public void initializeDeadwoodPane() {
