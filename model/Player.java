@@ -355,7 +355,9 @@ public class Player extends Graphic {
    // Gives the Player the given Role.
    public void setCurrentRole(Role newRole) {
       this.currentRole = newRole;
+      if(newRole != null) {
       super.location = newRole.getLocation();
+      }
       Controller.updatePlayer();
    }
 }
