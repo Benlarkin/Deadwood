@@ -356,17 +356,36 @@ public class DeadwoodFrame extends JFrame {
       }
     }
 
-    public void removeShotCounter(ArrayList<Area> takeLocations) {
-    Area a = takeLocations.get(takeLocations.size() - 1);
-    takeLocations.remove(takeLocations.size() - 1);
-    ImageIcon icon = new ImageIcon(REDX_IMAGE);
-    JLabel rx = new JLabel();
-    rx.setIcon(icon);
-    rx.setBounds(a.getX(), a.getY(), 42, 42);
-    paneDeadwood.add(rx, new Integer(5));
-    label_rx.add(rx);
+    public void removeShotCounter(Area area) {
+    	JLabel sc = getShot(area);
+    	if(sc != null) {
+    		sc.setVisible(true);
+    		sc.revalidate();
+    	}
+//    	
+//    	
+//    	
+//    Area a = takeLocations.get(takeLocations.size() - 1);
+//    takeLocations.remove(takeLocations.size() - 1);
+//    ImageIcon icon = new ImageIcon(REDX_IMAGE);
+//    JLabel rx = new JLabel();
+//    rx.setIcon(icon);
+//    rx.setBounds(a.getX(), a.getY(), 42, 42);
+//    paneDeadwood.add(rx, new Integer(5));
+//    label_rx.add(rx);
   }
 
+    
+    private JLabel getShot(Area area) {
+    	int x = area.getX();
+    	int y = area.getY();
+    	for(JLabel iter : label_rx) {
+    		if(iter.getX() == area.getX() && iter.getY() == area.getY()) {
+    			return iter;
+    		}
+    	}
+    	return null;
+    }
     public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
         paneDeadwood.add(labelGameBoard, new Integer(1)); // Add the board to the lowest layer

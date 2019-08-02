@@ -211,8 +211,8 @@ public class Controller extends Globals {
     frame.setupShotCounter(takeLocations);
   }
 
-  public static void removeShotCounter(ArrayList<Area> takeLocations){
-    frame.removeShotCounter(takeLocations);
+  public static void removeShotCounter(ArrayList<Area> takeLocations, int index){
+    frame.removeShotCounter(takeLocations.get(index));
   }
 
   public static void setCardDown(Area area) {
