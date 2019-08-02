@@ -31,7 +31,13 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p7;
     private JLabel label_p8;
 
+
+
+    // image jlabels
+
     private List<JLabel> label_sc = new ArrayList<JLabel>();
+    private List<JLabel> label_rx = new ArrayList<JLabel>();
+
 
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
@@ -62,6 +68,7 @@ public class DeadwoodFrame extends JFrame {
     protected static final String PLAYERMSG = "Player %d name: ";
     private static final String ACTIVEMESSAGE = "%s\n%d dollars | %d credits \n%s \n%s\n%s";
     private static final String SHOTCOUNTER_IMAGE = "images/shot.png";
+    private static final String REDX_IMAGE = "images/redx.png";
 
 
 
@@ -348,6 +355,17 @@ public class DeadwoodFrame extends JFrame {
         	label_sc.add(sc);
       }
     }
+
+    public void removeShotCounter(ArrayList<Area> takeLocations) {
+    Area a = takeLocations.get(takeLocations.size() - 1);
+    takeLocations.remove(takeLocations.size() - 1);
+    ImageIcon icon = new ImageIcon(REDX_IMAGE);
+    JLabel rx = new JLabel();
+    rx.setIcon(icon);
+    rx.setBounds(a.getX(), a.getY(), 42, 42);
+    paneDeadwood.add(rx, new Integer(5));
+    label_rx.add(rx);
+  }
 
     public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
