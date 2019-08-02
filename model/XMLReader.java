@@ -79,7 +79,7 @@ public class XMLReader extends Globals {
       int setTakes = Integer.parseInt(takesElement.getAttribute(NUMBER));
       ArrayList<Area> takeLocations = new ArrayList<Area>();
       for(int k = 0; k<setTakes; k++){
-      //   takeLocations.add(makeAreaFromTake(setElement.getElementsByTagName(TAKE).item(k)));
+    	  takeLocations.add(makeArea(((Element) setElement.getElementsByTagName(TAKE).item(k)).getElementsByTagName(AREA).item(0)));
       }
       Area location = makeArea(setElement.getElementsByTagName(AREA).item(0));
       NodeList roleList =  setElement.getElementsByTagName(PART);
@@ -160,12 +160,4 @@ public class XMLReader extends Globals {
 	   return new Area(xArea, yArea, hArea, wArea);
    }
 
-   private Area makeAreaFromTake(Node takeNode) {
-	   Element takeElement = (Element) takeNode;
-	   int xArea = Integer.parseInt(takeElement.getAttribute(X));
-	   int yArea = Integer.parseInt(takeElement.getAttribute(Y));
-	   int hArea = Integer.parseInt(takeElement.getAttribute(H));
-	   int wArea = Integer.parseInt(takeElement.getAttribute(W));
-	   return new Area(xArea, yArea, hArea, wArea);
-   }
 }
