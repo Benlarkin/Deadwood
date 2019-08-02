@@ -8,6 +8,7 @@ public class MovieSet extends Room {
   private List<Role> extras;
   private int reqSuccess;
   private Card scene;
+  private ArrayList<Area> takeLocations;
 
   public MovieSet(String name, int takes, List<String> adjacent, List<Role> extras, Area location, ArrayList<Area> takeLocations) {
     super.name = name;
@@ -16,6 +17,11 @@ public class MovieSet extends Room {
     this.extras = extras;
     this.scene = null;
     super.location = location;
+    this.takeLocations = takeLocations;
+  }
+
+  public ArrayList<Area> getTakeLocations(){
+    return takeLocations;
   }
 
   // Returns the list of Roles on the Space.

@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.text.*;
 
 import controller.*;
-import model.Room;
+import model.*;
 
 import java.util.List;
 import java.util.*;
@@ -32,6 +32,10 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p7;
     private JLabel label_p8;
 
+<<<<<<< HEAD
+=======
+    private JLabel label_sc;
+>>>>>>> 3ae2c3767d196272203120c313d10687a3e3102f
 
     private List<JLabel> playerDice = new ArrayList<JLabel>();
     private int turn = 0;
@@ -60,6 +64,8 @@ public class DeadwoodFrame extends JFrame {
     private static final String MOVE_BUTTON_TEXT = "MOVE";
     protected static final String PLAYERMSG = "Player %d name: ";
     private static final String ACTIVEMESSAGE = "%s\n%d dollars | %d credits \n%s \n%s\n%s";
+    private static final String SHOTCOUNTER_IMAGE = "images/shot.png";
+
 
 
     protected static final String P1DICE = "images/dice/b%d.png";
@@ -331,6 +337,17 @@ public class DeadwoodFrame extends JFrame {
         buttonMove.setBackground(Color.white);
         buttonMove.setBounds(iconGameBoard.getIconWidth() + 10, 90, 100, 20);
         buttonMove.addMouseListener(new MoveButtonMouseListener());
+    }
+
+    public void setupShotCounter(ArrayList<Area> takeLocations){
+      for(Area a : takeLocations){
+        // add shot counter image to pane at Area a.getX(), a.getY()
+          ImageIcon icon = new ImageIcon(SHOTCOUNTER_IMAGE);
+          label_sc = new JLabel();
+        	label_sc.setIcon(icon);
+        	label_sc.setBounds(a.getX(), a.getY(), 42, 42);
+        	paneDeadwood.add(label_sc, new Integer(4));
+      }
     }
 
     public void initializeDeadwoodPane() {
