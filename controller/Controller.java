@@ -216,6 +216,16 @@ public class Controller extends Globals {
   public static void updatePlayer() {
     Player active = timer.getActive();
     Area area = active.getLocation();
+    fixLocation(active);
     frame.updatePlayerPiece(String.format(active.getBackground(), active.getRank()), area.getX(), area.getY(), timer.getPlayers().indexOf(active)+1);
+  }
+  
+  private static void fixLocation(Player active) {
+	    Room room = active.getCurrentRoom();
+	    Role role = active.getCurrentRole();
+	    if(role instanceof StarringRole) {
+	    	active.getLocation().setX(active.getLocation().getX() + room.getLocation().getX());
+	    	active.getLocation().setY(active.getLocation().getY() + room.getLocation().getY());
+	    }
   }
 }
