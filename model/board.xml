@@ -130,7 +130,7 @@
     <parts>
       <part name="Railroad Worker" level="1">
         <area x="637" y="22" h="46" w="46" />
-        <line>Hit me!</line>
+        <line>I'm a steel-drivin' man!</line>
       </part>
       <part name="Falls off Roof" level="2">
         <area x="720" y="22" h="46" w="46" />

@@ -67,9 +67,6 @@ public class Board extends Graphic {
          current.getPlayers().clear();
       }
       List<Player> trailerPlayers = trailers.getPlayers();
-      int y = 0;
-      int x = 0;
-      boolean stack = false;
       for (Player currPlayer : players) {
          currPlayer.setCurrentRoom(trailers);
          trailerPlayers.add(currPlayer);
