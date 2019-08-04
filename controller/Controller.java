@@ -73,7 +73,6 @@ public class Controller extends Globals {
     }
   }
   catch(Exception e) {
-
   }
   }
 
@@ -183,6 +182,9 @@ public class Controller extends Globals {
 
   public static void removeCard(Room room) {
 	  frame.updateCard(room.getLocation(), BLANK);
+	  if(game.board.getCardsLeft() == 1) {
+		  timer.nextDay();
+	  }
   }
 
   public static int[][] getUpgradeCost() {

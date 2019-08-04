@@ -279,11 +279,13 @@ public class Player extends Graphic {
    private void checkCard(Room r) {
       if(r instanceof MovieSet) {
          Card scene = ((MovieSet) r).getScene();
+         if(scene != null) {
          if(!scene.isRevealed()) {
             scene.reveal();
             Controller.flipCard(currentRoom, scene.getBackground());
          }
       }
+    }
    }
 
    // Returns the score of the Player ($ + credits + 5 x Rank).

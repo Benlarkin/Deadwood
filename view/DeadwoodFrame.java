@@ -117,94 +117,6 @@ public class DeadwoodFrame extends JFrame {
       setupCardLabel(area);
     }
 
-    // SET UP Player dice in trailers at start of game
-//    public void initDice(int playerCount) {
-//        boolean flag = false;
-//        if(playerCount>=7){
-//            flag = true;
-//        }
-//        paneDeadwood = getLayeredPane();
-//        label_p1 = new JLabel();
-//        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
-//            if(flag){
-//                icon1 = new ImageIcon("images/dice/b2.png");
-//            }
-//        label_p1.setIcon(icon1);
-//        label_p2 = new JLabel();
-//        ImageIcon icon2 = new ImageIcon("images/dice/c1.png");
-//        if(flag){
-//            icon2 = new ImageIcon("images/dice/c2.png");
-//        }
-//        label_p2.setIcon(icon2);
-//        label_p1.setBounds(1030, 400, 46, 46);
-//        label_p2.setBounds(1030, 350, 46, 46);
-//        paneDeadwood.add(label_p1, new Integer(3));
-//        paneDeadwood.add(label_p2, new Integer(3));
-//        playerDice.add(label_p1);
-//        playerDice.add(label_p2);
-//        if (playerCount >= 3) {
-//            label_p3 = new JLabel();
-//            ImageIcon icon3 = new ImageIcon("images/dice/g1.png");
-//            if(flag){
-//                icon3 = new ImageIcon("images/dice/g2.png");
-//            }
-//            label_p3.setIcon(icon3);
-//            label_p3.setBounds(1030, 300, 46, 46);
-//            paneDeadwood.add(label_p3, new Integer(3));
-//            playerDice.add(label_p3);
-//        }
-//        if (playerCount >= 4) {
-//            label_p4 = new JLabel();
-//            ImageIcon icon4 = new ImageIcon("images/dice/o1.png");
-//            if(flag){
-//                icon4 = new ImageIcon("images/dice/o2.png");
-//            }
-//            label_p4.setIcon(icon4);
-//            label_p4.setBounds(1030, 250, 46, 46);
-//            paneDeadwood.add(label_p4, new Integer(3));
-//            playerDice.add(label_p4);
-//        }
-//        if (playerCount >= 5) {
-//            label_p5 = new JLabel();
-//            ImageIcon icon5 = new ImageIcon("images/dice/p1.png");
-//            if(flag){
-//                icon5 = new ImageIcon("images/dice/p2.png");
-//            }
-//            label_p5.setIcon(icon5);
-//            label_p5.setBounds(1120, 250, 46, 46);
-//            paneDeadwood.add(label_p5, new Integer(3));
-//            playerDice.add(label_p5);
-//        }
-//        if (playerCount >= 6) {
-//            label_p6 = new JLabel();
-//            ImageIcon icon6 = new ImageIcon("images/dice/r1.png");
-//            if(flag){
-//                icon6 = new ImageIcon("images/dice/r2.png");
-//            }
-//            label_p6.setIcon(icon6);
-//            label_p6.setBounds(1120, 300, 46, 46);
-//            paneDeadwood.add(label_p6, new Integer(3));
-//            playerDice.add(label_p6);
-//        }
-//        if (playerCount >= 7) {
-//            label_p7 = new JLabel();
-//            ImageIcon icon7 = new ImageIcon("images/dice/v2.png");
-//            label_p7.setIcon(icon7);
-//            label_p7.setBounds(1120, 350, 46, 46);
-//            paneDeadwood.add(label_p7, new Integer(3));
-//            playerDice.add(label_p7);
-//        }
-//        if (playerCount == 8) {
-//            label_p8 = new JLabel();
-//            ImageIcon icon8 = new ImageIcon("images/dice/y2.png");
-//            label_p8.setIcon(icon8);
-//            label_p8.setBounds(1120, 400, 46, 46);
-//            paneDeadwood.add(label_p8, new Integer(3));
-//            playerDice.add(label_p8);
-//        }
-//    }
-
-
     private void setupMenuLabel() {
         labelMenu = new JLabel(MENU_LABEL_TEXT);
         labelMenu.setBounds(iconGameBoard.getIconWidth() + 40, 0, 100, 20);
@@ -374,18 +286,6 @@ public class DeadwoodFrame extends JFrame {
     		sc.revalidate();
     	}
 		}
-//
-//
-//
-//    Area a = takeLocations.get(takeLocations.size() - 1);
-//    takeLocations.remove(takeLocations.size() - 1);
-//    ImageIcon icon = new ImageIcon(REDX_IMAGE);
-//    JLabel rx = new JLabel();
-//    rx.setIcon(icon);
-//    rx.setBounds(a.getX(), a.getY(), 42, 42);
-//    paneDeadwood.add(rx, new Integer(5));
-//    label_rx.add(rx);
-
 
     private JLabel getShot(Area area) {
     	int x = area.getX();
@@ -461,21 +361,21 @@ public class DeadwoodFrame extends JFrame {
     public void updateActiveDice(int rank){
       ImageIcon temp = new ImageIcon();
       switch(turn){
-        case 1: temp = new ImageIcon(String.format(P1DICE, rank));
+        case 0: temp = new ImageIcon(String.format(P1DICE, rank));
                 break;
-        case 2: temp = new ImageIcon(String.format(P2DICE, rank));
+        case 1: temp = new ImageIcon(String.format(P2DICE, rank));
         break;
-        case 3: temp = new ImageIcon(String.format(P3DICE, rank));
+        case 2: temp = new ImageIcon(String.format(P3DICE, rank));
         break;
-        case 4: temp = new ImageIcon(String.format(P4DICE, rank));
+        case 3: temp = new ImageIcon(String.format(P4DICE, rank));
         break;
-        case 5: temp = new ImageIcon(String.format(P5DICE, rank));
+        case 4: temp = new ImageIcon(String.format(P5DICE, rank));
         break;
-        case 6: temp = new ImageIcon(String.format(P6DICE, rank));
+        case 5: temp = new ImageIcon(String.format(P6DICE, rank));
         break;
-        case 7: temp = new ImageIcon(String.format(P7DICE, rank));
+        case 6: temp = new ImageIcon(String.format(P7DICE, rank));
         break;
-        case 8: temp = new ImageIcon(String.format(P8DICE, rank));
+        case 7: temp = new ImageIcon(String.format(P8DICE, rank));
         break;
       }
       playerDice.get(turn).setIcon(temp);
@@ -688,9 +588,10 @@ public class DeadwoodFrame extends JFrame {
     private String[] makeOptions(int wealth, int rank, int credOrDoll) {
       List<String> options = new ArrayList<String>();
       int[][] cost = Controller.getUpgradeCost();
-      for(int i = rank; i < 6; i++) {
-        if(cost[0][credOrDoll] <= wealth) {
-          options.add(Integer.toString(i));
+      for(int i = rank - 1; i < 5; i++) {
+    	  int currCost = cost[credOrDoll][i];
+        if(currCost <= wealth) {
+          options.add(Integer.toString(i+2));
         }
       }
       return arrayListToArray(options);
