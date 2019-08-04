@@ -48,6 +48,7 @@ public class MovieSet extends Room {
   // is removed and any actors on or off the Card are given their
   // respective payout.
   public void decrementShotCounter() {
+	Controller.removeShotCounter(takeLocations, reqSuccess, takeLocations.size() - (reqSuccess - 1));
     this.reqSuccess--;
     // if scene is wrapped
     if (this.reqSuccess == 0) {
@@ -63,7 +64,6 @@ public class MovieSet extends Room {
       }
       scene = null;
     }
-    Controller.removeShotCounter(takeLocations, reqSuccess);
   }
 
  // Finds the starring actors on the scene on this Room.

@@ -50,7 +50,7 @@ public class Board extends Graphic {
             MovieSet currentSet = (MovieSet) current;
             currentSet.setScene(deck.remove(i));
             cardsLeft++;
-            Controller.initializeShotCounters(currentSet.getTakeLocations());
+            Controller.initializeShotCounters(currentSet.getTakeLocations(), i);
          }
       }
    }

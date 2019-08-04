@@ -36,7 +36,7 @@ public class DeadwoodFrame extends JFrame {
     // image jlabels
 
     private List<JLabel> label_sc = new ArrayList<JLabel>();
-    private List<JLabel> label_rx = new ArrayList<JLabel>();
+    // private List<JLabel> label_rx = new ArrayList<JLabel>();
 
 
 
@@ -86,6 +86,7 @@ public class DeadwoodFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeLabels();
         initializeButtons();
+				initializeShotCounters();
     }
 
     private void initializeLabels() {
@@ -208,7 +209,7 @@ public class DeadwoodFrame extends JFrame {
         labelMenu = new JLabel(MENU_LABEL_TEXT);
         labelMenu.setBounds(iconGameBoard.getIconWidth() + 40, 0, 100, 20);
     }
-    
+
     public void initializeDiceIcon(String image, int rank, int player, int x, int y) {
     	ImageIcon icon = new ImageIcon(String.format(image, rank));
     	if(player == 1) {
@@ -232,7 +233,7 @@ public class DeadwoodFrame extends JFrame {
         	paneDeadwood.add(label_p3, new Integer(5));
         	playerDice.add(label_p3);
     	}
-    	else if(player == 4) { 
+    	else if(player == 4) {
     		label_p4 = new JLabel();
         	label_p4.setIcon(icon);
         	label_p4.setBounds(x, y, 46, 46);
@@ -266,7 +267,7 @@ public class DeadwoodFrame extends JFrame {
         	label_p8.setBounds(x, y, 46, 46);
         	paneDeadwood.add(label_p8, new Integer(5));
         	playerDice.add(label_p8);
-    	}    	
+    	}
     }
 
     private void initializeButtons() {
@@ -343,28 +344,39 @@ public class DeadwoodFrame extends JFrame {
         buttonMove.addMouseListener(new MoveButtonMouseListener());
     }
 
-    public void setupShotCounter(ArrayList<Area> takeLocations){
-    	paneDeadwood = getLayeredPane();
-      for(Area a : takeLocations){
-        // add shot counter image to pane at Area a.getX(), a.getY()
-          ImageIcon icon = new ImageIcon(SHOTCOUNTER_IMAGE);
-          JLabel sc = new JLabel();
-        	sc.setIcon(icon);
-        	sc.setBounds(a.getX(), a.getY(), 42, 42);
-        	paneDeadwood.add(sc, new Integer(4));
-        	label_sc.add(sc);
-      }
+
+		private void initializeShotCounters() {
+			for(int i = 0; i < 10; i++) {
+								ImageIcon icon = new ImageIcon(SHOTCOUNTER_IMAGE);
+								JLabel sc = new JLabel();
+								sc.setIcon(icon);
+			        	label_sc.add(sc);
+							}
+		}
+
+    public void resetShotCounter(Area area, int index){
+          JLabel sc = label_sc.get(index);
+        	sc.setBounds(area.getX(), area.getY(), 42, 42);
+					sc.revalidate();
     }
 
-    public void removeShotCounter(Area area) {
-    	JLabel sc = getShot(area);
+    public void moveShotCounter(Area currentArea, Area newArea) {
+    	JLabel sc = getShot(currentArea);
     	if(sc != null) {
-    		sc.setVisible(true);
+				if(newArea != null) {
+					sc. setBounds(newArea.getX(), newArea.getY(), 42, 42);
+					sc.setVisible(true);
+
+				}
+				else {
+					sc.setVisible(false);
+				}
     		sc.revalidate();
     	}
-//    	
-//    	
-//    	
+		}
+//
+//
+//
 //    Area a = takeLocations.get(takeLocations.size() - 1);
 //    takeLocations.remove(takeLocations.size() - 1);
 //    ImageIcon icon = new ImageIcon(REDX_IMAGE);
@@ -373,19 +385,19 @@ public class DeadwoodFrame extends JFrame {
 //    rx.setBounds(a.getX(), a.getY(), 42, 42);
 //    paneDeadwood.add(rx, new Integer(5));
 //    label_rx.add(rx);
-  }
 
-    
+
     private JLabel getShot(Area area) {
     	int x = area.getX();
     	int y = area.getY();
-    	for(JLabel iter : label_rx) {
-    		if(iter.getX() == area.getX() && iter.getY() == area.getY()) {
+    	for(JLabel iter : label_sc) {
+    		if(iter.getX() == x && iter.getY() == y) {
     			return iter;
     		}
     	}
     	return null;
     }
+
     public void initializeDeadwoodPane() {
         paneDeadwood = getLayeredPane();
         paneDeadwood.add(labelGameBoard, new Integer(1)); // Add the board to the lowest layer
@@ -400,6 +412,9 @@ public class DeadwoodFrame extends JFrame {
         paneDeadwood.add(buttonPromote, new Integer(3));
         paneDeadwood.add(buttonEnd, new Integer(3));
         paneDeadwood.add(panelActive, new Integer(4));
+				for(JLabel iter : label_sc) {
+					 	paneDeadwood.add(iter, new Integer(4));
+				}
     }
 
     public void updateCard(Area area, String image) {
@@ -473,7 +488,7 @@ public class DeadwoodFrame extends JFrame {
       active.setIcon(new ImageIcon(image));
       active.revalidate();
     }
-    
+
     private JLabel getActive(int player) {
     	  if(player == 1) {
     	        return label_p1;

@@ -24,7 +24,7 @@ public class Controller extends Globals {
   }
 
   public void startGame(int playerNum) {
-    List<String> names = frame.getNameInput(playerNum);
+	  List<String> names = frame.getNameInput(playerNum);
 //    frame.initDice(playerNum);
     frame.setVisible(true);
     game.startGame(names, playerNum);
@@ -37,7 +37,7 @@ public class Controller extends Globals {
 		  frame.initializeDiceIcon(current.getBackground(), current.getRank(), i+1, area.getX(), area.getY());
 	  }
   }
-  
+
   public static void moveButtonPressed() {
     Player activePlayer = timer.getActive();
     String[] adjacent = arrayListToArray(activePlayer.getCurrentRoom().getAdjacent());
@@ -114,7 +114,7 @@ public class Controller extends Globals {
       }
     }
   }
-  
+
   private static void defaultButtons(boolean actShow, boolean rehearseShow,
     boolean moveShow, boolean takeShow, boolean promoteShow) {
     JButton act = frame.getActButton();
@@ -172,7 +172,7 @@ public class Controller extends Globals {
   }
 
   }
-  
+
   public static void updateEvent() {
 	updateActive(timer.getActive());
   }
@@ -207,12 +207,17 @@ public class Controller extends Globals {
     actionTaken(false);
   }
 
-  public static void initializeShotCounters(ArrayList<Area> takeLocations){
-    frame.setupShotCounter(takeLocations);
+  public static void initializeShotCounters(ArrayList<Area> takeLocations, int index){
+    frame.resetShotCounter(takeLocations.get(0), index);
   }
 
-  public static void removeShotCounter(ArrayList<Area> takeLocations, int index){
-    frame.removeShotCounter(takeLocations.get(index));
+  public static void removeShotCounter(ArrayList<Area> takeLocations, int takes, int index){
+    if(index < takeLocations.size()) {
+    frame.moveShotCounter(takeLocations.get(takeLocations.size() - takes), takeLocations.get(index));
+  }
+  else {
+    frame.moveShotCounter(takeLocations.get(index-1), null);
+  }
   }
 
   public static void setCardDown(Area area) {
@@ -230,7 +235,7 @@ public class Controller extends Globals {
     fixLocation(active);
     frame.updatePlayerPiece(String.format(active.getBackground(), active.getRank()), area.getX(), area.getY(), timer.getPlayers().indexOf(active)+1);
   }
-  
+
   private static void fixLocation(Player active) {
 	    Room room = active.getCurrentRoom();
 	    Role role = active.getCurrentRole();
@@ -239,7 +244,7 @@ public class Controller extends Globals {
 	    	active.getLocation().setY(active.getLocation().getY() + room.getLocation().getY());
 	    }
   }
-  
+
   public static void updateActive(Player player) {
 	 String role = BLANK;
 	 String line = BLANK;
