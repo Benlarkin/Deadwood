@@ -361,21 +361,21 @@ public class DeadwoodFrame extends JFrame {
     public void updateActiveDice(int rank){
       ImageIcon temp = new ImageIcon();
       switch(turn){
-        case 0: temp = new ImageIcon(String.format(P1DICE, rank));
+        case 1: temp = new ImageIcon(String.format(P1DICE, rank));
                 break;
-        case 1: temp = new ImageIcon(String.format(P2DICE, rank));
+        case 2: temp = new ImageIcon(String.format(P2DICE, rank));
         break;
-        case 2: temp = new ImageIcon(String.format(P3DICE, rank));
+        case 3: temp = new ImageIcon(String.format(P3DICE, rank));
         break;
-        case 3: temp = new ImageIcon(String.format(P4DICE, rank));
+        case 4: temp = new ImageIcon(String.format(P4DICE, rank));
         break;
-        case 4: temp = new ImageIcon(String.format(P5DICE, rank));
+        case 5: temp = new ImageIcon(String.format(P5DICE, rank));
         break;
-        case 5: temp = new ImageIcon(String.format(P6DICE, rank));
+        case 6: temp = new ImageIcon(String.format(P6DICE, rank));
         break;
-        case 6: temp = new ImageIcon(String.format(P7DICE, rank));
+        case 7: temp = new ImageIcon(String.format(P7DICE, rank));
         break;
-        case 7: temp = new ImageIcon(String.format(P8DICE, rank));
+        case 8: temp = new ImageIcon(String.format(P8DICE, rank));
         break;
       }
       playerDice.get(turn).setIcon(temp);
@@ -588,10 +588,9 @@ public class DeadwoodFrame extends JFrame {
     private String[] makeOptions(int wealth, int rank, int credOrDoll) {
       List<String> options = new ArrayList<String>();
       int[][] cost = Controller.getUpgradeCost();
-      for(int i = rank - 1; i < 5; i++) {
-    	  int currCost = cost[credOrDoll][i];
-        if(currCost <= wealth) {
-          options.add(Integer.toString(i+2));
+      for(int i = rank + 1; i < 6; i++) {
+        if(cost[i][credOrDoll] <= wealth) {
+          options.add(Integer.toString(i));
         }
       }
       return arrayListToArray(options);
@@ -605,11 +604,4 @@ public class DeadwoodFrame extends JFrame {
       }
       return array;
     }
-
-//    public void updateActivePanel(String image, int dollars, int credits) {
-//      ImageIcon icon = new ImageIcon(image);
-//      labelActive.setIcon(icon);
-//      labelActive.revalidate();
-//    }
-
 }
