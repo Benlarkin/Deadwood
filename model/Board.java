@@ -8,6 +8,7 @@ public class Board extends Graphic {
    private int cardsLeft;
    private List<Room> spaces;
    private Timer timer;
+   
 
    // Creates a new Board from an XML file.
    public Board(List<Player> players) {
@@ -49,10 +50,10 @@ public class Board extends Graphic {
             Controller.setCardDown(current.getLocation());
             MovieSet currentSet = (MovieSet) current;
             currentSet.setScene(deck.remove(i));
-            cardsLeft++;
             Controller.initializeShotCounters(currentSet.getTakeLocations(), i);
          }
       }
+      cardsLeft = 10;
    }
 
    // Returns the players to the trailers at the start of a new day.
@@ -66,6 +67,9 @@ public class Board extends Graphic {
          current.getPlayers().clear();
       }
       List<Player> trailerPlayers = trailers.getPlayers();
+      int y = 0;
+      int x = 0;
+      boolean stack = false;
       for (Player currPlayer : players) {
          currPlayer.setCurrentRoom(trailers);
          trailerPlayers.add(currPlayer);
@@ -85,7 +89,6 @@ public class Board extends Graphic {
    // Removes a Card from the Board.
    public void removeCard() {
 	  cardsLeft--;
-	  Controller.removeCard(timer.getActive().getCurrentRoom());
    }
 
    // Returns the Rooms on the Board.

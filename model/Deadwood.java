@@ -11,8 +11,8 @@ public class Deadwood extends Globals {
   public List<Player> players;
   public Board board;
 
-
-
+  public boolean runningTurns;
+  public boolean runningDays = true;
   // Creates a new game of Deadwood.
   private Deadwood() {
     try {
@@ -81,10 +81,11 @@ public class Deadwood extends Globals {
   private void runTurns(Timer timer) {
 	  board.sendToTrailers(players);
 	Controller.makeDiceIcons(players);
-    while(timer.getDay() < 5) {
+    while(runningDays) {
       board.placeCards();
       board.sendToTrailers(players);
-      while(board.getCardsLeft() > 1) {
+   	  runningTurns = true;
+      while(runningTurns) {
     	  timer.nextTurn();
       }
       timer.nextDay();

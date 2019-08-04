@@ -37,6 +37,7 @@ public class Controller extends Globals {
 		  frame.initializeDiceIcon(current.getBackground(), current.getRank(), i+1, area.getX(), area.getY());
 	  }
   }
+  
 
   public static void moveButtonPressed() {
     Player activePlayer = timer.getActive();
@@ -182,8 +183,13 @@ public class Controller extends Globals {
 
   public static void removeCard(Room room) {
 	  frame.updateCard(room.getLocation(), BLANK);
-	  if(game.board.getCardsLeft() == 1) {
-		  timer.nextDay();
+	  Board board = game.board;
+	  board.removeCard();
+	  if(board.getCardsLeft() <= 1) {
+		  game.runningTurns = false;
+	  }
+	  if(timer.getDay() >= 5) {
+		  game.runningDays = false;
 	  }
   }
 
@@ -231,6 +237,7 @@ public class Controller extends Globals {
 //    frame.updateActivePanel(acti   ve.getBackground(), active.getDollars(), active.getCredits());
 //  }
 
+  
   public static void updatePlayer() {
     Player active = timer.getActive();
     Area area = active.getLocation();
