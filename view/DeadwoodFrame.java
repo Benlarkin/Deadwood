@@ -30,13 +30,47 @@ public class DeadwoodFrame extends JFrame {
     private JLabel label_p6;
     private JLabel label_p7;
     private JLabel label_p8;
-
-
+    private static final String DEADWOOD_TITLE = "Deadwood";
+    private static final String GAME_BOARD_IMAGE = "images/board.jpg";
+    private static final String CARD_IMAGE = "images/Card-Back.png";
+    private static final String DICE_IMAGE = "images/r1.png";
+    private static final String MENU_LABEL_TEXT = "MENU";
+    private static final String ACT_BUTTON_TEXT = "ACT";
+    private static final String TAKE_BUTTON_TEXT = "TAKE";
+    private static final String REHEARSE_BUTTON_TEXT = "REHEARSE";
+    private static final String PROMOTE_BUTTON_TEXT = "PROMOTE";
+    private static final String END_BUTTON_TEXT = "END";
+    private static final String MOVE_BUTTON_TEXT = "MOVE";
+    private static final String ACTIVEMESSAGE = "%s\n%d dollars | %d credits \n%s \n%s\n%s";
+    private static final String SHOTCOUNTER_IMAGE = "images/shot.png";
+    private static final String P1DICE = "images/dice/b%d.png";
+    private static final String P2DICE = "images/dice/c%d.png";
+    private static final String P3DICE = "images/dice/g%d.png";
+    private static final String P4DICE = "images/dice/o%d.png";
+    private static final String P5DICE = "images/dice/p%d.png";
+    private static final String P6DICE = "images/dice/r%d.png";
+    private static final String P7DICE = "images/dice/v%d.png";
+    private static final String P8DICE = "images/dice/y%d.png";
+    private static final String AFFORDABLEOPTION = "Affordable Options:\n";
+    private static final String CHOOSERANK = "Choose a Rank to Promote To:";
+    private static final String ADJROOM = "Adjacent Rooms:\n";
+    private static final String SELECTROOM = "Select Room to Move to:";
+    private static final String VALIDROLES = "Valid Roles:\n";
+    private static final String SELECTROLES = "Select Role to Take:";
+    private static final String CANTAFFORDMSG = "You can't afford a rank up!";
+    private static final String SELECTCURR = "Select Currency Option:";
+    private static final String DOLLORCRED = "Dollars or Credits:\n";
+    private static final String DOLLARS = "Dollars";
+    private static final String CREDITS = "Credits";
+    private static final String ENTERNAME = "Enter Name for Player ";
+    private static final String NEWLINE = ":\n";
+    private static final String ERRORNAME = "Error: Please Enter Name!\n";
+    private static final String PEELAYER = "Player ";
+    private static final String NAME = " Name";
 
     // image jlabels
 
     private List<JLabel> label_sc = new ArrayList<JLabel>();
-    // private List<JLabel> label_rx = new ArrayList<JLabel>();
 
 
 
@@ -54,32 +88,7 @@ public class DeadwoodFrame extends JFrame {
 
     private ImageIcon iconGameBoard;
 
-    private static final String DEADWOOD_TITLE = "Deadwood";
-    private static final String GAME_BOARD_IMAGE = "images/board.jpg";
-    private static final String CARD_IMAGE = "images/Card-Back.png";
-    private static final String DICE_IMAGE = "images/r1.png";
-    private static final String MENU_LABEL_TEXT = "MENU";
-    private static final String ACT_BUTTON_TEXT = "ACT";
-    private static final String TAKE_BUTTON_TEXT = "TAKE";
-    private static final String REHEARSE_BUTTON_TEXT = "REHEARSE";
-    private static final String PROMOTE_BUTTON_TEXT = "PROMOTE";
-    private static final String END_BUTTON_TEXT = "END";
-    private static final String MOVE_BUTTON_TEXT = "MOVE";
-    protected static final String PLAYERMSG = "Player %d name: ";
-    private static final String ACTIVEMESSAGE = "%s\n%d dollars | %d credits \n%s \n%s\n%s";
-    private static final String SHOTCOUNTER_IMAGE = "images/shot.png";
-    private static final String REDX_IMAGE = "images/redx.png";
-
-
-
-    protected static final String P1DICE = "images/dice/b%d.png";
-    protected static final String P2DICE = "images/dice/c%d.png";
-    protected static final String P3DICE = "images/dice/g%d.png";
-    protected static final String P4DICE = "images/dice/o%d.png";
-    protected static final String P5DICE = "images/dice/p%d.png";
-    protected static final String P6DICE = "images/dice/r%d.png";
-    protected static final String P7DICE = "images/dice/v%d.png";
-    protected static final String P8DICE = "images/dice/y%d.png";
+    
 
     public DeadwoodFrame() {
         super(DEADWOOD_TITLE);
@@ -117,92 +126,6 @@ public class DeadwoodFrame extends JFrame {
       setupCardLabel(area);
     }
 
-    // SET UP Player dice in trailers at start of game
-//    public void initDice(int playerCount) {
-//        boolean flag = false;
-//        if(playerCount>=7){
-//            flag = true;
-//        }
-//        paneDeadwood = getLayeredPane();
-//        label_p1 = new JLabel();
-//        ImageIcon icon1 = new ImageIcon(String.format(P1DICE, 1));
-//            if(flag){
-//                icon1 = new ImageIcon("images/dice/b2.png");
-//            }
-//        label_p1.setIcon(icon1);
-//        label_p2 = new JLabel();
-//        ImageIcon icon2 = new ImageIcon("images/dice/c1.png");
-//        if(flag){
-//            icon2 = new ImageIcon("images/dice/c2.png");
-//        }
-//        label_p2.setIcon(icon2);
-//        label_p1.setBounds(1030, 400, 46, 46);
-//        label_p2.setBounds(1030, 350, 46, 46);
-//        paneDeadwood.add(label_p1, new Integer(3));
-//        paneDeadwood.add(label_p2, new Integer(3));
-//        playerDice.add(label_p1);
-//        playerDice.add(label_p2);
-//        if (playerCount >= 3) {
-//            label_p3 = new JLabel();
-//            ImageIcon icon3 = new ImageIcon("images/dice/g1.png");
-//            if(flag){
-//                icon3 = new ImageIcon("images/dice/g2.png");
-//            }
-//            label_p3.setIcon(icon3);
-//            label_p3.setBounds(1030, 300, 46, 46);
-//            paneDeadwood.add(label_p3, new Integer(3));
-//            playerDice.add(label_p3);
-//        }
-//        if (playerCount >= 4) {
-//            label_p4 = new JLabel();
-//            ImageIcon icon4 = new ImageIcon("images/dice/o1.png");
-//            if(flag){
-//                icon4 = new ImageIcon("images/dice/o2.png");
-//            }
-//            label_p4.setIcon(icon4);
-//            label_p4.setBounds(1030, 250, 46, 46);
-//            paneDeadwood.add(label_p4, new Integer(3));
-//            playerDice.add(label_p4);
-//        }
-//        if (playerCount >= 5) {
-//            label_p5 = new JLabel();
-//            ImageIcon icon5 = new ImageIcon("images/dice/p1.png");
-//            if(flag){
-//                icon5 = new ImageIcon("images/dice/p2.png");
-//            }
-//            label_p5.setIcon(icon5);
-//            label_p5.setBounds(1120, 250, 46, 46);
-//            paneDeadwood.add(label_p5, new Integer(3));
-//            playerDice.add(label_p5);
-//        }
-//        if (playerCount >= 6) {
-//            label_p6 = new JLabel();
-//            ImageIcon icon6 = new ImageIcon("images/dice/r1.png");
-//            if(flag){
-//                icon6 = new ImageIcon("images/dice/r2.png");
-//            }
-//            label_p6.setIcon(icon6);
-//            label_p6.setBounds(1120, 300, 46, 46);
-//            paneDeadwood.add(label_p6, new Integer(3));
-//            playerDice.add(label_p6);
-//        }
-//        if (playerCount >= 7) {
-//            label_p7 = new JLabel();
-//            ImageIcon icon7 = new ImageIcon("images/dice/v2.png");
-//            label_p7.setIcon(icon7);
-//            label_p7.setBounds(1120, 350, 46, 46);
-//            paneDeadwood.add(label_p7, new Integer(3));
-//            playerDice.add(label_p7);
-//        }
-//        if (playerCount == 8) {
-//            label_p8 = new JLabel();
-//            ImageIcon icon8 = new ImageIcon("images/dice/y2.png");
-//            label_p8.setIcon(icon8);
-//            label_p8.setBounds(1120, 400, 46, 46);
-//            paneDeadwood.add(label_p8, new Integer(3));
-//            playerDice.add(label_p8);
-//        }
-//    }
 
 
     private void setupMenuLabel() {
@@ -374,17 +297,6 @@ public class DeadwoodFrame extends JFrame {
     		sc.revalidate();
     	}
 		}
-//
-//
-//
-//    Area a = takeLocations.get(takeLocations.size() - 1);
-//    takeLocations.remove(takeLocations.size() - 1);
-//    ImageIcon icon = new ImageIcon(REDX_IMAGE);
-//    JLabel rx = new JLabel();
-//    rx.setIcon(icon);
-//    rx.setBounds(a.getX(), a.getY(), 42, 42);
-//    paneDeadwood.add(rx, new Integer(5));
-//    label_rx.add(rx);
 
 
     private JLabel getShot(Area area) {
@@ -527,10 +439,7 @@ public class DeadwoodFrame extends JFrame {
         panel.setLayout(new SpringLayout());
         panel.setPreferredSize(new Dimension(300, 300));
         for (int i = 0; i < playerNum; i++) {
-            // JLabel label = new JLabel(PLAYERMSG, i+1);
             JTextField textBox = new JTextField(20);
-            // label.setLabelFor(textBox);
-            // panel.add(label);
             panel.add(textBox);
             list.add(textBox);
         }
@@ -567,8 +476,8 @@ public class DeadwoodFrame extends JFrame {
       try {
       String name = (String)JOptionPane.showInputDialog(
                           this,
-                          "Adjacent Rooms:\n",
-                          "Select Room to Move to:",
+                          ADJROOM,
+                          SELECTROOM,
                           JOptionPane.QUESTION_MESSAGE,
                           null,
                           adjacent,
@@ -584,8 +493,8 @@ public class DeadwoodFrame extends JFrame {
       try {
       String name = (String)JOptionPane.showInputDialog(
                           this,
-                          "Valid Roles:\n",
-                          "Select Role to Take:",
+                          VALIDROLES,
+                          SELECTROLES,
                           JOptionPane.QUESTION_MESSAGE,
                           null,
                           roles,
@@ -607,8 +516,8 @@ public class DeadwoodFrame extends JFrame {
 
     // Adds players to the game of Deadwood.
     private String getPlayerName(int playerNum) {
-        String name = (String) JOptionPane.showInputDialog(this, "Enter Name for Player " + playerNum + ":\n",
-                "Player " + playerNum + " Name", JOptionPane.PLAIN_MESSAGE, null, null, null);
+        String name = (String) JOptionPane.showInputDialog(this, ENTERNAME + playerNum + NEWLINE,
+                PEELAYER + playerNum + NAME, JOptionPane.PLAIN_MESSAGE, null, null, null);
         if (name != null && name.length() > 0) {
             return name;
         }
@@ -621,8 +530,8 @@ public class DeadwoodFrame extends JFrame {
 
     private String retryGetPlayerName(int playerNum) {
         String name = (String) JOptionPane.showInputDialog(this,
-                "Enter Name for Player " + playerNum + ":\n" + "Error: Please Enter Name!\n",
-                "Player " + playerNum + " Name", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                ENTERNAME + playerNum + NEWLINE + ERRORNAME,
+                PEELAYER + playerNum + NAME, JOptionPane.PLAIN_MESSAGE, null, null, null);
         if (name != null && name.length() > 0) {
             return name;
         }
@@ -632,11 +541,11 @@ public class DeadwoodFrame extends JFrame {
 
     public String getDesiredCurrency() {
       try {
-      String[] options = {"Dollars", "Credits"};
+      String[] options = {DOLLARS, CREDITS};
       String name = (String)JOptionPane.showInputDialog(
                           this,
-                          "Dollars or Credits:\n",
-                          "Select Currency Option:",
+                          DOLLORCRED,
+                          SELECTCURR,
                           JOptionPane.QUESTION_MESSAGE,
                           null,
                           options,
@@ -671,13 +580,13 @@ public class DeadwoodFrame extends JFrame {
 
     private String getPromoteRank(String[] options) {
       if(options.length == 0) {
-        errorMessagePopup("You can't afford a rank up!");
+        errorMessagePopup(CANTAFFORDMSG);
         return null;
       }
       String desiredRank = (String)JOptionPane.showInputDialog(
                         this,
-                        "Affordable Options:\n",
-                        "Choose a Rank to Promote To:",
+                        AFFORDABLEOPTION,
+                        CHOOSERANK,
                         JOptionPane.QUESTION_MESSAGE,
                         null,
                         options,
