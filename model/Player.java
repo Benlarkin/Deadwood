@@ -261,7 +261,6 @@ public class Player extends Graphic {
       }
       for (Room r : currentRoom.getNeighbors()) {
          if (r.getName().equals(desiredRoom)) {
-            System.out.printf(MOVESUCC, name, currentRoom.getName(), desiredRoom);
             this.setCurrentRoom(r);
             currentRoom.getPlayers().remove(this);
             r.getPlayers().add(this);
@@ -350,6 +349,11 @@ public class Player extends Graphic {
    // Gives the Player the given number of credits.
    public void setCredits(int newCredits) {
       this.credits = newCredits;
+   }
+
+   // resets rehearsal chips to 0, called when scene is wrapped
+   public void resetRehearsalChips(){
+      this.rehearsalChips = 0;
    }
 
    // Sets the Player's rank to the given rank.
