@@ -261,7 +261,6 @@ public class Player extends Graphic {
       }
       for (Room r : currentRoom.getNeighbors()) {
          if (r.getName().equals(desiredRoom)) {
-            System.out.printf(MOVESUCC, name, currentRoom.getName(), desiredRoom);
             this.setCurrentRoom(r);
             currentRoom.getPlayers().remove(this);
             r.getPlayers().add(this);
