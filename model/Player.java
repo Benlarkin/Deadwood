@@ -350,6 +350,11 @@ public class Player extends Graphic {
       this.credits = newCredits;
    }
 
+   // resets rehearsal chips to 0, called when scene is wrapped
+   public void resetRehearsalChips(){
+      this.rehearsalChips = 0;
+   }
+
    // Sets the Player's rank to the given rank.
    public void setRank(int newRank) {
       this.rank = newRank;

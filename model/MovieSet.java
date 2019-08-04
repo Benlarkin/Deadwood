@@ -57,6 +57,7 @@ public class MovieSet extends Room {
       // payout extras
       // remove roles from players
       for (Player p : super.getPlayers()) {
+        p.resetRehearsalChips();
         if (p.getCurrentRole() instanceof ExtraRole) {
           Banker.payMoney(p, p.getCurrentRole().getRequirement());
         }
